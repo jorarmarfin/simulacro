@@ -18,6 +18,9 @@ require __DIR__.'/home.route.php';
 require __DIR__.'/admin.route.php';
 require __DIR__.'/catalogo.route.php';
 require __DIR__.'/users.route.php';
+require __DIR__.'/datos.route.php';
+require __DIR__.'/pagos.route.php';
+require __DIR__.'/ficha.route.php';
 
 Auth::routes();
 

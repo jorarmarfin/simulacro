@@ -13,11 +13,9 @@
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->safeEmail,
+        'dni' => $faker->name,
         'password' => 'secret',
-        'idrole' => $faker->randomElement($array = array (4,5,6)),
-        'foto'=> 'nofoto.jpg',
+        'foto'=> 'avatar/nofoto.jpg',
         'activo' => true,
         'remember_token' => str_random(10),
     ];

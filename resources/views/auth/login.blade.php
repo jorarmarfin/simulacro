@@ -7,7 +7,7 @@
     <div class="form-group">
             <div class="input-icon right ">
             <i class="fa fa-envelope"></i>
-            {!!Form::email('email',old('email'), ['class'=>'form-control','placeholder'=>'Email'])!!}
+            {!!Form::text('dni',old('dni'), ['class'=>'form-control','placeholder'=>'DNI'])!!}
             </div>
     </div>
     <div class="form-group">
@@ -20,10 +20,10 @@
         {!!Form::submit('Entrar',['class'=>'btn green uppercase btn-block'])!!}
     </div>
     <div class="create-account">
-        <p>
+    Debe crear una cuenta
+    <p></p>
     {!!Form::boton('Crear usuario',url('/register'),'green','fa fa-plus')!!}
     {!!Form::boton('Olvide mi Clave',url('/password/reset'),'green','fa fa-cog')!!}
-        </p>
     </div>
 {!! Form::close() !!}
 @stop

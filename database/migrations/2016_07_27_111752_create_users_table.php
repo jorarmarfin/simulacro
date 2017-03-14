@@ -14,16 +14,12 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->string('dni');
             $table->string('password', 60);
-            $table->integer('idrole')->unsigned();
-            $table->string('foto',50)->default('nofoto.jpg');
-            $table->string('menu',50)->default('menu.sider');
-            $table->boolean('activo')->nullable();
+            $table->string('foto',50)->default('avatar/nofoto.jpg');
+            $table->boolean('activo')->default(true);
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('idrole')->references('id')->on('catalogo');
         });
     }
 

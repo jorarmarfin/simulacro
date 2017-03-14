@@ -3,7 +3,7 @@
 <html lang="es">
     <head>
         <meta charset="utf-8" />
-        <title>Simmulacro de Admision</title>
+        <title>Simulacro de Admision</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta content="width=device-width, initial-scale=1" name="viewport" />
         <meta content="#1 selling multi-purpose bootstrap admin theme sold in themeforest marketplace packed with angularjs, material design, rtl support with over thausands of templates and ui elements and plugins to power any type of web applications including saas and admin dashboards. Preview page of Theme #7 for dashboard & statistics"
@@ -13,16 +13,16 @@
         @include('layouts.partials.styles-mandatory')
         <!-- END GLOBAL MANDATORY STYLES -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="../assets/global/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL STYLES -->
-        <link href="../assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
-        <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/global/css/components-rounded.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
+        <link href="{{ asset('assets/global/css/plugins.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN THEME LAYOUT STYLES -->
-        <link href="../assets/layouts/layout7/css/layout.min.css" rel="stylesheet" type="text/css" />
-        <link href="../assets/layouts/layout7/css/custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/layouts/layout7/css/layout.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/layouts/layout7/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
         <!-- END THEME LAYOUT STYLES -->
+        @include('layouts.partials.styles-plugins')
         <link rel="shortcut icon" href="favicon.ico" /> </head>
     <!-- END HEAD -->
 
@@ -64,7 +64,7 @@
                 <!-- END NAV TRIGGER -->
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
-                    <a href="index.html">
+                    <a href="{{ url('/') }}">
                         <img src="../assets/layouts/layout7/img/logo-sim.png" alt="logo" class="logo-default" /> </a>
                 </div>
                 <!-- END LOGO -->
@@ -134,7 +134,7 @@
         @include('layouts.partials.js-core')
         <!-- END CORE PLUGINS -->
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        @yield('js-plugins')
+        @yield('plugins-js')
         <!-- END PAGE LEVEL PLUGINS -->
         <!-- BEGIN THEME GLOBAL SCRIPTS -->
         <script src={{asset("assets/global/scripts/app.min.js")}} type="text/javascript"></script>
