@@ -46,7 +46,8 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         $this->validate($request, [
-            'dni' => 'required', 'password' => 'required',
+            'dni' => 'required|max:8',
+            'password' => 'required',
         ]);
     }
     /**

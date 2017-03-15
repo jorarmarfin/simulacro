@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="form-body ">
-            <iframe src="{{--route('applicants.report.recibo')--}}" width="100%" height="400px" scrolling="auto"></iframe>
+            <iframe src="{{route('pagos.pdf')}}" width="100%" height="600px" scrolling="auto"></iframe>
         </div>
     </div>
     <!-- END PORTLET-->

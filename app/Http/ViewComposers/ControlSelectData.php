@@ -17,6 +17,7 @@ class ControlSelectData
 	public function compose(View $view)
 	{
 		$roles = ['-1' => 'Seleccionar Rol']+Catalogo::Combo('ROLES')->pluck('nombre','id')->toarray();
-		$view->with(compact('roles'));
+		$sexo = Catalogo::Combo('SEXO')->pluck('nombre','id')->toarray();
+		$view->with(compact('roles','sexo'));
 	}
 }

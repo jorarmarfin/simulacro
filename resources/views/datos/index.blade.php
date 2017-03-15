@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+{!! Form::open(['route'=>'datos.store','method'=>'POST','files'=>true]) !!}
 <div class="col-md-4">
     <!-- BEGIN PORTLET-->
     <div class="portlet light tasks-widget widget-comments">
@@ -11,8 +12,8 @@
         </div>
         <div class="portlet-body overflow-h">
             <div class="fileinput fileinput-new" data-provides="fileinput">
-                <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                <div class="fileinput-new thumbnail" style="width: 300px; height: 400px;">
+                    <img src="http://www.placehold.it/300x400/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                 </div>
                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                 <div>
@@ -40,12 +41,11 @@
             </div>
         </div>
         <div class="form-body ">
-            {!! Form::open(['route'=>'datos.store','method'=>'POST']) !!}
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
                             {!!Form::label('lblDNI', 'DNI');!!}
-                            {!!Form::text('dni', null , ['class'=>'form-control','placeholder'=>'Numero DNI']);!!}
+                            {!!Form::text('dni', $dni , ['class'=>'form-control','placeholder'=>'Numero DNI']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -81,7 +81,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             {!!Form::label('lblEmail', 'Email del alumno');!!}
-                            {!!Form::text('email', null , ['class'=>'form-control','placeholder'=>'Email del alumno']);!!}
+                            {!!Form::email('email', null , ['class'=>'form-control','placeholder'=>'Email del alumno']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -89,31 +89,48 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             {!!Form::label('lblSexo', 'Sexo');!!}
-                            {!!Form::select('idsexo', [] ,null , ['class'=>'form-control']);!!}
+                            {!!Form::select('idsexo', $sexo ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
                         </div>
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblFechaNacimiento', 'Fecha nacimiento');!!}
-                            {!!Form::text('fecha_nacimiento', null , ['class'=>'form-control']);!!}
+                            {!! Form::label('lblFecha', 'Fecha de nacimiento', ['class'=>'control-label']) !!}
+                            <div class="input-group ">
+                                {!!Form::text('fecha_nacimiento', null , ['class'=>'form-control fechanacimiento','placeholder'=>'Fecha de egreso']);!!}
+                                <span class="input-group-btn ">
+                                    <button class="btn " type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
                         </div>
+
                     </div><!--span-->
                 </div><!--row-->
-            {!! Form::close() !!}
+                {!!Form::enviar('Guardar')!!}
         </div>
     </div>
     <!-- END PORTLET-->
 </div>
-
+{!! Form::close() !!}
+@stop
+@section('js-scripts')
+<script>
+$(".fechanacimiento").datepicker({
+    format:'dd/mm/yyyy'
+});
+</script>
 @stop
 
 @section('plugins-styles')
+{!! Html::style(asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
 {!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
 {!! Html::style(asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')) !!}
 @stop
 @section('plugins-js')
+{!! Html::script(asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
 {!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}

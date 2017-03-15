@@ -1,6 +1,8 @@
 @extends('layouts.base')
 
 @section('content')
+{!! Alert::render() !!}
+@include('alerts.errors')
 <div class="row">
     <div class="col-md-3">
         <a class="dashboard-stat dashboard-stat-v2 blue" href="{{ route('datos.index') }}">

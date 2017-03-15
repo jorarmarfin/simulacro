@@ -7,7 +7,7 @@
     <div class="form-group">
             <div class="input-icon right ">
             <i class="fa fa-envelope"></i>
-            {!!Form::text('dni',old('dni'), ['class'=>'form-control','placeholder'=>'DNI'])!!}
+            {!!Form::text('dni',old('dni'), ['class'=>'form-control','placeholder'=>'DNI','maxlength'=>'8'])!!}
             </div>
     </div>
     <div class="form-group">
@@ -22,7 +22,7 @@
     <div class="create-account">
     Debe crear una cuenta
     <p></p>
-    {!!Form::boton('Crear usuario',url('/register'),'green','fa fa-plus')!!}
+    {!!Form::boton('Crear cuenta',url('/register'),'green','fa fa-plus')!!}
     {!!Form::boton('Olvide mi Clave',url('/password/reset'),'green','fa fa-cog')!!}
     </div>
 {!! Form::close() !!}
