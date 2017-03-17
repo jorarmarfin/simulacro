@@ -13,6 +13,8 @@
             </div>
         </div>
         <div class="form-body ">
+            Su numero de Inscripción y su aula, donde rendirá su examen aparecera en su ficha cuando se haya registrado su pago satisfactoriamente
+            <p></p>
             <iframe src="{{route('ficha.pdf')}}" width="100%" height="700px" scrolling="auto"></iframe>
         </div>
     </div>

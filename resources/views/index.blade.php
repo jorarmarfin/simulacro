@@ -56,12 +56,29 @@
     </div>
 </div>
 <div class="row widget-row">
+    <div class="col-md-4">
+        <!-- BEGIN PORTLET-->
+        <div class="portlet light tasks-widget widget-comments">
+            <div class="portlet-title margin-bottom-20">
+                <div class="caption caption-md font-red-sunglo">
+                    <span class="caption-subject theme-font bold uppercase">Comunicate con admision</span>
+                </div>
+            </div>
+            <div class="portlet-body overflow-h">
+                <input type="text" placeholder="To" class="form-control margin-bottom-20">
+                <input type="text" placeholder="Subject" class="form-control margin-bottom-20">
+                <textarea placeholder="Message" class="form-control margin-bottom-20" rows="5"></textarea>
+                <button class="btn red-sunglo pull-right" type="button">Submit</button>
+            </div>
+        </div>
+        <!-- END PORTLET-->
+    </div>
     <div class="col-md-4 margin-bottom-20">
         <!-- BEGIN WIDGET TAB -->
         <div class="widget-bg-color-white widget-tab">
             <ul class="nav nav-tabs">
                 <li class="active">
-                    <a href="#tab_1_1" data-toggle="tab"> Noticias </a>
+                    <a href="#tab_1_1" data-toggle="tab"> Mensajes </a>
                 </li>
             </ul>
             <div class="tab-content scroller" style="height: 350px;" data-always-visible="1" data-handle-color="#D7DCE2">
@@ -240,23 +257,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-4">
-        <!-- BEGIN PORTLET-->
-        <div class="portlet light tasks-widget widget-comments">
-            <div class="portlet-title margin-bottom-20">
-                <div class="caption caption-md font-red-sunglo">
-                    <span class="caption-subject theme-font bold uppercase">Mensajes</span>
-                </div>
-            </div>
-            <div class="portlet-body overflow-h">
-                <input type="text" placeholder="To" class="form-control margin-bottom-20">
-                <input type="text" placeholder="Subject" class="form-control margin-bottom-20">
-                <textarea placeholder="Message" class="form-control margin-bottom-20" rows="5"></textarea>
-                <button class="btn red-sunglo pull-right" type="button">Submit</button>
-            </div>
-        </div>
-        <!-- END PORTLET-->
-    </div>
+
 </div>
 @stop
 

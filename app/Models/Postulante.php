@@ -53,7 +53,7 @@ class Postulante extends Model
     public function setFotoAttribute($value)
     {
         $this->attributes['foto'] = $value;
-        User::where('id',$this->idusuario)->update(['foto'=>$value]);
+        User::where('id',Auth::user()->id)->update(['foto'=>$value]);
     }
 
     /**

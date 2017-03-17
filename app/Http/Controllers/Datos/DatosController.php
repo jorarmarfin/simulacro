@@ -38,7 +38,9 @@ class DatosController extends Controller
     	$data = $request->all();
         $postulante = Postulante::find($id);
         if ($request->hasFile('file')) {
+            if(!str_contains($postulante->foto,'nofoto'))
         	Storage::delete("/public/$postulante->foto");
+
             $data['foto'] = $request->file('file')->store('fotos','public');
         }
         $data['idevaluacion'] = IdEvaluacion();
