@@ -21,15 +21,3 @@
 
 @stop
 
-@section('plugins-styles')
-{!! Html::style(asset('assets/global/plugins/select2/css/select2.min.css')) !!}
-{!! Html::style(asset('assets/global/plugins/select2/css/select2-bootstrap.min.css')) !!}
-{!! Html::style(asset('assets/global/plugins/icheck/skins/all.css')) !!}
-{!! Html::style(asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')) !!}
-@stop
-@section('plugins-js')
-{!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
-{!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
-{!! Html::script(asset('assets/global/plugins/icheck/icheck.min.js')) !!}
-{!! Html::script(asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')) !!}
-@stop

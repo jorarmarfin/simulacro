@@ -34,7 +34,7 @@
                 <!-- BEGIN BURGER TRIGGER -->
                 <div class="burger-trigger">
                     <button class="menu-trigger">
-                        <img src="../assets/layouts/layout7/img/m_toggler.png" alt=""> </button>
+                        <img src="{{ asset('assets/layouts/layout7/img/m_toggler.png') }}" alt=""> </button>
                     <div class="menu-overlay menu-overlay-bg-transparent">
                         <div class="menu-overlay-content">
                             <ul class="menu-overlay-nav text-uppercase">
@@ -65,7 +65,7 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="{{ url('/') }}">
-                        <img src="../assets/layouts/layout7/img/logo-sim.png" alt="logo" class="logo-default" /> </a>
+                        <img src="{{ asset('assets/layouts/layout7/img/logo-sim.png') }}" alt="logo" class="logo-default" /> </a>
                 </div>
                 <!-- END LOGO -->
                 <!-- BEGIN TOP NAVIGATION MENU -->

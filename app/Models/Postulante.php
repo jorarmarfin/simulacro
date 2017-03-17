@@ -4,11 +4,27 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
-
+use Auth;
 class Postulante extends Model
 {
     protected $table = 'postulante';
     protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario'];
+    /**
+    * Atributos Sexo
+    */
+    public function getSexoAttribute()
+    {
+        $sexo = Catalogo::find($this->idsexo);
+        return $sexo->nombre;
+    }
+    /**
+    * Atributos Nombre Completo
+    */
+    public function getNombreCompletoAttribute()
+    {
+        $nombre = $this->paterno.' - '.$this->materno.', '.$this->nombres;
+        return $nombre;
+    }
     /**
      * Atributos Paterno
      */
@@ -30,6 +46,7 @@ class Postulante extends Model
     {
         $this->attributes['nombres'] = strtoupper($value);
     }
+
     /**
      * Atributos Foto
      */
@@ -39,6 +56,15 @@ class Postulante extends Model
         User::where('id',$this->idusuario)->update(['foto'=>$value]);
     }
 
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeUsuario($cadenaSQL){
+        $id = Auth::user()->id;
+        return $cadenaSQL->where('idusuario',$id);
+    }
 
 
 }
