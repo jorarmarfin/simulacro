@@ -55,210 +55,30 @@
         </a>
     </div>
 </div>
-<div class="row widget-row">
-    <div class="col-md-4">
-        <!-- BEGIN PORTLET-->
-        <div class="portlet light tasks-widget widget-comments">
-            <div class="portlet-title margin-bottom-20">
-                <div class="caption caption-md font-red-sunglo">
-                    <span class="caption-subject theme-font bold uppercase">Comunicate con admision</span>
-                </div>
-            </div>
-            <div class="portlet-body overflow-h">
-                <input type="text" placeholder="To" class="form-control margin-bottom-20">
-                <input type="text" placeholder="Subject" class="form-control margin-bottom-20">
-                <textarea placeholder="Message" class="form-control margin-bottom-20" rows="5"></textarea>
-                <button class="btn red-sunglo pull-right" type="button">Submit</button>
-            </div>
-        </div>
-        <!-- END PORTLET-->
-    </div>
-    <div class="col-md-4 margin-bottom-20">
-        <!-- BEGIN WIDGET TAB -->
-        <div class="widget-bg-color-white widget-tab">
-            <ul class="nav nav-tabs">
-                <li class="active">
-                    <a href="#tab_1_1" data-toggle="tab"> Mensajes </a>
-                </li>
-            </ul>
-            <div class="tab-content scroller" style="height: 350px;" data-always-visible="1" data-handle-color="#D7DCE2">
-                <div class="tab-pane fade active in" id="tab_1_1">
-                    <div class="widget-news margin-bottom-20">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/03.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">Wondering anyone did this
-                                <span class="label label-default"> March 25 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    <div class="widget-news margin-bottom-20">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/04.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">New Workstation
-                                <span class="label label-default"> March 16 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    <div class="widget-news margin-bottom-20">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/07.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">San Francisco
-                                <span class="label label-default"> March 10 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    <div class="widget-news margin-bottom-20">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/03.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">Wondering anyone did this
-                                <span class="label label-default"> March 25 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    <div class="widget-news margin-bottom-20">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/04.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">New Workstation
-                                <span class="label label-default"> March 16 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    <div class="widget-news margin-bottom-20">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/03.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">Wondering anyone did this
-                                <span class="label label-default"> March 25 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                    <div class="widget-news">
-                        <img class="widget-news-left-elem" src="{{ asset('assets/layouts/layout7/img/05.jpg') }}" alt="">
-                        <div class="widget-news-right-body">
-                            <h3 class="widget-news-right-body-title">Most Completed theme
-                                <span class="label label-default"> March 12 </span>
-                            </h3>
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit diam nonumy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END WIDGET TAB -->
-    </div>
-    <div class="col-md-4">
-        <div class="portlet light">
-            <div class="portlet-title">
-                <div class="caption caption-md font-blue">
-                    <i class="icon-share font-blue"></i>
-                    <span class="caption-subject theme-font bold uppercase">Actividades Recientes</span>
-                </div>
-            </div>
-            <div class="portlet-body">
-                <div class="scroller" style="height: 322px;" data-always-visible="1" data-rail-visible="0">
-                    <ul class="feeds">
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm label-info">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> Ha registrado sus datos correctamente.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> Ahora </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <div class="col1">
-                                    <div class="cont">
-                                        <div class="cont-col1">
-                                            <div class="label label-sm label-success">
-                                                <i class="fa fa-send"></i>
-                                            </div>
-                                        </div>
-                                        <div class="cont-col2">
-                                            <div class="desc"> Su pago se ha enviado al banco. </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col2">
-                                    <div class="date"> 20 mins </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm label-danger">
-                                            <i class="fa fa-upload"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> Se ha cargado su Pago . </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 24 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm label-info">
-                                            <i class="fa fa-file-image-o"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> Se ha editado su foto
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 30 mins </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="col1">
-                                <div class="cont">
-                                    <div class="cont-col1">
-                                        <div class="label label-sm label-success">
-                                            <i class="fa fa-bar-chart-o"></i>
-                                        </div>
-                                    </div>
-                                    <div class="cont-col2">
-                                        <div class="desc"> Se ha asignado sus aulas. </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col2">
-                                <div class="date"> 20 mins </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
 
+<div class="row">
+    <div class="col-md-12">
+        <div class="mt-element-step">
+            <div class="row step-background">
+                <div class="col-md-4 bg-grey-steel mt-step-col">
+                    <div class="mt-step-number">1</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">Purchase</div>
+                    <div class="mt-step-content font-grey-cascade">Purchasing the item</div>
+                </div>
+                <div class="col-md-4 bg-grey-steel mt-step-col active">
+                    <div class="mt-step-number">2</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">Payment</div>
+                    <div class="mt-step-content font-grey-cascade">Complete your payment</div>
+                </div>
+                <div class="col-md-4 bg-grey-steel mt-step-col">
+                    <div class="mt-step-number">3</div>
+                    <div class="mt-step-title uppercase font-grey-cascade">Deploy</div>
+                    <div class="mt-step-content font-grey-cascade">Receive item integration</div>
+                </div>
             </div>
         </div>
-    </div>
-
-</div>
+    </div><!--span-->
+</div><!--row-->
 @stop
 
 
