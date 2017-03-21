@@ -96,7 +96,7 @@
                         <div class="form-group">
                             {!! Form::label('lblFecha', 'Fecha de nacimiento', ['class'=>'control-label']) !!}
                             <div class="input-group ">
-                                {!!Form::text('fecha_nacimiento', null , ['class'=>'form-control fechanacimiento','placeholder'=>'Fecha de egreso']);!!}
+                                {!!Form::text('fecha_nacimiento', null , ['class'=>'form-control fechanacimiento','placeholder'=>'Fecha de Nacimiento']);!!}
                                 <span class="input-group-btn ">
                                     <button class="btn " type="button">
                                         <i class="fa fa-calendar"></i>
@@ -105,6 +105,14 @@
                             </div>
                         </div>
 
+                    </div><!--span-->
+                </div><!--row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!!Form::label('lblGrado', 'Nivel Educativo');!!}
+                            {!!Form::select('idgrado', $grado ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
+                        </div>
                     </div><!--span-->
                 </div><!--row-->
                 {!!Form::enviar('Guardar')!!}

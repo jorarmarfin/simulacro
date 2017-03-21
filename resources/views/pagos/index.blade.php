@@ -13,6 +13,8 @@
             </div>
         </div>
         <div class="form-body ">
+            Después de 3 horas de registrar sus datos, realizar el pago por derecho de inscripción en la cuenta ADMISIONUNI del Banco Financiero o Scotiabank.
+            <p></p>
             <iframe src="{{route('pagos.pdf')}}" width="100%" height="600px" scrolling="auto"></iframe>
         </div>
     </div>

@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="portlet-body overflow-h">
-            Indicaciones
+             <strong> Las inscripciones</strong> seran del Del 17 de Abril del 2017 al 05 de Febrero del 2017
         </div>
     </div>
     <!-- END PORTLET-->

@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use App\User;
-use Illuminate\Database\Eloquent\Model;
 use Auth;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
 class Postulante extends Model
 {
     protected $table = 'postulante';
-    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario'];
+    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado'];
     /**
     * Atributos Sexo
     */
@@ -24,6 +25,14 @@ class Postulante extends Model
     {
         $nombre = $this->paterno.' - '.$this->materno.', '.$this->nombres;
         return $nombre;
+    }
+    /**
+    * Atributos Edad del postulante
+    */
+    public function getEdadAttribute()
+    {
+        $edad = Carbon::createFromFormat('Y-m-d',$this->fecha_nacimiento)->age;
+        return $edad;
     }
     /**
      * Atributos Paterno

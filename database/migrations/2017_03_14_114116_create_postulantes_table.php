@@ -29,10 +29,12 @@ class CreatePostulantesTable extends Migration
             $table->boolean('pago')->nullable();
             $table->boolean('anulado')->nullable();
             $table->integer('idusuario')->nullable();
+            $table->integer('idgrado')->nullable();
             $table->timestamps();
             $table->foreign('idevaluacion')->references('id')->on('evaluacion');
             $table->foreign('idusuario')->references('id')->on('users');
             $table->foreign('idsexo')->references('id')->on('catalogo');
+            $table->foreign('idgrado')->references('id')->on('catalogo');
             $table->unique(['idevaluacion','codigo']);
         });
     }

@@ -46,7 +46,7 @@
         <div class="content">
         @yield('content')
         </div>
-        <div class="copyright"> @yield('copyright','2014 © Metronic. Admin Dashboard Template.') </div>
+        <div class="copyright font-white"> @yield('copyright','2014 © Metronic. Admin Dashboard Template.') </div>
         <!--[if lt IE 9]>
 <![endif]-->
         <!-- BEGIN CORE PLUGINS -->
@@ -70,6 +70,7 @@
         <!-- END PAGE LEVEL SCRIPTS -->
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <!-- END THEME LAYOUT SCRIPTS -->
+        @yield('js-scripts')
     </body>
 
 </html>

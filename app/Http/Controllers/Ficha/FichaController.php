@@ -83,15 +83,16 @@ class FichaController extends Controller
         #
         PDF::SetXY(18,185);
         PDF::SetFont('helvetica','',11);
-        PDF::MultiCell(170,5,'Declaro bajo juramento que toda la información registrada es auténtica, que me encuentro cursando el ultimo año de educacion secundaria basica regular o educacion basica alternativa y que la imágen subida al sistema es mi foto actual; y en caso de faltar a la verdad perderé mis derechos de postulante y me someto a las sanciones de Ley que correspondan. Asimismo, declaro no tener antecedentes policiales Autorizo a la Oficina Central de Admisión el uso de mis datos personales que libremente proporciono, para los fines que involucran las actividades propias del '.$evaluacion->nombre.', y la publicación de los resultados de las pruebas rendidas y en la publicación de los resultados finales en todo medio de comunicación',1,'J',false);
+        PDF::MultiCell(170,5,'Declaro bajo juramento que toda la información registrada es auténtica, y que la imágen subida al sistema es mi foto actual; y en caso de faltar a la verdad perderé mis derechos de postulante y me someto a las sanciones de Ley que correspondan. Asimismo, declaro no tener antecedentes policiales Autorizo a la Oficina Central de Admisión el uso de mis datos personales que libremente proporciono, para los fines que involucran las actividades propias del '.$evaluacion->nombre.', y la publicación de los resultados de la prueba rendida en todo medio de comunicación',1,'J',false);
         #
+        $persona = ($postulante->edad>=18) ? 'Postulante' : 'Apoderado' ;
         PDF::SetXY(18,250);
         PDF::SetFont('helvetica','',11);
-        PDF::Cell(70,5,'Firma del apoderado','T',0,'C');
+        PDF::Cell(70,5,'Firma del  '.$persona,'T',0,'C');
         #
         PDF::SetXY(18,255);
         PDF::SetFont('helvetica','',11);
-        PDF::Cell(70,5,'DNI del apoderado:','B',0,'L');
+        PDF::Cell(70,5,'DNI del '.$persona.':','B',0,'L');
         #FOTO
         PDF::Image(asset('/storage/'.$postulante->foto),169,45,35);
 
