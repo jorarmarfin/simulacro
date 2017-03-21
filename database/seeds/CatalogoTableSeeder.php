@@ -21,7 +21,11 @@ class CatalogoTableSeeder extends Seeder
          * sub tablas
          */
         Catalogo::create(['idtable' => 1,'iditem' => 1, 'codigo' => 'root','nombre' => 'root','descripcion'=>'Administrador del sistema','valor'=> null,'activo'=>true]);
-        Catalogo::create(['idtable' => 1,'iditem' => 2, 'codigo' => 'adm','nombre' => 'Administrador','descripcion'=>'Administrador la Institucion educativa ','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 2, 'codigo' => 'alum','nombre' => 'Alumno','descripcion'=>'Alumno','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 3, 'codigo' => 'admin','nombre' => 'Administrador','descripcion'=>'Administrador','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 4, 'codigo' => 'foto','nombre' => 'Editor Foto','descripcion'=>'Editor Foto','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 5, 'codigo' => 'pago','nombre' => 'Carga Pago','descripcion'=>'Carga Pago','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 6, 'codigo' => 'jefe','nombre' => 'Jefatura','descripcion'=>'Jefatura','valor'=> null,'activo'=>true]);
         /**
          * Sexo
          */

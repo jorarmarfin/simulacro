@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.admin')
 
 @section('content')
 {!! Alert::render() !!}
@@ -20,8 +20,7 @@
 					<table class="table table-striped table-hover" data-toggle="table" data-pagination="true" data-search="true">
 						<thead>
 							<tr>
-								<th>Nombre</th>
-								<th>fecha</th>
+								<th>DNI</th>
 								<th>foto</th>
 								<th>Opciones</th>
 							</tr>
@@ -29,9 +28,8 @@
 						<tbody>
 							@foreach($Lista as $item)
 							<tr>
-								<td>{{$item->name}}</td>
-								<td>{{$item->email}}</td>
-								<td><img src="{{asset('/storage/fotos/'.$item->foto)}}" width='25px'></td>
+								<td>{{ $item->dni }}</td>
+								<td><img src="{{asset('/storage/'.$item->foto)}}" width='25px'></td>
 								<td>
 									<a href="{{ route('admin.users.edit',$item->id) }}" title="Editar"class="btn btn-icon-only green-haze" >
 										<i class="fa fa-edit"></i>
@@ -67,7 +65,7 @@
 @stop
 
 @section('user-name')
-{!!Auth::user()->name!!}
+{!!Auth::user()->dni!!}
 @stop
 
 @section('page-title')

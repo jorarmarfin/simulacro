@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Http\ViewComposers\ControlSelectData;
+use App\Http\ViewComposers\RoleSelectData;
+use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -17,6 +18,10 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->make('view')->composer(
             ['datos.index','datos.edit'],
             ControlSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.users.index','admin.users.edit'],
+            RoleSelectData::class
             );
     }
 

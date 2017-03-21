@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
-use Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Catalogo;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Validator;
 
 class RegisterController extends Controller
 {
@@ -61,10 +62,12 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $role = Catalogo::Table('ROLES')->where('codigo','alum')->first();
         return User::create([
             'dni' => $data['dni'],
             'password' => $data['password'],
-            'activo' => true
+            'activo' => true,
+            'idrole'=>$role->id
         ]);
     }
 }
