@@ -52,3 +52,94 @@ if (! function_exists('SiNo')) {
         }
     }
 }
+
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('pad')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function pad($input,$cant,$aguja,$lado = null)
+    {
+        switch ($lado) {
+            case 'L':
+                $pad = str_pad($input, $cant, $aguja,STR_PAD_LEFT);
+                break;
+            case 'B':
+                $pad = str_pad($input, $cant, $aguja,STR_PAD_BOTH);
+                break;
+
+            default:
+                $pad = str_pad($input, $cant, $aguja);
+                break;
+        }
+
+        return $pad;
+    }
+}
+
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('str_clean')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function str_clean($string)
+    {
+         $string = trim($string);
+         $string = str_replace(
+                array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
+                array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'),
+                $string
+            );
+
+            $string = str_replace(
+                array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'),
+                array('e', 'e', 'e', 'e', 'E', 'E', 'E', 'E'),
+                $string
+            );
+
+            $string = str_replace(
+                array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'),
+                array('i', 'i', 'i', 'i', 'I', 'I', 'I', 'I'),
+                $string
+            );
+
+            $string = str_replace(
+                array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
+                array('o', 'o', 'o', 'o', 'O', 'O', 'O', 'O'),
+                $string
+            );
+
+            $string = str_replace(
+                array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'),
+                array('u', 'u', 'u', 'u', 'U', 'U', 'U', 'U'),
+                $string
+            );
+
+            $string = str_replace(
+                array('ñ', 'Ñ', 'ç', 'Ç'),
+                array('n', 'N', 'c', 'C',),
+                $string
+            );
+         //Esta parte se encarga de eliminar cualquier caracter extraño
+            $string = str_replace(
+                array("¨", "º", "-", "~",
+                     '#', "@", "|", "!", '"',
+                     "·", "$", "%", "&", "/",
+                     "(", ")", "?", "'", "¡",
+                     "¿", "[", "^", "<code>", "]",
+                     "+", "}", "{", "¨", "´",
+                     ">", "< ", ";", ",", ":",
+                     "."),
+                '',
+                $string
+            );
+
+    return $string;
+    }
+}

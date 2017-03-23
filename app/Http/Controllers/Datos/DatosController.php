@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Datos;
 use App\Http\Controllers\Controller;
 use App\Models\Postulante;
 use Auth;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Styde\Html\Facades\Alert;
@@ -22,11 +23,14 @@ class DatosController extends Controller
     public function store(Request $request)
     {
     	$data = $request->all();
+        $date = Carbon::now();
         if ($request->hasFile('file')) {
             $data['foto'] = $request->file('file')->store('fotos','public');
+            $data['fecha_foto']=$date;
         }
         $data['idevaluacion'] = IdEvaluacion();
         $data['idusuario'] = Auth::user()->id;
+        $data['fecha_registro'] = $date;
 
         Postulante::create($data);
         Alert::success('se registro sus datos con exito');
@@ -37,11 +41,13 @@ class DatosController extends Controller
     {
     	$data = $request->all();
         $postulante = Postulante::find($id);
-        if ($request->hasFile('file')) {
+        $date = Carbon::now();
+        if ($request->hasFile('file') && !$postulante->foto_ok) {
             if(!str_contains($postulante->foto,'nofoto'))
         	Storage::delete("/public/$postulante->foto");
 
             $data['foto'] = $request->file('file')->store('fotos','public');
+            $data['fecha_foto']=$date;
         }
         $data['idevaluacion'] = IdEvaluacion();
         $data['idusuario'] = Auth::user()->id;

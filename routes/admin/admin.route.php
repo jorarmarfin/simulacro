@@ -14,8 +14,8 @@ Route::group(['namespace'=>'Postulantes'], function() {
  * Pagos
  */
 Route::group(['namespace'=>'Pagos'], function() {
-	//Route::get('pagos','PagosController@index')->name('admin.pagos.index');
 	Route::resource('pagos','PagosController',['names'=>'admin.pagos','only'=>['index','store']]);
+	Route::get('cartera','PagosController@create')->name('admin.cartera.create');
 
 });
 /**

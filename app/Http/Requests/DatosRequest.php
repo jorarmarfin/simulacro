@@ -25,10 +25,9 @@ class DatosRequest extends FormRequest
     {
         return [
             'dni'=>'required',
-            'paterno'=>'required',
-            'materno'=>'required',
-            'nombres'=>'required',
-            'nombres'=>'required',
+            'paterno'=>'required|alpha',
+            'materno'=>'required|alpha',
+            'nombres'=>'required|alpha',
         ];
     }
 }

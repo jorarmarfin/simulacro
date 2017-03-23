@@ -39,7 +39,7 @@
             {!! Form::label('lblDNI', 'Ingrese su numero de DNI', []) !!}
             <div class="input-icon right ">
             <i class="fa fa-envelope"></i>
-            {!!Form::text('dni',old('dni'), ['class'=>'form-control','placeholder'=>'dni'])!!}
+            {!!Form::text('dni',old('dni'), ['class'=>'form-control','placeholder'=>'dni','maxlength'=>'8'])!!}
             </div>
     </div>
     <div class="form-group">

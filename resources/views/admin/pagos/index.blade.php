@@ -1,6 +1,8 @@
 @extends('layouts.admin')
 
 @section('content')
+{!! Alert::render() !!}
+@include('alerts.errors')
 <div class="row">
 	<div class="col-md-12">
 		<!-- BEGIN Portlet PORTLET-->
@@ -45,7 +47,8 @@
             <p></p>
         {!! Form::close() !!}
         <p></p>
-		{!!Form::boton('Sin Foto','#','green-meadow','fa fa-file-image-o')!!}
+        {!!Form::boton('Crear Cartera',route('admin.cartera.create'),'green-meadow','fa fa-file-image-o')!!}
+		{!!Form::boton('Descargar Cartera',asset('/storage/carteras/UNIADMIS.txt'),'green-seagreen','fa fa-cloud-download')!!}
         <p></p>
 			<table class="table table-bordered table-hover Postulantes">
 			    <thead>

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Postulante extends Model
 {
     protected $table = 'postulante';
-    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado'];
+    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_ok','fecha_foto','fecha_registro','mensaje','datos_ok'];
     /**
     * Atributos Grado
     */
@@ -31,7 +31,7 @@ class Postulante extends Model
     */
     public function getNombreCompletoAttribute()
     {
-        $nombre = $this->paterno.' - '.$this->materno.', '.$this->nombres;
+        $nombre = $this->paterno.'-'.$this->materno.','.$this->nombres;
         return $nombre;
     }
     /**
@@ -112,6 +112,15 @@ class Postulante extends Model
     public function scopeActivos($cadenaSQL){
         $evaluacion = Evaluacion::Activo()->first();
         return $cadenaSQL->where('idevaluacion',$evaluacion->id);
+    }
+    /**
+    * Devuelve los postulantes Activos no anulados
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopePagantes($cadenaSQL){
+        $evaluacion = Evaluacion::Activo()->first();
+        return $cadenaSQL->where('idevaluacion',$evaluacion->id)->where('anulado',0)->where('pago',0);
     }
     /**
      * Establecemos el la relacion con catalogo
