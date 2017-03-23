@@ -22,7 +22,9 @@
         <li class="heading">
             <h3 class="uppercase">Modulos</h3>
         </li>
-        {!!Form::menu('Postulantes','#','fa fa-users')!!}
+        {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
+        {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
+        {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->

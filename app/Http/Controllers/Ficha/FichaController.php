@@ -17,7 +17,9 @@ class FichaController extends Controller
     {
     	$evaluacion = Evaluacion::Activo()->first();
     	$postulante = Postulante::Usuario()->first();
-    	PDF::SetTitle('FICHA DE INSCRIPCION');
+        if(isset($postulante)){
+
+        PDF::SetTitle('FICHA DE INSCRIPCION');
         PDF::AddPage('U','A4');
         PDF::SetAutoPageBreak(false);
         PDF::Rect(15,15, 180,170);
@@ -96,6 +98,7 @@ class FichaController extends Controller
         #FOTO
         PDF::Image(asset('/storage/'.$postulante->foto),169,45,35);
 
-    	PDF::Output(public_path('storage/tmp/').'ficha.pdf','FI');
+        PDF::Output(public_path('storage/tmp/').'ficha.pdf','FI');
+        }//fin if
     }
 }

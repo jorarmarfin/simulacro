@@ -41,6 +41,8 @@
             </div>
         </div>
         <div class="form-body ">
+        Tus nombres y apellidos deben coincidir con el de tu DNI
+        <p></p>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">

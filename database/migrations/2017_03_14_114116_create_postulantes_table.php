@@ -23,13 +23,15 @@ class CreatePostulantesTable extends Migration
             $table->string('dni',20)->nullable();
             $table->string('telefono',30)->nullable();
             $table->string('email',100)->nullable();
-            $table->string('foto',100)->default('avatar/nofoto.jpg');
+            $table->string('foto',200)->default('avatar/nofoto.jpg');
             $table->integer('idsexo')->nullable();
             $table->date('fecha_nacimiento')->nullable();
-            $table->boolean('pago')->nullable();
-            $table->boolean('anulado')->nullable();
+            $table->boolean('pago')->default(false);
+            $table->boolean('anulado')->default(false);
             $table->integer('idusuario')->nullable();
             $table->integer('idgrado')->nullable();
+            $table->date('fecha_registro')->nullable();
+            $table->date('fecha_foto')->nullable();
             $table->timestamps();
             $table->foreign('idevaluacion')->references('id')->on('evaluacion');
             $table->foreign('idusuario')->references('id')->on('users');

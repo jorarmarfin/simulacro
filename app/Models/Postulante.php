@@ -11,6 +11,14 @@ class Postulante extends Model
     protected $table = 'postulante';
     protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado'];
     /**
+    * Atributos Grado
+    */
+    public function getGradoAttribute()
+    {
+        $grado = Catalogo::find($this->idgrado);
+        return $grado->nombre;
+    }
+    /**
     * Atributos Sexo
     */
     public function getSexoAttribute()
@@ -33,6 +41,28 @@ class Postulante extends Model
     {
         $edad = Carbon::createFromFormat('Y-m-d',$this->fecha_nacimiento)->age;
         return $edad;
+    }
+    /**
+    * Atributos estado de  Alumno
+    */
+    public function getEstadoPagoAttribute()
+    {
+        if ($this->pago) {
+           return '<span class="label label-sm label-info"> SI </span>';
+        }else{
+           return '<span class="label label-sm label-danger"> NO </span>';
+        }
+    }
+    /**
+    * Atributos estado de  Alumno
+    */
+    public function getEstadoAnuladoAttribute()
+    {
+        if ($this->anulado) {
+           return '<span class="label label-sm label-info"> SI </span>';
+        }else{
+           return '<span class="label label-sm label-danger"> NO </span>';
+        }
     }
     /**
      * Atributos Paterno
@@ -74,6 +104,29 @@ class Postulante extends Model
         $id = Auth::user()->id;
         return $cadenaSQL->where('idusuario',$id);
     }
-
-
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeActivos($cadenaSQL){
+        $evaluacion = Evaluacion::Activo()->first();
+        return $cadenaSQL->where('idevaluacion',$evaluacion->id);
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Sexo()
+    {
+        return $this->hasOne(Catalogo::class,'id','idsexo');
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Grado()
+    {
+        return $this->hasOne(Catalogo::class,'id','idgrado');
+    }
 }

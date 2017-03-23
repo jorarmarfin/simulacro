@@ -15,7 +15,9 @@ class PagoController extends Controller
     public function pdf()
     {
     	$postulante = Postulante::Usuario()->first();
-    	PDF::SetTitle('RECIBO DE PAGO');
+        if(isset($postulante)){
+
+        PDF::SetTitle('RECIBO DE PAGO');
         PDF::AddPage('L','A5');
         #MARCO
         PDF::Rect(15,15, 180,100 );
@@ -75,6 +77,7 @@ class PagoController extends Controller
         PDF::Cell(123,0," RECUERDE QUE ES SÓLO PARA ALUMNOS QUE ESTÁN CURSANDO EL ÚLTIMO AÑO ",0,2,'L');
         PDF::Cell(123,0," DE EDUCACIÓN SECUNDARIA",0,2,'L');*/
 
-    	PDF::Output(public_path('storage/tmp/').'recibo.pdf','FI');
+        PDF::Output(public_path('storage/tmp/').'recibo.pdf','FI');
+        }//fin if
     }
 }
