@@ -35,6 +35,14 @@ class Postulante extends Model
         return $nombre;
     }
     /**
+    * Atributos Nombre Completo
+    */
+    public function getNombreClienteAttribute()
+    {
+        $nombre = $this->paterno.' '.$this->materno.' '.$this->nombres;
+        return $nombre;
+    }
+    /**
     * Atributos Edad del postulante
     */
     public function getEdadAttribute()
@@ -138,4 +146,14 @@ class Postulante extends Model
     {
         return $this->hasOne(Catalogo::class,'id','idgrado');
     }
+
+    public static function AsignarCodigo($data)
+    {
+        foreach ($data as $key => $item) {
+            $codigo = NumeroInscripcion(8,$item['idpostulante']);
+
+            Postulante::where('id',$item['idpostulante'])->update(['codigo'=>$codigo, 'pago'=>true]);
+        }
+    }
+
 }

@@ -55,12 +55,17 @@ return [
         ],
         'carteras' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/carteras'),
+            'root' => storage_path('app/carteras'),
             'visibility' => 'public',
         ],
         'pagos' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/pagos'),
+            'root' => storage_path('app/pagos'),
+            'visibility' => 'public',
+        ],
+        'resumen' => [
+            'driver' => 'local',
+            'root' => storage_path('app/pagos/resumen'),
             'visibility' => 'public',
         ],
         's3' => [

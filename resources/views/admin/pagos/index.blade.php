@@ -18,13 +18,13 @@
             </div>
         </div>
         <div class="portlet-body">
-        {!! Form::open(['route'=>'admin.pagos.store','method'=>'POST']) !!}
+        {!! Form::open(['route'=>'admin.pagos.store','method'=>'POST','files'=>'true']) !!}
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-12">
                         {!! Form::label('lblDatos', 'Datos', ['class'=>'form-group']) !!}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="fileinput fileinput-new" data-provides="fileinput">
                             <div class="input-group input-large">
                                 <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
@@ -32,40 +32,36 @@
                                     <span class="fileinput-filename"> </span>
                                 </div>
                                 <span class="input-group-addon btn default btn-file">
-                                    <span class="fileinput-new"> Select file </span>
-                                    <span class="fileinput-exists"> Change </span>
-                                    {!! Form::file('file', []) !!}
+                                    <span class="fileinput-new"> Seleccionar </span>
+                                    <span class="fileinput-exists"> Cambiar </span>
+                                    {{ Form::file('file', []) }}
+                                </span>
                                 <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Remove </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 text-left">
                         {!!Form::enviar('Cargar')!!}
                     </div>
                 </div>{{-- row --}}
             </div>
             <p></p>
         {!! Form::close() !!}
-        <p></p>
+        <p></p>{{-- asset('/storage/carteras/UNIADMIS.txt') --}}
         {!!Form::boton('Crear Cartera',route('admin.cartera.create'),'green-meadow','fa fa-file-image-o')!!}
-		{!!Form::boton('Descargar Cartera',asset('/storage/carteras/UNIADMIS.txt'),'green-seagreen','fa fa-cloud-download')!!}
+		{!!Form::boton('Descargar Cartera',route('admin.cartera.download'),'green-seagreen','fa fa-cloud-download')!!}
         <p></p>
-			<table class="table table-bordered table-hover Postulantes">
+			<table class="table table-bordered table-hover Recaudacion">
 			    <thead>
 			        <tr>
+			            <th> Recibo </th>
+			            <th> Servicio </th>
+			            <th> Descripcion </th>
+			            <th> Monto </th>
+			            <th> Fecha </th>
 			            <th> Codigo </th>
-			            <th> Paterno </th>
-			            <th> Materno </th>
-			            <th> Nombres </th>
-			            <th> DNI </th>
-			            <th> Telefono </th>
-			            <th> Email </th>
-			            <th> Foto </th>
-			            <th> Sexo </th>
-			            <th> Fecha Nacimiento </th>
-			            <th> Grado </th>
-			            <th> Pago </th>
-			            <th> Anulado </th>
+			            <th> Cliente </th>
+			            <th> postulante </th>
 			            <th> Opciones </th>
 			        </tr>
 			    </thead>
@@ -83,8 +79,47 @@
 
 @section('js-scripts')
 <script>
-
-
+$('.Recaudacion').dataTable({
+    "language": {
+        "emptyTable": "No hay datos disponibles",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
+        "search": "Buscar Postulante :",
+        "lengthMenu": "_MENU_ registros"
+    },
+    "bProcessing": true,
+    "sAjaxSource": '{{ url('admin/pagos-lista') }}',
+    "pagingType": "bootstrap_full_number",
+    "columnDefs": [
+                {  // set default column settings
+                    'orderable': false,
+                    'targets': '_all'
+                },
+                {
+                    'targets':7,
+                    'render': function ( data, type, full, meta ) {
+                      return data.paterno+'-'+data.materno+', '+data.nombres;
+                    }
+                },
+                {
+                    'targets':8,
+                    'render': function ( data, type, full, meta ) {
+                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
+                    }
+                }
+            ],
+    "columns": [
+            { "data": "recibo","defaultContent": "" },
+            { "data": "servicio","defaultContent": "" },
+            { "data": "descripcion","defaultContent": "" },
+            { "data": "monto","defaultContent": "" },
+            { "data": "fecha","defaultContent": "" },
+            { "data": "codigo","defaultContent": "" },
+            { "data": "nombrecliente","defaultContent": "" },
+            { "data": "postulantes","defaultContent": "" },
+            { "data": "id","defaultContent": "" },
+        ],
+    "order": [1,"asc"]
+});
 </script>
 @stop
 

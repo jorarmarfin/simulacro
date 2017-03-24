@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin\Pagos;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PagosRequest;
 use App\Models\Catalogo;
 use App\Models\Evaluacion;
 use App\Models\Postulante;
+use App\Models\Recaudacion;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Storage;
@@ -24,9 +26,69 @@ class PagosController extends Controller
     {
     	return view('admin.pagos.index');
     }
-    public function store(Request $request)
+    public function lista()
     {
+	    $Lista = Recaudacion::with('Postulantes')->get();
+	    $res['data'] = $Lista;
+	    return $res;
+    }
+    public function store(PagosRequest $request)
+    {
+    	$file = $request->file('file');
+    	$nombre = $file->getClientOriginalName();
+    	$archivo = '';
+    	if (str_contains($nombre,'bws')) {
+    		$request->file('file')->storeAs('resumen',$nombre);
+    		$archivo = storage_path('app/resumen/').$nombre;
+            $archivo = file($archivo);
+    	}else{
+    		$request->file('file')->storeAs('pagos',$nombre);
+    		$archivo = storage_path('app/pagos/').$nombre;
+            $archivo = file($archivo);
+    	}
+    	$i = 0;
+    	$pagos = Recaudacion::select('recibo')->get();
+    	$date = Carbon::now();
+    	$data = [];
+    	foreach ($archivo as $key => $value) {
+    		if (substr($value, 0 ,1) == 'D' && substr($value, 33 ,3)=='SIM') {
+    			$data[$i]['recibo'] = substr($value, 15 ,11);
+    			$data[$i]['servicio'] = substr($value, 15 ,3);
+    			$data[$i]['descripcion'] = substr($value, 157 ,22);
+    			$data[$i]['monto'] = (float)substr($value, 77 ,2);
+    			$data[$i]['fecha'] = substr($value, 134 ,4).'-'.substr($value, 138 ,2).'-'.substr($value, 140 ,2);
+    			$data[$i]['codigo'] = substr($value, 40 ,8);
+    			$data[$i]['nombrecliente'] = substr($value, 48 ,20);
+    			$data[$i]['created_at'] = $date;
+    			$data[$i]['updated_at'] = $date;
+    			$i++;
+    		}
+    	}
 
+		$recibos = $pagos->implode('recibo',',');
+		$data = array_where($data, function ($value, $key) use($recibos) {
+			if (!str_contains($recibos,$value['recibo']))
+		    return $value;
+		});
+
+		$postulantes = Postulante::Pagantes()->get()->toArray();
+
+
+    	if (count($data)==0) {
+    		Alert::success('No hay Pagos Nuevos');
+    	}else{
+
+    		foreach ($data as $key => $value) {
+    				$id = search_in_array($postulantes,'dni',$value['codigo'],'id');
+    			$data[$key]['idpostulante'] = $id;
+    		}
+    		Alert::success(count($data).' Pagos Nuevos se han registrado');
+
+    		if (Recaudacion::insert($data)) {
+    			Postulante::AsignarCodigo($data);
+    		}
+    	}
+    	return back();
     }
     /**
      * Crea el archivo que se envia al banco
@@ -105,7 +167,7 @@ class PagosController extends Controller
 			$CodigoAgrupacion = pad('',11,' '),
 			$Situacion = '0',
 			$MonedaCobro = '0000',
-			$Cliente = pad(str_clean(substr($postulante->nombre_completo,1,20)),20,' '),
+			$Cliente = pad(str_clean(substr($postulante->nombre_cliente,0,20)),20,' '),
 			$DescripcionConcepto = pad($evaluacion->nombre,30,' '),
 			$CodigoConcepto = '01',
 			$ImporteConcepto = pad(pad($servicio->valor,4,'0'),9,'0','L'),
@@ -131,5 +193,13 @@ class PagosController extends Controller
 		]);
 		return $detalle->implode('');
     }
+    public function descarga()
+    {
+    	$headers = [];
+    	return response()->download(
+    			storage_path('app/carteras/UNIADMIS.txt'),
+    			null,
+    			$headers
+    		);
+    }
 }
-

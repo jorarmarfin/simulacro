@@ -15,18 +15,17 @@ class CreateRecaudacionsTable extends Migration
     {
         Schema::create('recaudacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('recibo',9)->unique();
+            $table->string('recibo',11)->unique();
             $table->string('servicio',3)->nullable();
             $table->mediumtext('descripcion')->nullable();
             $table->decimal('monto','9','3')->nullable();
             $table->date('fecha')->nullable();
-            $table->string('codigo',6)->nullable();
+            $table->string('codigo',11)->nullable();
             $table->string('nombrecliente',100)->nullable();
-            $table->integer('idevaluacion')->nullable();
+            $table->integer('idpostulante')->nullable();
 
             $table->timestamps();
-            $table->foreign('idevaluacion')->references('id')->on('evaluacion');
-            $table->unique(['codigo','idevaluacion']);
+            $table->foreign('idpostulante')->references('id')->on('postulante');
         });
     }
 

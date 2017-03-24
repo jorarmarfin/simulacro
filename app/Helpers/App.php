@@ -143,3 +143,46 @@ if (! function_exists('str_clean')) {
     return $string;
     }
 }
+
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('search_in_array')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function search_in_array($array,$field,$search,$retval)
+    {
+        $cnt = count($array);
+        for ($i=0; $i < $cnt; $i++) {
+            if ($array[$i][$field]==$search) {
+                $value = $array[$i][$retval];
+            }
+        }
+
+        return $value;
+    }
+}
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('NumeroInscripcion')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function NumeroInscripcion($primerdigito,$id)
+    {
+        $numero = $primerdigito.str_pad($id, 4, '0', STR_PAD_LEFT);
+        $letra = '';
+        $suma = 0;
+        for ($i = 0; $i < 5; $i++) {
+            $suma += substr($numero, $i, 1) * ($i + 1);
+        }
+        $letra = chr($suma % 11 + 65);
+        $codigo = $numero.$letra;
+
+        return $codigo;
+    }
+}

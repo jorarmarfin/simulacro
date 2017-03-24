@@ -16,6 +16,8 @@ Route::group(['namespace'=>'Postulantes'], function() {
 Route::group(['namespace'=>'Pagos'], function() {
 	Route::resource('pagos','PagosController',['names'=>'admin.pagos','only'=>['index','store']]);
 	Route::get('cartera','PagosController@create')->name('admin.cartera.create');
+	Route::get('download','PagosController@descarga')->name('admin.cartera.download');
+	Route::get('pagos-lista','PagosController@lista')->name('admin.pagos.list');
 
 });
 /**
@@ -25,3 +27,4 @@ Route::group(['namespace'=>'Fotos'], function() {
 	Route::get('fotos','FotosController@index')->name('admin.fotos.index');
 
 });
+
