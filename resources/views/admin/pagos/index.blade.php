@@ -50,6 +50,7 @@
         <p></p>{{-- asset('/storage/carteras/UNIADMIS.txt') --}}
         {!!Form::boton('Crear Cartera',route('admin.cartera.create'),'green-meadow','fa fa-file-image-o')!!}
 		{!!Form::boton('Descargar Cartera',route('admin.cartera.download'),'green-seagreen','fa fa-cloud-download')!!}
+        {!!Form::botonmodal('Crear Pago','#PagoCreate','blue','fa fa-plus')!!}
         <p></p>
 			<table class="table table-bordered table-hover Recaudacion">
 			    <thead>
@@ -74,6 +75,30 @@
     <!-- END Portlet PORTLET-->
 	</div><!--span-->
 </div><!--row-->
+
+<div class="modal fade" id="PagoCreate" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Crea Pago</h4>
+            </div>
+            {!! Form::open(['route'=>'admin.pagos.create','method'=>'POST']) !!}
+            <div class="modal-body">
+                <div class="form-group">
+                    {!!Form::label('lblDNI', 'Numero de DNI');!!}
+                    {!!Form::text('codigo', null , ['class'=>'form-control','placeholder'=>'Numero de DNI','maxlength'=>'8']);!!}
+                </div>
+            </div>
+            <div class="modal-footer">
+                {!!Form::enviar('Guardar')!!}
+            </div>
+            {!! Form::close() !!}
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 
 @stop
 

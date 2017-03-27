@@ -17,6 +17,7 @@
             {!!Form::menulink('Configuracion','#','fa fa-cogs')!!}
             <ul class="sub-menu">
                 {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
+                {!!Form::menu('Secuencia',route('admin.secuencia.index'))!!}
             </ul>
         </li>
         <li class="heading">
@@ -25,6 +26,7 @@
         {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
         {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
         {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
+        {!!Form::menu('Aulas',route('admin.aulas.index'),'fa fa-cubes')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->

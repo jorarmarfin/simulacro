@@ -4,12 +4,23 @@ namespace App\Models;
 
 use App\User;
 use Auth;
+use DB;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 class Postulante extends Model
 {
     protected $table = 'postulante';
-    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_ok','fecha_foto','fecha_registro','mensaje','datos_ok'];
+    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_ok','fecha_foto','fecha_registro','mensaje','datos_ok','idaula'];
+    /**
+    * Atributos Aula
+    */
+    public function getAulaAttribute()
+    {
+        if (isset($this->idaula)) {
+            $aula = Aula::find($this->idaula);
+            return $aula->codigo;
+        }else return ' ';
+    }
     /**
     * Atributos Grado
     */
@@ -146,13 +157,60 @@ class Postulante extends Model
     {
         return $this->hasOne(Catalogo::class,'id','idgrado');
     }
+    /**
+     * Establecemos el la relacion con aula
+     * @return [type] [description]
+     */
+    public function Aulas()
+    {
+        return $this->hasOne(Aula::class,'id','idaula');
+    }
+
 
     public static function AsignarCodigo($data)
     {
+        $secuencia = Secuencia::all()->first();
+        $numero = DB::select("SELECT nextval('$secuencia->nombre')");
+        $numero = $numero[0]->nextval;
         foreach ($data as $key => $item) {
-            $codigo = NumeroInscripcion(8,$item['idpostulante']);
-
+            $codigo = NumeroInscripcion(8,$numero);
             Postulante::where('id',$item['idpostulante'])->update(['codigo'=>$codigo, 'pago'=>true]);
+        }
+    }
+    public static function AsignarAula($data)
+    {
+        foreach ($data as $key => $item) {
+            $aula = Aula::select('id')
+                            ->where('activo',true)
+                            ->where('habilitado',true)
+                            ->where('disponible','>',0)
+                            ->inRandomOrder()
+                            ->first();
+
+            if (isset($aula)) {
+                Aula::where('id',$aula->id)->increment('asignado');
+                Aula::where('id',$aula->id)->decrement('disponible');
+                Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id]);
+            }else{
+                $aula = Aula::select('id')
+                            ->where('activo',true)
+                            ->where('disponible','>',0)
+                            ->orderBy('orden')
+                            ->take(3)
+                            ->get();
+                Aula::whereIn('id',$aula->toArray())->update(['habilitado'=>true]);
+
+                $aula = Aula::select('id')
+                            ->where('activo',true)
+                            ->where('habilitado',true)
+                            ->where('disponible','>',0)
+                            ->inRandomOrder()
+                            ->first();
+                Aula::where('id',$aula->id)->increment('asignado');
+                Aula::where('id',$aula->id)->decrement('disponible');
+                Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id]);
+
+            }
         }
     }
 

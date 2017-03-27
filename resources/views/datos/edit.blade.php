@@ -114,6 +114,37 @@
     </div>
     <!-- END PORTLET-->
 </div>
+<div class="col-md-12">
+    <!-- BEGIN PORTLET-->
+    <div class="portlet light tasks-widget widget-comments">
+        <div class="portlet-title margin-bottom-20">
+            <div class="caption caption-md font-red-sunglo">
+                <span class="caption-subject theme-font bold uppercase">Observacion</span>
+            </div>
+            <div class="actions">
+                {!!Form::back(route('home.index'))!!}
+            </div>
+        </div>
+        <div class="form-body ">
+        <div class="note note-info">
+            <h4 class="block">Informacion importante!</h4>
+            <p> Tu fotografia tiene que ser nitida como la que te mostramos aquí, en fondo blanco y sin lentes, de lo contrario tendras problemas para finalizar tu inscripción </p>
+        </div>
+
+        <p></p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <div class="fileinput-new thumbnail" style="width: 300px; height: 400px;">
+                            <img src="{{ asset('/assets/pages/img/unnamed.jpg') }}" width="300px" height="400px" />
+                        </div>
+                    </div>
+                </div><!--span-->
+            </div><!--row-->
+        </div>
+    </div>
+    <!-- END PORTLET-->
+</div>
 {!! Form::close() !!}
 @stop
 @section('js-scripts')

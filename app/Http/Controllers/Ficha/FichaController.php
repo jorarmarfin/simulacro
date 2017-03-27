@@ -73,10 +73,17 @@ class FichaController extends Controller
         #GENERO
         PDF::SetXY(18,140);
         PDF::SetFont('helvetica','',11);
-        PDF::Cell(60,5,'Genero :',0,0,'R');
+        PDF::Cell(60,5,'Sexo :',0,0,'R');
         PDF::SetXY(78,140);
         PDF::SetFont('helvetica','B',10);
         PDF::Cell(110,5,$postulante->sexo,0,0,'L');
+        #GENERO
+        PDF::SetXY(18,145);
+        PDF::SetFont('helvetica','',11);
+        PDF::Cell(60,5,'Aula :',0,0,'R');
+        PDF::SetXY(78,145);
+        PDF::SetFont('helvetica','B',10);
+        PDF::Cell(110,5,$postulante->aula,0,0,'L');
 
         #DECLARACION JURADA
         PDF::SetXY(18,165);

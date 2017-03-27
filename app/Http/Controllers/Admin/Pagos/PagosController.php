@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Pagos;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PagoUnitarioRequest;
 use App\Http\Requests\PagosRequest;
 use App\Models\Catalogo;
 use App\Models\Evaluacion;
@@ -31,6 +32,36 @@ class PagosController extends Controller
 	    $Lista = Recaudacion::with('Postulantes')->get();
 	    $res['data'] = $Lista;
 	    return $res;
+    }
+    public function pagocreate(PagoUnitarioRequest $request)
+    {
+        $servicio = Catalogo::table('SERVICIO')->first();
+        $pago = Recaudacion::where('codigo',$request->input('codigo'))->where('servicio',$servicio->nombre)->first();
+        $pos = Postulante::Activos()->where('dni',$request->input('codigo'))->first();
+        $ser = $servicio->nombre;
+        $cod = $request->input('codigo');
+        $des = $servicio->descripcion;
+        $mon = $servicio->valor;
+        $date = Carbon::now();
+
+        $pago = Recaudacion::create([
+                            'servicio'=>$ser,
+                            'recibo'=>$ser.$cod,
+                            'descripcion'=>$des,
+                            'monto'=>$mon,
+                            'fecha'=>$date,
+                            'codigo'=>$cod,
+                            'nombrecliente'=>$pos->nombre_cliente,
+                            'idpostulante'=>$pos->id
+                            ]);
+        if($pago){
+            $data[0]['idpostulante']=$pos->id;
+            Postulante::AsignarCodigo($data);
+            Postulante::AsignarAula($data);
+            return back();
+        }
+
+
     }
     public function store(PagosRequest $request)
     {
@@ -80,12 +111,19 @@ class PagosController extends Controller
 
     		foreach ($data as $key => $value) {
     				$id = search_in_array($postulantes,'dni',$value['codigo'],'id');
-    			$data[$key]['idpostulante'] = $id;
-    		}
-    		Alert::success(count($data).' Pagos Nuevos se han registrado');
+                if ($id != 0) {
+   			      $data[$key]['idpostulante'] = $id;
+                }else{
+                    Alert::warning('Este codigo no existe '.$value['codigo']. ' posiscion :'.($key+1));
+                    return back();
+                }
+            }
 
-    		if (Recaudacion::insert($data)) {
-    			Postulante::AsignarCodigo($data);
+            Alert::success(count($data).' Pagos Nuevos se han registrado');
+
+            if (Recaudacion::insert($data)) {
+                Postulante::AsignarCodigo($data);
+    			Postulante::AsignarAula($data);
     		}
     	}
     	return back();

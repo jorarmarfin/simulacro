@@ -155,6 +155,7 @@ if (! function_exists('search_in_array')) {
     function search_in_array($array,$field,$search,$retval)
     {
         $cnt = count($array);
+        $value = 0;
         for ($i=0; $i < $cnt; $i++) {
             if ($array[$i][$field]==$search) {
                 $value = $array[$i][$retval];

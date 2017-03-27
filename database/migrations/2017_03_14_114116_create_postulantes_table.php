@@ -31,6 +31,7 @@ class CreatePostulantesTable extends Migration
             $table->date('fecha_nacimiento')->nullable();
             $table->integer('idusuario')->nullable();
             $table->integer('idgrado')->nullable();
+            $table->integer('idaula')->nullable();
             $table->datetime('fecha_registro')->nullable();
             $table->string('mensaje',50)->nullable();
             $table->boolean('pago')->default(false);
@@ -41,6 +42,7 @@ class CreatePostulantesTable extends Migration
             $table->foreign('idusuario')->references('id')->on('users');
             $table->foreign('idsexo')->references('id')->on('catalogo');
             $table->foreign('idgrado')->references('id')->on('catalogo');
+            $table->foreign('idaula')->references('id')->on('aula');
             $table->unique(['idevaluacion','codigo']);
         });
     }

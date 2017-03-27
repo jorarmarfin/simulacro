@@ -32,7 +32,8 @@
                         <th> Foto Rechazado </th>
 			            <th> Fecha Foto </th>
 			            <th> Fecha Registro </th>
-			            <th> Grado </th>
+                        <th> Grado </th>
+			            <th> Aula </th>
 			            <th> Pago </th>
 			            <th> Anulado </th>
 			            <th> Opciones </th>
@@ -83,7 +84,7 @@ $('.Postulantes').DataTable({
                     }
                 },
                 {
-                    'targets':12,
+                    'targets':13,
                     'render': function ( data ) {
                     	if (data) {
                     		return '<span class="label label-sm label-info"> SI </span>';
@@ -93,7 +94,7 @@ $('.Postulantes').DataTable({
                       return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
                 },{
-                    'targets':13,
+                    'targets':14,
                     'render': function ( data ) {
                     	if (data) {
                     		return '<span class="label label-sm label-info"> SI </span>';
@@ -104,7 +105,7 @@ $('.Postulantes').DataTable({
                     }
                 },
                 {
-                    'targets':14,
+                    'targets':15,
                     'render': function ( data ) {
                       return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
@@ -123,6 +124,7 @@ $('.Postulantes').DataTable({
             { "data": "fecha_foto","defaultContent": "" },
             { "data": "fecha_registro","defaultContent": "" },
             { "data": "grado.nombre","defaultContent": "" },
+            { "data": "aulas.codigo","defaultContent": "" },
             { "data": "pago","defaultContent": "" },
             { "data": "anulado","defaultContent": "" },
             { "data": "id","defaultContent": "" },

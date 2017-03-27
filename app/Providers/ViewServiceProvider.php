@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\ViewComposers\AulasActivasSelectData;
 use App\Http\ViewComposers\ControlSelectData;
 use App\Http\ViewComposers\RoleSelectData;
 use Illuminate\Support\ServiceProvider;
@@ -22,6 +23,10 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->make('view')->composer(
             ['admin.users.index','admin.users.edit'],
             RoleSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.aulas.activas'],
+            AulasActivasSelectData::class
             );
     }
 
