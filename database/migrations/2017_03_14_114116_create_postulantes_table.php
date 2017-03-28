@@ -25,7 +25,7 @@ class CreatePostulantesTable extends Migration
             $table->string('email',100)->nullable();
             $table->string('foto',200)->default('avatar/nofoto.jpg');
             $table->string('foto_rechazo',200)->nullable();
-            $table->boolean('foto_ok')->default(false);
+            $table->string('foto_estado',200)->nullable();
             $table->date('fecha_foto')->nullable();
             $table->integer('idsexo')->nullable();
             $table->date('fecha_nacimiento')->nullable();

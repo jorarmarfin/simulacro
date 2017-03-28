@@ -27,6 +27,7 @@ class DatosController extends Controller
         if ($request->hasFile('file')) {
             $data['foto'] = $request->file('file')->store('fotos','public');
             $data['fecha_foto']=$date;
+            $data['foto_estado']='CARGADO';
         }
         $data['idevaluacion'] = IdEvaluacion();
         $data['idusuario'] = Auth::user()->id;
@@ -42,12 +43,13 @@ class DatosController extends Controller
     	$data = $request->all();
         $postulante = Postulante::find($id);
         $date = Carbon::now();
-        if ($request->hasFile('file') && !$postulante->foto_ok) {
+        if ($request->hasFile('file') && $postulante->foto_estado!='ACEPTADO') {
             if(!str_contains($postulante->foto,'nofoto'))
         	Storage::delete("/public/$postulante->foto");
 
             $data['foto'] = $request->file('file')->store('fotos','public');
             $data['fecha_foto']=$date;
+            $data['foto_estado']='CARGADO';
         }
         $data['idevaluacion'] = IdEvaluacion();
         $data['idusuario'] = Auth::user()->id;

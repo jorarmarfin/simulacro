@@ -187,3 +187,19 @@ if (! function_exists('NumeroInscripcion')) {
         return $codigo;
     }
 }
+
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('extension')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function extension($str)
+    {
+        $ext = explode(".", $str);
+        $ext = '.'.end($ext);
+        return $ext;
+    }
+}

@@ -25,7 +25,8 @@ Route::group(['namespace'=>'Pagos'], function() {
  * Fotos
  */
 Route::group(['namespace'=>'Fotos'], function() {
-	Route::get('fotos','FotosController@index')->name('admin.fotos.index');
+	Route::resource('fotos','FotosController',['names'=>'admin.fotos','only'=>['index','store','update']]);
+	Route::get('update/{postulante}/{estado}','FotosController@update')->name('admin.fotos.update');
 
 });
 

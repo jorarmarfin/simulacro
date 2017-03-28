@@ -18,7 +18,7 @@
         <div class="portlet-body">
 		{!!Form::boton('Sin Foto','#','green-meadow','fa fa-file-image-o')!!}
         <p></p>
-			<table class="table table-bordered table-hover Postulantes">
+			<table class="table table-bordered Postulantes">
 			    <thead>
 			        <tr>
 			            <th> Codigo </th>
@@ -36,7 +36,7 @@
 			            <th> Aula </th>
 			            <th> Pago </th>
 			            <th> Anulado </th>
-			            <th> Opciones </th>
+			            <th width="200px"> Opciones </th>
 			        </tr>
 			    </thead>
 			    <tbody>
@@ -66,7 +66,7 @@ $('.Postulantes').DataTable({
     "pagingType": "bootstrap_full_number",
     "columnDefs": [
                 {  // set default column settings
-                    'orderable': false,
+                    'orderable': true,
                     'targets': '_all'
                 },
                 {
@@ -101,13 +101,15 @@ $('.Postulantes').DataTable({
                     	}else{
                     		return '<span class="label label-sm label-danger"> NO </span>';
                     	}
-                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
                 },
                 {
+                    "width": "400px",
                     'targets':15,
                     'render': function ( data ) {
-                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
+                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>'+
+                      '<a href="postulante/'+data+'/edit" title="Ficha"class="btn btn-icon-only blue" ><i class="fa fa-file-image-o"></i></a>'+
+                      '<a href="postulante/'+data+'/edit" title="Formato Pago"class="btn btn-icon-only grey-gallery" ><i class="fa fa-money"></i></a>';
                     }
                 }
             ],
@@ -127,7 +129,7 @@ $('.Postulantes').DataTable({
             { "data": "aulas.codigo","defaultContent": "" },
             { "data": "pago","defaultContent": "" },
             { "data": "anulado","defaultContent": "" },
-            { "data": "id","defaultContent": "" },
+            { "data": "id","defaultContent": "","width":"200px" },
         ],
 });
 
