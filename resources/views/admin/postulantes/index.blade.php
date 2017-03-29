@@ -17,6 +17,7 @@
         </div>
         <div class="portlet-body">
 		{!!Form::boton('Sin Foto','#','green-meadow','fa fa-file-image-o')!!}
+        {!!Form::botonmodal('ver','#verfoto','red','fa fa-file-image-o')!!}
         <p></p>
 			<table class="table table-bordered Postulantes">
 			    <thead>
@@ -48,8 +49,29 @@
     <!-- END Portlet PORTLET-->
 	</div><!--span-->
 </div><!--row-->
-
+<div class="modal fade" id="verfoto" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Foto</h4>
+            </div>
+            <div class="modal-body">
+                <img id="fotito" style="height: 400px" alt="" >
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
 @stop
+
+<a href="#name" data-toggle="modal" class="btn blue">
+    <i class="fa fa-plus"></i>
+    <i class="fa fa-user"></i>
+</a>
 
 @section('js-scripts')
 <script>
@@ -72,7 +94,7 @@ $('.Postulantes').DataTable({
                 {
                     'targets':7,
                     'render': function ( data ) {
-                      return '<img src="{{ asset('/storage/') }}/'+data+'"  width="25px" >';
+                      return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
                     }
                 },
                 {
@@ -138,7 +160,10 @@ $(".actualizar").click(function(){
 });
 });
 
-
+$('#verfoto').on('show.bs.modal', function (e) {
+        var foto = $(e.relatedTarget).data('foto');
+        $(e.currentTarget).find('#fotito').attr("src",foto);
+    });
 
 </script>
 @stop

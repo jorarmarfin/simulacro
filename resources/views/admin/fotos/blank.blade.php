@@ -3,9 +3,6 @@
 @section('content')
 {!! Alert::render() !!}
 @include('alerts.errors')
-@if (isset($postulante))
-    {{-- expr --}}
-
 <div class="row">
 	<div class="col-md-12">
 		<!-- BEGIN Portlet PORTLET-->
@@ -54,7 +51,7 @@
     <!-- END Portlet PORTLET-->
 	</div><!--span-->
 </div><!--row-->
-@endif
+
 @stop
 
 

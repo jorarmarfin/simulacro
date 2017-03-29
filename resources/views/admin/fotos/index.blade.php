@@ -41,8 +41,8 @@
             @if (isset($postulante))
                 {!!Form::boton('Aceptar',route('admin.fotos.update',[$postulante->id,1]),'blue','fa fa-check')!!}
                 {!!Form::boton('Rechazar',route('admin.fotos.update',[$postulante->id,0]),'red','fa fa-times')!!}
+                {!!Form::boton('Editar','#','dark','fa fa-edit','',['onclick'=>"return launchEditor('editableimage1','$postulante->mostrar_foto')"])!!}
             @endif
-                {!!Form::boton('Editar','#','dark','fa fa-edit','',['onclick'=>"return launchEditor('editableimage1','http://simulacro.dev/storage/fotos/781bc6e197ec4a478b36e1a7c94f91e4.jpeg')"])!!}
                 </div>
             </div><!--row-->
             <p></p>
@@ -50,7 +50,11 @@
             <div class="row">
                 <div class="col-sm-6 col-md-3">
                     <a href="javascript:;" class="thumbnail">
-                        <img id="editableimage1" src="{{ asset('/storage/'.$postulante['foto']) }}" style="height: 500px; width: 400px; display: block;"> </a>
+                        <img id="editableimage1" src="{{ $postulante->mostrar_foto }}" style="height: 500px; width: 400px; display: block;">
+                    </a>
+                {!! Form::open(['id'=>'FrmCarga','method'=>'POST','files'=>true]) !!}
+                    {!! Form::file('file', []) !!}
+                {!! Form::close() !!}
                 </div><!--span-->
             </div><!--row-->
             @endif
@@ -74,9 +78,12 @@ var featherEditor = new Aviary.Feather({
             img.src = newURL;
             var nueva_imagen = newURL;
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $("input[name='_token']").val()
+                },
                 type : "POST",
                 url : "cargar-editado",
-                data : { nueva_imagen : nueva_imagen },
+                data : { nueva_imagen : nueva_imagen,idpostulante: {{ $postulante->id }} },
                 cache : false,
                 success : function()
                 {
@@ -93,13 +100,14 @@ var featherEditor = new Aviary.Feather({
         });
         return false;
     }
+
 </script>
 @stop
 
-
 @section('plugins-js')
-<script src="http://feather.aviary.com/imaging/v3/editor.js"></script>
+{!! Html::script('http://feather.aviary.com/imaging/v3/editor.js') !!}
 @stop
+
 
 @section('menu-user')
 @include('menu.profile-admin')

@@ -11,6 +11,15 @@ class Postulante extends Model
 {
     protected $table = 'postulante';
     protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_estado','fecha_foto','fecha_registro','mensaje','datos_ok','idaula'];
+
+    /**
+    * Atributos Foto
+    */
+    public function getMostrarFotoAttribute()
+    {
+        $foto = asset('/storage/'.$this->foto);
+        return $foto;
+    }
     /**
     * Atributos Aula
     */
@@ -111,7 +120,9 @@ class Postulante extends Model
     public function setFotoAttribute($value)
     {
         $this->attributes['foto'] = $value;
-        User::where('id',Auth::user()->id)->update(['foto'=>$value]);
+        if (Auth::user()->id == IdRole('alum')) {
+            User::where('id',Auth::user()->id)->update(['foto'=>$value]);
+        }
     }
 
     /**
