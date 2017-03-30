@@ -17,7 +17,6 @@
         </div>
         <div class="portlet-body">
 		{!!Form::boton('Sin Foto','#','green-meadow','fa fa-file-image-o')!!}
-        {!!Form::botonmodal('ver','#verfoto','red','fa fa-file-image-o')!!}
         <p></p>
 			<table class="table table-bordered Postulantes">
 			    <thead>
@@ -67,11 +66,6 @@
     <!-- /.modal-dialog -->
 </div>
 @stop
-
-<a href="#name" data-toggle="modal" class="btn blue">
-    <i class="fa fa-plus"></i>
-    <i class="fa fa-user"></i>
-</a>
 
 @section('js-scripts')
 <script>

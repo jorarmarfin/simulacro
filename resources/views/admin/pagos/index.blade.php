@@ -111,6 +111,11 @@ $('.Recaudacion').dataTable({
         "search": "Buscar Postulante :",
         "lengthMenu": "_MENU_ registros"
     },
+    dom: 'Bfrtip',
+    buttons: [
+                { extend: 'excel', className: 'btn yellow btn-outline ' },
+                { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}
+            ],
     "bProcessing": true,
     "sAjaxSource": '{{ url('admin/pagos-lista') }}',
     "pagingType": "bootstrap_full_number",
@@ -128,7 +133,7 @@ $('.Recaudacion').dataTable({
                 {
                     'targets':8,
                     'render': function ( data, type, full, meta ) {
-                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
+                      return '<a href="#" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
                 }
             ],
@@ -143,7 +148,8 @@ $('.Recaudacion').dataTable({
             { "data": "postulantes","defaultContent": "" },
             { "data": "id","defaultContent": "" },
         ],
-    "order": [1,"asc"]
+    "order": [1,"asc"],
+
 });
 </script>
 @stop
