@@ -41,9 +41,27 @@
             </div><!--row-->
             <p></p>
             <div class="row">
-                <div class="col-sm-6 col-md-3">
+                <div class="col-md-3">
                     <a href="javascript:;" class="thumbnail">
-                        <img src="{{ asset('/storage/avatar/nofoto.jpg') }}" style="height: 500px; width: 400px; display: block;"> </a>
+                        <img src="{{ asset('/storage/avatar/nofoto.jpg') }}" style="height: 400px; width: 300px; display: block;"> </a>
+                </div><!--span-->
+                <div class="col-md-9">
+                    <table class="table table-bordered table-hover" data-toggle="table" data-pagination="true">
+                        <thead>
+                            <tr>
+                                <th> Estado </th>
+                                <th> Cantidad </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($resumen as $item)
+                            <tr >
+                                <td> {{ $item->foto_estado }} </td>
+                                <td> {{ $item->cantidad }} </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div><!--span-->
             </div><!--row-->
         </div>

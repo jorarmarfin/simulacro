@@ -9,6 +9,12 @@ class AdminAccessPolicy
 {
     use HandlesAuthorization;
 
+    public function root(User $user)
+    {
+        if ($user->idrole == IdRole('root')) {
+            return true;
+        }
+    }
     public function admin(User $user)
     {
 

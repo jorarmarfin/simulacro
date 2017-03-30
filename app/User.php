@@ -2,8 +2,9 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
+use App\Models\Catalogo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -22,7 +23,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+         'remember_token',
     ];
     /**
      * Atributos de la clase Users
@@ -30,6 +31,39 @@ class User extends Authenticatable
     public function setPasswordAttribute($value)
     {
         $this->attributes['password'] = bcrypt($value);
+    }
+    /**
+    * Atributos Foto
+    */
+    public function getMostrarFotoAttribute()
+    {
+        $foto = asset('/storage/'.$this->foto);
+        return $foto;
+    }
+    /**
+     * Atributos Idrole
+     */
+    public function setIdroleAttribute($value)
+    {
+        $rol = Catalogo::where('id',$value)->first();
+        switch ($rol->nombre) {
+            case 'root':
+                $this->attributes['menu'] = 'menu.sider-root';
+                break;
+            case 'Administrador':
+                $this->attributes['menu'] = 'menu.sider-admin';
+                break;
+            case 'Editor Foto':
+                $this->attributes['menu'] = 'menu.sider-admin';
+                break;
+            case 'Carga Pago':
+                $this->attributes['menu'] = 'menu.sider-admin';
+                break;
+            case 'Jefatura':
+                $this->attributes['menu'] = 'menu.sider-admin';
+                break;
+        }
+        $this->attributes['idrole'] = $value;
     }
     /**
      * Establecemos el la relacion con catalogo

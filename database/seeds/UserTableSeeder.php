@@ -17,7 +17,7 @@ class UserTableSeeder extends Seeder
             'dni' => '41887192',
             'password' => '321654987',
             'idrole' =>$role->id,
-            'menu' => 'menu.sider-root',
+            'menu' => 'menu.sider-admin',
             ]);
     }
 }

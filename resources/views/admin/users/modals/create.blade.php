@@ -9,16 +9,10 @@
             <div class="modal-body">
               <div class="form-horizontal">
                 <div class="form-group">
-                    {!!Form::label('lblNombres','Nombres',['class'=>'col-sm-2 control-label'])!!}
+                    {!!Form::label('lblNombres','Username',['class'=>'col-sm-2 control-label'])!!}
                     <div class="col-sm-10 ">
-                      {!!Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombres'])!!}
+                      {!!Form::text('dni',null,['class'=>'form-control','placeholder'=>'Username'])!!}
                     </div>
-                </div>
-                <div class="form-group">
-                  {!!Form::label('lblemail','Email',['class'=>'col-sm-2 control-label'])!!}
-                  <div class="col-sm-10 ">
-                    {!!Form::text('email',null,['class'=>'form-control','placeholder'=>'Email'])!!}
-                  </div>
                 </div>
                 <div class="form-group">
                   {!!Form::label('lblPassword','Password',['class'=>'col-sm-2 control-label'])!!}

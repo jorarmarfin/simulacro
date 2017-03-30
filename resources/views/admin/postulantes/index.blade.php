@@ -101,7 +101,7 @@ $('.Postulantes').DataTable({
                     'targets':8,
                     'render': function ( data ) {
                         if (data!=null) {
-                            return '<img src="{{ asset('/storage/') }}/'+data+'"  width="25px" >';
+                            return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
                         }
                     }
                 },
@@ -113,7 +113,6 @@ $('.Postulantes').DataTable({
                     	}else{
                     		return '<span class="label label-sm label-danger"> NO </span>';
                     	}
-                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
                 },{
                     'targets':14,
@@ -151,7 +150,7 @@ $('.Postulantes').DataTable({
             { "data": "aulas.codigo","defaultContent": "" },
             { "data": "pago","defaultContent": "" },
             { "data": "anulado","defaultContent": "" },
-            { "data": "id","defaultContent": "","width":"200px" },
+            { "data": "id","defaultContent": "" },
         ],
 });
 

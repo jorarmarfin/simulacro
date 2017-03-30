@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.admin')
 
 @section('content')
 {!! Alert::render() !!}
@@ -11,11 +11,7 @@
 			<div class="form-body">
 				<div class="form-group">
 					{!!Form::label('lblNombre', 'Nombre del usuario');!!}
-					{!!Form::text('name', null , ['class'=>'form-control','placeholder'=>'Nombre del usuario']);!!}
-				</div>
-				<div class="form-group">
-					{!!Form::label('lblEmail', 'Email');!!}
-					{!!Form::email('email', null , ['class'=>'form-control','placeholder'=>'Email']);!!}
+					{!!Form::text('dni', null , ['class'=>'form-control','placeholder'=>'Nombre del usuario']);!!}
 				</div>
 				<div class="form-group">
 					{!!Form::label('lblRol', 'Rol');!!}
@@ -23,7 +19,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-sm-4">
-						<img src="{{ asset('/storage/fotos/'.Auth::user()->foto) }}" width="30%">
+						<img src="{{ $user->mostrar_foto }}" width="30%">
 						{!!Form::file('file',['class'=>'form-control'])!!}
 					</div>
 				</div>

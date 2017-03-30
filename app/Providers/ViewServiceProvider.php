@@ -21,7 +21,7 @@ class ViewServiceProvider extends ServiceProvider
             ControlSelectData::class
             );
         $this->app->make('view')->composer(
-            ['admin.users.index','admin.users.edit'],
+            ['admin.users.index','admin.users.edit','admin.users.delete'],
             RoleSelectData::class
             );
         $this->app->make('view')->composer(

@@ -8,17 +8,18 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Styde\Html\Facades\Alert;
-
+use DB;
 class FotosController extends Controller
 {
     public function index()
     {
     	$postulante = Postulante::where('foto_estado','CARGADO')->orderBy('fecha_foto')->first();
+        $resumen = Postulante::select('foto_estado',DB::raw('count(*) as cantidad'))->Activos()->groupBy('foto_estado')->get();
     	if(isset($postulante)){
-           return view('admin.fotos.index',compact('postulante'));
+           return view('admin.fotos.index',compact('postulante','resumen'));
         }else{
            Alert::success('No hay Foto por Editar');
-           return view('admin.fotos.blank');
+           return view('admin.fotos.blank',compact('resumen'));
         }
     }
     public function update($id,$estado)
@@ -29,7 +30,8 @@ class FotosController extends Controller
 
     	switch ($estado) {
     		case '1':
-    			$postulante->foto_estado = 'ACEPTADO';
+                $postulante->foto_estado = 'ACEPTADO';
+    			$postulante->mensaje = null;
     			$postulante->save();
                 Storage::copy($archivo, $nuevo_archivo);
     			break;
@@ -49,6 +51,7 @@ class FotosController extends Controller
         $postulante = Postulante::find($request->idpostulante);
         $postulante->foto_estado = 'ACEPTADO';
         $postulante->foto_rechazo = null;
+        $postulante->mensaje = null;
         //$postulante->save();
         //
         /*$archivo = 'public/'.$postulante->foto;

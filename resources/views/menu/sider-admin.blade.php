@@ -8,38 +8,27 @@
             </div>
         </li>
         <!-- END SIDEBAR TOGGLER BUTTON -->
-        <li class="nav-item start ">
-            <a href="{{ route('home.index') }}" class="nav-link nav-toggle">
-                <i class="icon-home"></i>
-                <span class="title">Escritorio</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
+        {!!Form::menu('Escritorio',route('home.index'),'icon-home','start')!!}
+        @can('root',Auth::user())
         <li class="heading">
-            <h3 class="uppercase">Administracion</h3>
+            <h3 class="uppercase">Sistema</h3>
         </li>
+        {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
         <li class="nav-item  ">
-            <a href="{{route('admin.users.index')}}" class="nav-link nav-toggle">
-                <i class="icon-users"></i>
-                <span class="title">Usuarios</span>
-                <span class="arrow"></span>
-            </a>
-        </li>
-        <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                <i class="icon-diamond"></i>
-                <span class="title">Catalogo</span>
-                <span class="arrow"></span>
-            </a>
+            {!!Form::menulink('Configuracion','#','fa fa-cogs')!!}
             <ul class="sub-menu">
-                <li class="nav-item  ">
-                    <a href="{{ route('catalogo.gestion','maestro') }}" class="nav-link ">
-                        <span class="title">Maestro</span>
-                    </a>
-                </li>
+                {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
+                {!!Form::menu('Secuencia',route('admin.secuencia.index'))!!}
             </ul>
         </li>
-
+        {!!Form::menu('Aulas',route('admin.aulas.index'),'fa fa-cubes')!!}
+        @endcan
+        <li class="heading">
+            <h3 class="uppercase">Modulos</h3>
+        </li>
+        {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
+        {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
+        {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
 
     </ul>
     <!-- END SIDEBAR MENU -->

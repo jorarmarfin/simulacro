@@ -25,7 +25,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $Lista = User::all();
+        $idrol = IdRole('alum');
+        $Lista = User::where('idrole','<>',$idrol)->get();
         return view('admin.users.index',compact('Lista'));
     }
 
@@ -48,15 +49,10 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $user = new User($data);
-        $file = $request->file('file');
-        if (isset($file)) {
-            $namefile = $file->getClientOriginalName();
-            $user['foto']= $namefile;
-            Storage::disk('public')->put('/fotos/'.$namefile,File::get($file));
+        if ($request->hasFile('file')) {
+            $data['foto'] = $request->file('file')->store('avatar','public');
         };
-
-        $user->save();
+        User::create($data);
         Alert::success('Usuario Registrado con exito');
         return redirect()->route('admin.users.index');
 

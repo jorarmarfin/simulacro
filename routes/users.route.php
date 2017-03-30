@@ -1,5 +1,5 @@
 <?php
-Route::group(['middleware' => 'auth'], function() {
-	Route::resource('users', 'Users\UsersController');
+Route::group(['namespace' => 'Users'], function() {
+	Route::resource('users', 'UsersController');
 });
 

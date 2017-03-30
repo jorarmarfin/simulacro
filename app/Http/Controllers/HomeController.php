@@ -32,7 +32,7 @@ class HomeController extends Controller
                 break;
 
             default:
-                # code...
+                return view('admin.index');
                 break;
         }
     }

@@ -48,14 +48,36 @@
             <p></p>
             @if (isset($postulante))
             <div class="row">
-                <div class="col-sm-6 col-md-3">
+                <div class="col-md-3">
                     <a href="javascript:;" class="thumbnail">
-                        <img id="editableimage1" src="{{ $postulante->mostrar_foto }}" style="height: 500px; width: 400px; display: block;">
+                        <img id="editableimage1" src="{{ $postulante->mostrar_foto }}" style="height: 400px; width: 300px; display: block;">
                     </a>
-                {!! Form::open(['id'=>'FrmCarga','method'=>'POST','files'=>true]) !!}
-                    {!! Form::file('file', []) !!}
-                {!! Form::close() !!}
                 </div><!--span-->
+                <div class="col-md-9">
+                    <table class="table table-bordered table-hover" data-toggle="table" data-pagination="true">
+                        <thead>
+                            <tr>
+                                <th> Estado </th>
+                                <th> Cantidad </th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th> Total </th>
+                                <th> {{ $resumen->sum('cantidad') }} </th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach ($resumen as $item)
+                            <tr >
+                                <td> {{ $item->foto_estado }} </td>
+                                <td> {{ $item->cantidad }} </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                </div><!--span-->
+
             </div><!--row-->
             @endif
 
