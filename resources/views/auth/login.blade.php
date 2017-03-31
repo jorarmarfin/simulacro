@@ -2,6 +2,7 @@
 
 @section('content')
 @include('alerts.errors')
+{!! Alert::render() !!}
     <div id="form-opcion">
     Bienvenido al Simulacro de admisión de la UNI, para ingresar debe crear una cuenta, si ya la creo haga clik al boton Entrar
     <p></p>

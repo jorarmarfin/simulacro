@@ -203,3 +203,18 @@ if (! function_exists('extension')) {
         return $ext;
     }
 }
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('FinalizoConcurso')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function FinalizoConcurso($str)
+    {
+        $ext = explode(".", $str);
+        $ext = '.'.end($ext);
+        return $ext;
+    }
+}

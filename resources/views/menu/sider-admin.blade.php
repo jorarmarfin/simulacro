@@ -19,6 +19,7 @@
                 <ul class="sub-menu">
                     {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
                     {!!Form::menu('Secuencia',route('admin.secuencia.index'))!!}
+                    {!!Form::menu('Evaluacion',route('admin.evaluacion.index'))!!}
                 </ul>
             </li>
             {!!Form::menu('Aulas',route('admin.aulas.index'),'fa fa-cubes')!!}

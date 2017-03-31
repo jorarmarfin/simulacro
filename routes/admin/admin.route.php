@@ -54,3 +54,9 @@ Route::group(['namespace'=>'Configuracion'], function() {
 	Route::resource('secuencia','SecuenciaController',['names'=>'admin.secuencia','only'=>['index','store','edit','update']]);
 	Route::get('secuencia-delete/{secuencia}','SecuenciaController@delete')->name('admin.secuencia.delete');
 });
+/**
+ * Evaluacio
+ */
+Route::group(['namespace'=>'Evaluacion'], function() {
+	Route::resource('evaluacion','EvaluacionController',['names'=>'admin.evaluacion','only'=>['index','edit','update']]);
+});

@@ -26,7 +26,14 @@ class UserTableSeeder extends Seeder
             'password' => 'cponce',
             'idrole' =>$role->id,
             'menu' => 'menu.sider-admin',
-            'email' => 'lmayta@admisionuni.edu.pe',
+            'email' => 'cponce@admisionuni.edu.pe',
+            ]);
+        factory(App\User::class)->create([
+            'dni' => 'nfukuda',
+            'password' => 'nfukuda',
+            'idrole' =>$role->id,
+            'menu' => 'menu.sider-admin',
+            'email' => 'nfukuda@admisionuni.edu.pe',
             ]);
     }
 }

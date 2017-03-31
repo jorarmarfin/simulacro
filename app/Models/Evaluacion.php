@@ -10,6 +10,18 @@ class Evaluacion extends Model
     protected $fillable = ['codigo', 'nombre', 'descripcion','fecha_inicio','fecha_fin','activo'];
 
     /**
+    * Atributos Activo
+    */
+    public function getEsActivoAttribute()
+    {
+        if ($this->activo) {
+            return '<a href="#" class="label label-sm label-info">Activo</a>';
+        }else{
+            return '<a href="#" class="label label-sm label-danger">Inactivo</a>';
+        }
+    }
+
+    /**
     * Devuelve los valores Activos
     * @param  [type]  [description]
     * @return [type]            [description]
