@@ -20,6 +20,7 @@ class CreateResultadosTable extends Migration
             $table->decimal('nota','9','3')->nullable();
             $table->boolean('asistio')->nullable();
             $table->mediumtext('observacion')->nullable();
+            $table->integer('merito')->nullable();
             $table->timestamps();
         });
     }

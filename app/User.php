@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Models\Catalogo;
+use App\Notifications\ResetPassword;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -73,7 +74,17 @@ class User extends Authenticatable
     {
         return $this->hasOne('\App\Models\Catalogo','id','idrole');
     }
-
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $name = $this->name;
+        $this->notify(new ResetPassword($token,$name));
+    }
 
 
 

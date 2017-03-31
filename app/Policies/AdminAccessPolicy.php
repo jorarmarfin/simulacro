@@ -15,14 +15,16 @@ class AdminAccessPolicy
             return true;
         }
     }
+    public function jefe(User $user)
+    {
+        if ($user->idrole == IdRole('root')) {
+            return true;
+        }
+    }
     public function admin(User $user)
     {
-
-        if ($user->idrole == IdRole('admin') || $user->idrole == IdRole('root')) {
+        if ($user->idrole == IdRole('admin')) {
             return true;
-        }else{
-            abort(401);
-            return false;
         }
     }
 }

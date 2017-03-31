@@ -37,7 +37,8 @@ class UsersController extends Controller
             $user->dni = $request->input('dni');
             $user->password = $request->input('password');
         }elseif ($request->hasFile('file')) {
-            Storage::delete("/public/$user->foto");
+            if(!str_contains($user->foto,'nofoto'))Storage::delete("/public/$user->foto");
+
             $user->foto = $request->file('file')->store('avatar','public');
         }else{
             $user->dni = $request->input('dni');

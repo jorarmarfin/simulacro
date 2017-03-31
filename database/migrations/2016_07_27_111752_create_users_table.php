@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->string('foto',50)->default('avatar/nofoto.jpg');
             $table->integer('idrole')->unsigned();
-            $table->string('menu',50)->unsigned();
+            $table->string('menu',50)->nullable();
+            $table->string('email')->nullable();
             $table->boolean('activo')->default(true);
             $table->rememberToken();
             $table->timestamps();

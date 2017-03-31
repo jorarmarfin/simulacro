@@ -10,26 +10,27 @@
         <!-- END SIDEBAR TOGGLER BUTTON -->
         {!!Form::menu('Escritorio',route('home.index'),'icon-home','start')!!}
         @can('root',Auth::user())
-        <li class="heading">
-            <h3 class="uppercase">Sistema</h3>
-        </li>
-        {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
-        <li class="nav-item  ">
-            {!!Form::menulink('Configuracion','#','fa fa-cogs')!!}
-            <ul class="sub-menu">
-                {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
-                {!!Form::menu('Secuencia',route('admin.secuencia.index'))!!}
-            </ul>
-        </li>
-        {!!Form::menu('Aulas',route('admin.aulas.index'),'fa fa-cubes')!!}
+            <li class="heading">
+                <h3 class="uppercase">Sistema</h3>
+            </li>
+            {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
+            <li class="nav-item  ">
+                {!!Form::menulink('Configuracion','#','fa fa-cogs')!!}
+                <ul class="sub-menu">
+                    {!!Form::menu('Maestro',route('catalogo.gestion','maestro'))!!}
+                    {!!Form::menu('Secuencia',route('admin.secuencia.index'))!!}
+                </ul>
+            </li>
+            {!!Form::menu('Aulas',route('admin.aulas.index'),'fa fa-cubes')!!}
         @endcan
-        <li class="heading">
-            <h3 class="uppercase">Modulos</h3>
-        </li>
-        {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
-        {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
-        {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
-
+        @can('admin',Auth::user())
+            <li class="heading">
+                <h3 class="uppercase">Modulos</h3>
+            </li>
+            {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
+            {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
+            {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
+        @endcan
     </ul>
     <!-- END SIDEBAR MENU -->
     <!-- END SIDEBAR MENU -->

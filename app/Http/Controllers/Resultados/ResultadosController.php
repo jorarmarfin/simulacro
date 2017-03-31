@@ -11,7 +11,7 @@ class ResultadosController extends Controller
 {
     public function index()
     {
-    	$postulante = Postulante::Usuario()->first();
+    	$postulante = Postulante::Usuario()->with('Resultados')->first();
     	if(isset($postulante))
     		return view('resultados.index',compact('postulante'));
     	else{

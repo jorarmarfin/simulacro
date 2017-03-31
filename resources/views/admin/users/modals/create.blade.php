@@ -15,6 +15,12 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    {!!Form::label('lblEmail','Email',['class'=>'col-sm-2 control-label'])!!}
+                    <div class="col-sm-10 ">
+                      {!!Form::text('email',null,['class'=>'form-control','placeholder'=>'Email'])!!}
+                    </div>
+                </div>
+                <div class="form-group">
                   {!!Form::label('lblPassword','Password',['class'=>'col-sm-2 control-label'])!!}
                   <div class="col-sm-10 ">
                     {!!Form::password('password',['class'=>'form-control'])!!}

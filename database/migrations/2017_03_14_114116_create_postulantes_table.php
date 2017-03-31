@@ -32,7 +32,7 @@ class CreatePostulantesTable extends Migration
             $table->integer('idusuario')->nullable();
             $table->integer('idgrado')->nullable();
             $table->integer('idaula')->nullable();
-            $table->datetime('fecha_registro')->nullable();
+            $table->date('fecha_registro')->nullable();
             $table->string('mensaje',50)->nullable();
             $table->boolean('pago')->default(false);
             $table->boolean('anulado')->default(false);

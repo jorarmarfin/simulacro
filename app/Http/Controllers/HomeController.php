@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Postulante;
 use Auth;
+use DB;
+use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     /**
@@ -23,16 +25,19 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $resumen = Postulante::select('fecha_registro',DB::raw('count(*) as cantidad'))->Activos()->isNull()->groupBy('fecha_registro')->get();
+        $pagantes = Postulante::select('fecha_registro',DB::raw('count(*) as cantidad'))->where('pago',1)->Activos()->isNull()->groupBy('fecha_registro')->get();
         switch (Auth::user()->role->nombre) {
             case 'root':
-                return view('admin.index');
+
+                return view('admin.index',compact('resumen','pagantes'));
                 break;
             case 'Alumno':
                 return view('index');
                 break;
 
             default:
-                return view('admin.index');
+                return view('admin.index',compact('resumen','pagantes'));
                 break;
         }
     }

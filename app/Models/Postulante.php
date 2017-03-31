@@ -11,7 +11,6 @@ class Postulante extends Model
 {
     protected $table = 'postulante';
     protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_estado','fecha_foto','fecha_registro','mensaje','datos_ok','idaula'];
-
     /**
     * Atributos Foto
     */
@@ -120,9 +119,17 @@ class Postulante extends Model
     public function setFotoAttribute($value)
     {
         $this->attributes['foto'] = $value;
-        if (Auth::user()->id == IdRole('alum')) {
+        if (Auth::user()->idrole == IdRole('alum')) {
             User::where('id',Auth::user()->id)->update(['foto'=>$value]);
         }
+    }
+    /**
+     * Atributos Email
+     */
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = $value;
+        User::where('id',Auth::user()->id)->update(['email'=>$value]);
     }
 
     /**
@@ -142,6 +149,14 @@ class Postulante extends Model
     public function scopeActivos($cadenaSQL){
         $evaluacion = Evaluacion::Activo()->first();
         return $cadenaSQL->where('idevaluacion',$evaluacion->id);
+    }
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeIsNull($cadenaSQL,$estado = 0){
+        return $cadenaSQL->where('anulado',$estado);
     }
     /**
     * Devuelve los postulantes Activos no anulados
@@ -177,7 +192,18 @@ class Postulante extends Model
         return $this->hasOne(Aula::class,'id','idaula');
     }
 
-
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Resultados()
+    {
+        return $this->hasOne(Resultado::class,'idpostulante','id');
+    }
+    /**
+     * Operaciones estaticas
+     * @param [type] $data [description]
+     */
     public static function AsignarCodigo($data)
     {
         $secuencia = Secuencia::all()->first();
@@ -188,6 +214,7 @@ class Postulante extends Model
             Postulante::where('id',$item['idpostulante'])->update(['codigo'=>$codigo, 'pago'=>true]);
         }
     }
+
     public static function AsignarAula($data)
     {
         foreach ($data as $key => $item) {

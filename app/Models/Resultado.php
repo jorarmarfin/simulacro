@@ -8,4 +8,5 @@ class Resultado extends Model
 {
     protected $table = 'resultado';
     protected $fillable = ['idpostulante', 'puntaje', 'nota','asistio','observacion'];
+
 }
