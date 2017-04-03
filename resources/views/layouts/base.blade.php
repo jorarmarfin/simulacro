@@ -39,19 +39,19 @@
                         <div class="menu-overlay-content">
                             <ul class="menu-overlay-nav text-uppercase">
                                 <li>
-                                    <a href="#">Dashboard</a>
+                                    <a href="{{ route('home.index') }}">Inicio</a>
                                 </li>
                                 <li>
-                                    <a href="#">Reports</a>
+                                    <a href="{{ route('pagos.index') }}">Pagos</a>
                                 </li>
                                 <li>
-                                    <a href="#">Templates</a>
+                                    <a href="{{ route('datos.index') }}">Templates</a>
                                 </li>
                                 <li>
-                                    <a href="#">Support</a>
+                                    <a href="{{ route('ficha.index') }}">Ficha</a>
                                 </li>
                                 <li>
-                                    <a href="#">Settings</a>
+                                    <a href="{{ route('resultados.index') }}">Settings</a>
                                 </li>
                             </ul>
                         </div>
