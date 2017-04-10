@@ -19,6 +19,7 @@ require __DIR__.'/datos.route.php';
 require __DIR__.'/pagos.route.php';
 require __DIR__.'/ficha.route.php';
 require __DIR__.'/resultados.route.php';
+require __DIR__.'/contacto.route.php';
 
 Auth::routes();
 

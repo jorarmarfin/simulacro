@@ -55,7 +55,19 @@
         </div>
     </div><!--span-->
 </div><!--row-->
-
+<p></p>
+<div class="row">
+    <div class="col-md-4">
+        <div class="widget-socials widget-bg-color-gray">
+            <h2 class="widget-socials-title widget-title-color-white text-uppercase">Contactanos
+                </h2>
+            <div class="margin-bottom-20">
+                <strong class="widget-socials-paragraph text-uppercase">Si tienes dificultades con tu inscripcion</strong>
+                <a class="widget-socials-paragraph" href="{{ route('contacto.index') }}">Ingresa aquí</a>
+            </div>
+        </div>
+    </div><!--span-->
+</div><!--row-->
 
 @stop
 

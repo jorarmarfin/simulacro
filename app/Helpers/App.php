@@ -2,6 +2,7 @@
 
 use App\Models\Catalogo;
 use App\Models\Evaluacion;
+use App\Models\Mensaje;
 if (! function_exists('IdEvaluacion')) {
 	/**
 	 * Funcion que retorna el prefijo para nombres de archivos
@@ -216,5 +217,19 @@ if (! function_exists('FinalizoConcurso')) {
         $ext = explode(".", $str);
         $ext = '.'.end($ext);
         return $ext;
+    }
+}
+/**
+ * Devuelve un pad del elemento que ingrese
+ */
+if (! function_exists('PorAtender')) {
+    /**
+     * Funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function PorAtender()
+    {
+        $mensajes = Mensaje::whereNull('respuesta')->orderBy('created_at')->get();
+        return $mensajes;
     }
 }

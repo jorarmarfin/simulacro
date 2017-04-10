@@ -66,13 +66,13 @@
                     </div><!--span-->
                 </div><!--row-->
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!!Form::label('lblTelefono', 'Telefono');!!}
                             {!!Form::text('telefono', null , ['class'=>'form-control','placeholder'=>'Telefono']);!!}
                         </div>
                     </div><!--span-->
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             {!!Form::label('lblEmail', 'Email del alumno');!!}
                             {!!Form::email('email', null , ['class'=>'form-control','placeholder'=>'Email del alumno']);!!}
@@ -106,6 +106,18 @@
                         <div class="form-group">
                             {!!Form::label('lblGrado', 'Nivel Educativo');!!}
                             {!!Form::select('idgrado', $grado ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
+                        </div>
+                    </div><!--span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!!Form::label('lblSede', 'Sede');!!}
+                            {!!Form::select('idsede', $sedes ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
+                        </div>
+                    </div><!--span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {!!Form::label('lblEspecialidad', 'Especialidad');!!}
+                            {!!Form::select('idespecialidad', $especialidad ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->

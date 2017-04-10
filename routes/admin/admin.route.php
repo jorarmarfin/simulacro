@@ -55,8 +55,15 @@ Route::group(['namespace'=>'Configuracion'], function() {
 	Route::get('secuencia-delete/{secuencia}','SecuenciaController@delete')->name('admin.secuencia.delete');
 });
 /**
- * Evaluacio
+ * Evaluacion
  */
 Route::group(['namespace'=>'Evaluacion'], function() {
 	Route::resource('evaluacion','EvaluacionController',['names'=>'admin.evaluacion','only'=>['index','edit','update']]);
+});
+/**
+ * Mensajes
+ */
+Route::group(['namespace'=>'Mensajes'], function() {
+	Route::resource('mensajes','MensajesController',['names'=>'admin.mensajes','only'=>['index','show','update']]);
+	Route::get('mensajes-atendidos','MensajesController@atendidos')->name('admin.mensajes.atendidos');
 });

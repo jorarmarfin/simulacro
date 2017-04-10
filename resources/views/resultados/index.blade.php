@@ -44,7 +44,7 @@
                     </table>
                 </div><!--span-->
                 <div class="col-md-6">
-                    <div class="portlet light portlet-fit bordered">
+                    {{-- <div class="portlet light portlet-fit bordered">
                         <div class="portlet-title">
                             <div class="caption">
                                 <i class=" icon-layers font-green"></i>
@@ -54,7 +54,7 @@
                         <div class="portlet-body">
                             <div id="gchart_pie_1" style="height:500px;"></div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div><!--row-->
         </div>

@@ -16,6 +16,8 @@ class CreatePostulantesTable extends Migration
         Schema::create('postulante', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idevaluacion')->nullable();
+            $table->integer('idsede')->nullable();
+            $table->integer('idespecialidad')->nullable();
             $table->string('codigo',6)->nullable();
             $table->string('paterno',50)->nullable();
             $table->string('materno',50)->nullable();
@@ -43,6 +45,8 @@ class CreatePostulantesTable extends Migration
             $table->foreign('idsexo')->references('id')->on('catalogo');
             $table->foreign('idgrado')->references('id')->on('catalogo');
             $table->foreign('idaula')->references('id')->on('aula');
+            $table->foreign('idsede')->references('id')->on('catalogo');
+            $table->foreign('idespecialidad')->references('id')->on('catalogo');
             $table->unique(['idevaluacion','codigo']);
         });
     }
