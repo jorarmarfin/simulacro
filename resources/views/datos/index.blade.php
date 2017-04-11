@@ -96,9 +96,9 @@
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!! Form::label('lblFecha', 'Fecha de nacimiento de esta forma (dia/mes/año)', ['class'=>'control-label']) !!}
+                            {!! Form::label('lblFecha', 'Fecha de nacimiento de esta forma (año-mes-dia)', ['class'=>'control-label']) !!}
                             <div class="input-group ">
-                                {!!Form::text('fecha_nacimiento', null , ['class'=>'form-control fechanacimiento','placeholder'=>'Fecha de Nacimiento']);!!}
+                                {!!Form::text('fecha_nacimiento', null , ['id'=>'fecha','class'=>'form-control','placeholder'=>'Fecha de Nacimiento']);!!}
                                 <span class="input-group-btn ">
                                     <button class="btn " type="button">
                                         <i class="fa fa-calendar"></i>
@@ -167,10 +167,11 @@
 </div>
 {!! Form::close() !!}
 @stop
+
 @section('js-scripts')
 <script>
-$(".fechanacimiento").datepicker({
-    format:'dd/mm/yyyy'
+$("#fecha").inputmask("d/m/y", {
+    "placeholder": "dd/mm/yyyy"
 });
 </script>
 @stop
@@ -183,6 +184,7 @@ $(".fechanacimiento").datepicker({
 {!! Html::style(asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')) !!}
 @stop
 @section('plugins-js')
+{!! Html::script(asset('assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/select2.full.min.js')) !!}
 {!! Html::script(asset('assets/global/plugins/select2/js/i18n/es.js')) !!}
