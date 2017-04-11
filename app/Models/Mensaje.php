@@ -30,8 +30,8 @@ class Mensaje extends Model
     */
     public function getVistoAttribute()
     {
-    	if (isset($this->read_at)) return '<img src="'.asset('assets/pages/img/Double-Check.png').'" width="3%">';
-    	else return '<i class="fa fa-check "></i><i class="fa fa-check "></i>';
+    	if (isset($this->read_at)) return '<img src="'.asset('assets/pages/img/Double-Check-Blue.png').'" width="3%">';
+    	else return '<img src="'.asset('assets/pages/img/Double-Check.png').'" width="3%">';
     }
     /**
     * Atributos Visto Tabla

@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $resumen = Postulante::select('fecha_registro',DB::raw('count(*) as cantidad'))->Activos()->isNull()->groupBy('fecha_registro')->get();
-        $pagantes = Postulante::select('fecha_registro',DB::raw('count(*) as cantidad'))->where('pago',1)->Activos()->isNull()->groupBy('fecha_registro')->get();
+        $resumen = Postulante::Resumen()->orderBy('fecha_registro')->get();
+        $pagantes = Postulante::ResumenPago()->orderBy('fecha_registro')->get();
 
 
         switch (Auth::user()->role->nombre) {

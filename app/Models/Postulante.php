@@ -155,7 +155,7 @@ class Postulante extends Model
     * @param  [type]  [description]
     * @return [type]            [description]
     */
-    public function scopeIsNull($cadenaSQL,$estado = 0){
+    public function scopeIsNull($cadenaSQL,$estado = 1){
         return $cadenaSQL->where('anulado',$estado);
     }
     /**
@@ -163,9 +163,31 @@ class Postulante extends Model
     * @param  [type]  [description]
     * @return [type]            [description]
     */
-    public function scopePagantes($cadenaSQL){
-        $evaluacion = Evaluacion::Activo()->first();
-        return $cadenaSQL->where('idevaluacion',$evaluacion->id)->where('anulado',0)->where('pago',0);
+    public function scopePagantes($cadenaSQL,$pago = 0){
+        return $cadenaSQL->Activos()->isNull(0)->where('pago',$pago);
+    }
+    /**
+    * Es llamado por el controlador HomeController
+    *
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeResumen($cadenaSQL){
+        return $cadenaSQL->select('fecha_registro',DB::raw('count(*) as cantidad'))
+                         ->Activos()
+                         ->isNull(0)
+                         ->groupBy('fecha_registro');
+    }
+    /**
+    * Es llamado por el controlador HomeController
+    *
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeResumenPago($cadenaSQL){
+        return $cadenaSQL->select('fecha_registro',DB::raw('count(*) as cantidad'))
+                         ->Pagantes()
+                         ->groupBy('fecha_registro');
     }
     /**
      * Establecemos el la relacion con catalogo

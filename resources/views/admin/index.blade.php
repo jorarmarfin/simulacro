@@ -3,96 +3,100 @@
 
 @section('content')
 <div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN Portlet PORTLET-->
-    <div class="portlet box green">
-        <div class="portlet-title">
-            <div class="caption">
-                <i class="fa fa-gift"></i>Avance </div>
-            <div class="tools">
-                <a href="javascript:;" class="collapse"> </a>
-                <a class="reload actualizar"> </a>
-                <a href="" class="fullscreen"> </a>
-                <a href="javascript:;" class="remove"> </a>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+            <div class="visual">
+                <i class="fa fa-comments"></i>
             </div>
-        </div>
-        <div class="portlet-body">
-        <p></p>
-            <div class="row">
-                <div class="col-md-3">
-                Cantidad de Inscritos
-                    <table class="table table-bordered table-hover" data-pagination="true">
-                        <thead>
-                            <tr>
-                                <th> Fecha </th>
-                                <th> cantidad </th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th> Total </th>
-                                <th> {{ $resumen->sum('cantidad') }} </th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach ($resumen as $item)
-                                <tr>
-                                    <th> {{ $item->fecha_registro }} </th>
-                                    <td> {{ $item->cantidad }} </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
+            <div class="details">
+                <div class="number">
+                    <span >{{ $resumen->sum('cantidad') }}</span>
                 </div>
-                <div class="col-md-3">
-                Cantidad de Pagantes
-                    <table class="table table-bordered table-hover" data-pagination="true">
-                        <thead>
-                            <tr>
-                                <th> Fecha </th>
-                                <th> cantidad </th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th> Total </th>
-                                <th> {{ $pagantes->sum('cantidad') }} </th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-                            @foreach ($pagantes as $item)
-                                <tr>
-                                    <th> {{ $item->fecha_registro }} </th>
-                                    <td> {{ $item->cantidad }} </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div class="desc"> Inscritos </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 red" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span data-counter="counterup" data-value="">0</span> </div>
+                <div class="desc"> Pagantes </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="portlet light bordered">
+            <div class="portlet-title tabbable-line">
+                <div class="caption">
+                    <i class="icon-bubbles font-dark hide"></i>
+                    <span class="caption-subject font-dark bold uppercase">Avance</span>
+                </div>
 
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-3">
+                    Cantidad de Inscritos
+                        <table class="table table-bordered table-hover" data-pagination="true">
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> cantidad </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Total </th>
+                                    <th> {{ $resumen->sum('cantidad') }} </th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($resumen as $item)
+                                    <tr>
+                                        <th> {{ $item->fecha_registro }} </th>
+                                        <td> {{ $item->cantidad }} </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="col-md-3">
+                    Cantidad de Pagantes
+                        <table class="table table-bordered table-hover" data-pagination="true">
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> cantidad </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Total </th>
+                                    <th> {{ $pagantes->sum('cantidad') }} </th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($pagantes as $item)
+                                    <tr>
+                                        <th> {{ $item->fecha_registro }} </th>
+                                        <td> {{ $item->cantidad }} </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- END Portlet PORTLET-->
-    </div><!--span-->
-</div><!--row-->
-<div class="modal fade" id="verfoto" tabindex="-1" role="basic" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">Foto</h4>
-            </div>
-            <div class="modal-body">
-                <img id="fotito" style="height: 400px" alt="" >
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
 </div>
 @stop
 

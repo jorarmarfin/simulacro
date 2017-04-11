@@ -34,6 +34,7 @@
                     {!! Form::text('asunto', null, ['class'=>'form-control margin-bottom-20','placeholder'=>'Asunto']) !!}
                     {!! Form::textarea('contenido', null, ['class'=>'form-control margin-bottom-20','rows'=>'5','placeholder'=>'Mensaje']) !!}
                     {!!Form::enviar('Enviar','red-sunglo pull-right')!!}
+                    {!!Form::back(route('home.index'))!!}
                 {!! Form::close() !!}
             </div>
         </div>
@@ -67,7 +68,7 @@ $(function(){
     function Recarga(){
         $('.tab-content').load('listar');
     }
-    setInterval(Recarga, 300);
+    setInterval(Recarga, 1000);
 })
 </script>
 @stop

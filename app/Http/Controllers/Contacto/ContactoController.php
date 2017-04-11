@@ -6,18 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactoRequest;
 use App\Models\Mensaje;
 use App\Models\Postulante;
-use App\Notifications\PreguntasNotification;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
-use Notification;
 use Styde\Html\Facades\Alert;
 class ContactoController extends Controller
 {
     public function index()
     {
     	$postulante = Postulante::Usuario()->first();
-        $mensajes = Mensaje::where('idpostulante',$postulante->id)->orderBy('created_at')->get();
+        if (isset($postulante)) {
+            $mensajes = Mensaje::where('idpostulante',$postulante->id)->orderBy('created_at')->get();
+        }else{
+            $mensajes = null;
+        }
     	return view('contacto.index',compact('mensajes'));
     }
     public function store(ContactoRequest $request)
@@ -38,7 +40,11 @@ class ContactoController extends Controller
     public function listar()
     {
         $postulante = Postulante::Usuario()->first();
-        $mensajes = Mensaje::where('idpostulante',$postulante->id)->orderBy('created_at','desc')->get();
+        if (isset($postulante)) {
+            $mensajes = Mensaje::where('idpostulante',$postulante->id)->orderBy('created_at','desc')->get();
+        }else{
+            $mensajes = null;
+        }
         return view('contacto.listamensaje',compact('mensajes'));
     }
 }

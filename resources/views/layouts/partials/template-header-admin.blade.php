@@ -34,6 +34,7 @@
                         <li>
                             <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
                                 @foreach (PorAtender() as $mensaje)
+                                    @if(isset($mensaje))
                                     <li>
                                         <a href="{{ route('admin.mensajes.show',$mensaje->id) }}">
                                             <span class="photo">
@@ -44,6 +45,7 @@
                                             <span class="message"> {{ $mensaje->asunto }} </span>
                                         </a>
                                     </li>
+                                    @endif
                                 @endforeach
 
                             </ul>
