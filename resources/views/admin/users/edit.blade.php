@@ -13,17 +13,22 @@
 					{!!Form::label('lblNombre', 'Nombre del usuario');!!}
 					{!!Form::text('dni', null , ['class'=>'form-control','placeholder'=>'Nombre del usuario']);!!}
 				</div>
+				@can('root',Auth::user())
+					<div class="form-group">
+						{!!Form::label('lblRol', 'Rol');!!}
+						{!!Form::select('idrole',$roles,null, ['class'=>'form-control']);!!}
+					</div>
+				@endcan
 				<div class="form-group">
-					{!!Form::label('lblRol', 'Rol');!!}
-					{!!Form::select('idrole',$roles,null, ['class'=>'form-control']);!!}
-				</div>
+                    {!!Form::label('lblClave', 'Clave (Si no desea cambiar la clave deje este campo vacio)');!!}
+                    {!!Form::password('password', ['class'=>'form-control']);!!}
+                </div>
 				<div class="form-group">
 					<div class="col-sm-4">
 						<img src="{{ $user->mostrar_foto }}" width="30%">
 						{!!Form::file('file',['class'=>'form-control'])!!}
 					</div>
 				</div>
-
 
 			</div>
 			<div class="form-actions">
@@ -48,7 +53,7 @@
 
 
 @section('user-name')
-{!!Auth::user()->name!!}
+{!!Auth::user()->dni!!}
 @stop
 
 @section('page-title')

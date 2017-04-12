@@ -13,7 +13,6 @@
             <li class="heading">
                 <h3 class="uppercase">Sistema</h3>
             </li>
-            {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
             <li class="nav-item  ">
                 {!!Form::menulink('Configuracion','#','fa fa-cogs')!!}
                 <ul class="sub-menu">
@@ -28,6 +27,7 @@
             <li class="heading">
                 <h3 class="uppercase">Modulos</h3>
             </li>
+            {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
             {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
             {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
             {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}

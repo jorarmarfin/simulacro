@@ -15,7 +15,7 @@ class ResultadosController extends Controller
     	if(isset($postulante))
     		return view('resultados.index',compact('postulante'));
     	else{
-    		Alert::warning('Debe registrar sus datos');
+    		Alert::warning('Debe registrar sus datos para acceder a esta opción');
     		return back();
     	}
     }

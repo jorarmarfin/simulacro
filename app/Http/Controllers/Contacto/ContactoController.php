@@ -17,10 +17,11 @@ class ContactoController extends Controller
     	$postulante = Postulante::Usuario()->first();
         if (isset($postulante)) {
             $mensajes = Mensaje::where('idpostulante',$postulante->id)->orderBy('created_at')->get();
+    	   return view('contacto.index',compact('mensajes'));
         }else{
-            $mensajes = null;
+            Alert::warning('Debe registrar sus datos para acceder a esta opción');
+            return back();
         }
-    	return view('contacto.index',compact('mensajes'));
     }
     public function store(ContactoRequest $request)
     {

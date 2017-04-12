@@ -16,11 +16,13 @@ class CreateResultadosTable extends Migration
         Schema::create('resultado', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idpostulante')->nullable();
-            $table->decimal('puntaje','9','3')->nullable();
-            $table->decimal('nota','9','3')->nullable();
+            $table->string('sede')->nullable();
+            $table->decimal('puntaje','10','3')->nullable();
+            $table->decimal('nota','10','3')->nullable();
             $table->boolean('asistio')->nullable();
-            $table->mediumtext('observacion')->nullable();
             $table->integer('merito')->nullable();
+            $table->integer('merito_sede')->nullable();
+            $table->mediumtext('observacion')->nullable();
             $table->timestamps();
         });
     }

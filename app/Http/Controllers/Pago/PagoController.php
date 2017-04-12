@@ -56,7 +56,7 @@ class PagoController extends Controller
         PDF::Cell(60,5,"Importe :",1,0,'R');
         PDF::SetXY(78,55);
         PDF::SetFont('helvetica','',11);
-        PDF::Cell(110,5,"S/. 50.00 ",1,0,'L');
+        PDF::Cell(110,5,"S/. 80.00 ",1,0,'L');
         #TITULO INSTRUCCIONES
         PDF::SetXY(18,60);
         PDF::SetFont('helvetica','',15);

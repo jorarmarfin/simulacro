@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Datos;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateDatosRequest;
 use App\Models\Postulante;
 use Auth;
 use Carbon\Carbon;
@@ -20,7 +21,7 @@ class DatosController extends Controller
     	if(is_null($postulante))return view('datos.index',compact('dni'));
     	else return view('datos.edit',compact('postulante'));
     }
-    public function store(Request $request)
+    public function store(UpdateDatosRequest $request)
     {
     	$data = $request->all();
         $date = Carbon::now();
@@ -38,7 +39,7 @@ class DatosController extends Controller
         return redirect()->route('home.index');
 
     }
-    public function update(Request $request,$id)
+    public function update(UpdateDatosRequest $request,$id)
     {
     	$data = $request->all();
         $postulante = Postulante::find($id);

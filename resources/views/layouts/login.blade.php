@@ -38,8 +38,12 @@
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
-                <img src="{{ asset('assets/pages/img/logo-sim-big.png') }}" alt="" /> </a>
+            <a href="{{ url('/') }}">
+                <img src="{{ asset('assets/pages/img/banner600px.jpg') }}"
+                srcset="{{ asset('assets/pages/img/banner600px.jpg') }} 768w,
+                        {{ asset('assets/pages/img/banner600px.jpg') }} 1200w
+                        "
+                          alt="Simulacro de Admision"  /> </a>
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->

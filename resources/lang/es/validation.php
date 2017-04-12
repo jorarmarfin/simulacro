@@ -108,6 +108,10 @@ return [
     'attributes' => [
         'password'=>'contraseña',
         'email'=>'correo electronico',
+        'idsexo'=>'Sexo',
+        'idgrado'=>'Grado',
+        'idsede'=>'Sede',
+        'idespecialidad'=>'Especialidad',
     ],
 
 ];

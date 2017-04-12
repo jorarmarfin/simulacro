@@ -65,7 +65,7 @@
                 <!-- BEGIN LOGO -->
                 <div class="page-logo">
                     <a href="{{ url('/') }}">
-                        <img src="{{ asset('assets/layouts/layout7/img/logo-sim.png') }}" alt="logo" class="logo-default" /> </a>
+                        <img src="{{ asset('assets/layouts/layout7/img/logo-sim-2.png') }}" alt="logo" class="logo-default" /> </a>
                 </div>
                 <!-- END LOGO -->
                 <!-- BEGIN TOP NAVIGATION MENU -->
@@ -144,7 +144,13 @@
         <!-- BEGIN THEME LAYOUT SCRIPTS -->
         <script src={{asset("assets/layouts/layout7/scripts/layout.min.js")}} type="text/javascript"></script>
         <script src={{asset("assets/layouts/global/scripts/quick-sidebar.min.js")}} type="text/javascript"></script>
+        <script src={{asset("assets/global/plugins/jquery.pulsate.min.js")}} type="text/javascript"></script>
         <!-- END THEME LAYOUT SCRIPTS -->
+        <script>
+            $('.Pulsear').pulsate({
+                color: "#bf1c56"
+            });
+        </script>
         @yield('js-scripts')
     </body>
 

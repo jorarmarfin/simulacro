@@ -23,7 +23,7 @@ class AdminAccessPolicy
     }
     public function admin(User $user)
     {
-        if ($user->idrole == IdRole('admin') || $user->idrole == IdRole('root')) {
+        if ($user->idrole == IdRole('admin') || $user->idrole == IdRole('root') || $user->idrole == IdRole('jefe')) {
             return true;
         }
     }

@@ -12,12 +12,11 @@
 				</div>
 			</div>
 			<div class="portlet-body">
-				<a href="#myModalNewUser" data-toggle="modal" class="btn blue">
+				<a href="#myModalNewUser" data-toggle="modal" class="btn blue margin-bottom-20">
 					<i class="fa fa-plus"></i>
 					<i class="fa fa-user"></i>
 				</a>
-				<div class="table-scrollable">
-					<table class="table table-striped table-hover" data-toggle="table" data-pagination="true" data-search="true">
+					<table class="table table-striped table-hover table-bordered" id="Usuarios">
 						<thead>
 							<tr>
 								<th>DNI</th>
@@ -45,13 +44,66 @@
 						</tbody>
 					</table>
 
-				</div>
 			</div>
 
 		</div>
 	</div>
 </div>
 @include('admin.users.modals.create')
+@stop
+
+@section('js-scripts')
+<script>
+$('#Usuarios').dataTable({
+    "language": {
+        "emptyTable": "No hay datos disponibles",
+        "info": "Mostrando _START_ a _END_ de _TOTAL_ filas",
+        "search": "Buscar Usuarios :",
+        "lengthMenu": "_MENU_ registros"
+    },
+    "pagingType": "bootstrap_full_number",
+
+});
+
+$('#Postulantes').dataTable({
+    "bProcessing": true,
+    "sAjaxSource": '{{ url('carga/postulante/list') }}',
+    "columnDefs": [
+                {  // set default column settings
+                    'orderable': false,
+                    'targets': '_all'
+                },
+                {
+                    'targets':5,
+                    'render': function ( data, type, full, meta ) {
+                      return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
+                    }
+                }
+            ],
+    "columns": [
+            { "data": "codigo","defaultContent": "" },
+            { "data": "nombrecompleto","defaultContent": "" },
+            { "data": "modalidad","defaultContent": "" },
+            { "data": "aula","defaultContent": "" },
+            { "data": "sector","defaultContent": "" },
+            { "data": "id","defaultContent": "" },
+        ],
+    "order": [1,"asc"]
+});
+</script>
+@stop
+
+
+@section('plugins-styles')
+{!! Html::style('assets/global/plugins/datatables/datatables.min.css') !!}
+{!! Html::style('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') !!}
+@stop
+
+@section('plugins-js')
+{!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
+{!! Html::script('assets/global/scripts/datatable.js') !!}
+{!! Html::script('assets/global/plugins/datatables/datatables.min.js') !!}
+{!! Html::script('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}
 @stop
 
 @section('user-img')
@@ -78,12 +130,3 @@
 @stop
 
 
-
-@section('plugins-styles')
-{!! Html::style('assets/global/plugins/bootstrap-table/bootstrap-table.min.css') !!}
-@stop
-
-@section('js-plugins')
-{!! Html::script('assets/global/plugins/jquery-ui/jquery-ui.min.js') !!}
-{!! Html::script('assets/global/plugins/bootstrap-table/bootstrap-table.min.js') !!}
-@stop

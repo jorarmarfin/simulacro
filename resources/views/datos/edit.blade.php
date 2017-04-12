@@ -1,6 +1,7 @@
 @extends('layouts.base')
 
 @section('content')
+@include('alerts.errors')
 {!! Form::model($postulante,['route'=>['datos.update',$postulante],'method'=>'PUT','files'=>true]) !!}
 <div class="col-md-4">
     <!-- BEGIN PORTLET-->
@@ -46,13 +47,13 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblPaterno', 'Apellido Paterno del alumno');!!}
+                            {!!Form::label('lblPaterno', 'Apellido Paterno del participante');!!}
                             {!!Form::text('paterno', null , ['class'=>'form-control','placeholder'=>'Apellido Paterno']);!!}
                         </div>
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblMaterno', 'Apellido Materno del alumno');!!}
+                            {!!Form::label('lblMaterno', 'Apellido Materno del participante');!!}
                             {!!Form::text('materno', null , ['class'=>'form-control','placeholder'=>'Apellido Materno']);!!}
                         </div>
                     </div><!--span-->
@@ -60,8 +61,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {!!Form::label('lblNombres', 'Nombres del alumno');!!}
-                            {!!Form::text('nombres', null , ['class'=>'form-control','placeholder'=>'Nombres del alumno']);!!}
+                            {!!Form::label('lblNombres', 'Nombres del participante');!!}
+                            {!!Form::text('nombres', null , ['class'=>'form-control','placeholder'=>'Nombres del participante']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -74,8 +75,8 @@
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblEmail', 'Email del alumno');!!}
-                            {!!Form::email('email', null , ['class'=>'form-control','placeholder'=>'Email del alumno']);!!}
+                            {!!Form::label('lblEmail', 'Email del participante');!!}
+                            {!!Form::email('email', null , ['class'=>'form-control','placeholder'=>'Email del participante']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -116,7 +117,7 @@
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblEspecialidad', 'Especialidad');!!}
+                            {!!Form::label('lblEspecialidad', 'Especialidad de preferencia');!!}
                             {!!Form::select('idespecialidad', $especialidad ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
                         </div>
                     </div><!--span-->
@@ -131,7 +132,7 @@
     <div class="portlet light tasks-widget widget-comments">
         <div class="portlet-title margin-bottom-20">
             <div class="caption caption-md font-red-sunglo">
-                <span class="caption-subject theme-font bold uppercase">Observacion</span>
+                <span class="caption-subject theme-font bold uppercase Pulsear">Observacion</span>
             </div>
             <div class="actions">
                 {!!Form::back(route('home.index'))!!}
