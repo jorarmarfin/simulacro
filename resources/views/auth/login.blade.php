@@ -4,10 +4,10 @@
 @include('alerts.errors')
 {!! Alert::render() !!}
     <div id="form-opcion">
-    Bienvenido al Simulacro de admisión de la UNI, para ingresar debe crear una cuenta, si ya la creo haga clik al boton Entrar
+    Bienvenido al Simulacro de admisión de la UNI, para ingresar debe crear una cuenta, si ya la creo haga click al boton ya tengo cuenta
     <p></p>
     {!!Form::boton('Crear cuenta','javascript:;','green','fa fa-plus','',['id'=>'registrar'])!!}
-    {!!Form::boton('Entrar','javascript:;','green','fa fa-send','',['id'=>'logear'])!!}
+    {!!Form::boton('Ya tengo cuenta','javascript:;','green','fa fa-send','',['id'=>'logear'])!!}
     </div>
 
 {!! Form::open(['url'=>'login','method'=>'POST','id'=>'form-login']) !!}
