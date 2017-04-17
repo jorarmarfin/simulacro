@@ -35,7 +35,6 @@ Route::group(['namespace'=>'Fotos'], function() {
  * Aulas
  */
 Route::resource('aulas', 'Aulas\AulasController',['names'=>'admin.aulas']);
-
 Route::get('lista-aulas', 'Aulas\AulasController@lista_aulas')->name('admin.lista.aulas');
 Route::get('lista-aulas-activas', 'Aulas\AulasController@lista_aulas_activas')->name('admin.lista.aulas.activas');
 Route::get('activar-aula/{aula}', 'Aulas\AulasController@activar')->name('admin.activar.aula');
