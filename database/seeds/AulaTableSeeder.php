@@ -377,9 +377,9 @@ class AulaTableSeeder extends Seeder
 		Aula::create(['sector' => 'S','codigo' => 'S-LABS1', 'capacidad' => 40,'disponible'=>0,'asignado'=>0]);
 		Aula::create(['sector' => 'S','codigo' => 'S-LABS2', 'capacidad' => 40,'disponible'=>0,'asignado'=>0]);
 		Aula::create(['sector' => 'HYO','codigo' => 'HYO-1', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
-		Aula::create(['sector' => 'HYO','codigo' => 'HYO-1', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
-		Aula::create(['sector' => 'HYO','codigo' => 'HYO-1', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
-		Aula::create(['sector' => 'HYO','codigo' => 'HYO-1', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
+		Aula::create(['sector' => 'HYO','codigo' => 'HYO-2', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
+		Aula::create(['sector' => 'HYO','codigo' => 'HYO-3', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
+		Aula::create(['sector' => 'HYO','codigo' => 'HYO-4', 'capacidad' => 35,'disponible'=>0,'asignado'=>0]);
 
     }
 }
