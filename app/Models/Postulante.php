@@ -192,9 +192,9 @@ class Postulante extends Model
     * @param  [type]  [description]
     * @return [type]            [description]
     */
-    public function scopeResumenPago($cadenaSQL){
+    public function scopeResumenPago($cadenaSQL,$pagos){
         return $cadenaSQL->select('fecha_registro',DB::raw('count(*) as cantidad'))
-                         ->Pagantes()
+                         ->Pagantes($pagos)
                          ->groupBy('fecha_registro');
     }
     /**
@@ -279,7 +279,9 @@ class Postulante extends Model
     public static function AsignarAula($data)
     {
         foreach ($data as $key => $item) {
-            $sede = Catalogo::where('id',$item['idsede'])->first();
+            $postulante = Postulante::where('id',$item['idpostulante'])->first();
+            $sede = Catalogo::where('id',$postulante->idsede)->first();
+
             if ($sede->nombre == 'Lima') {
                 $aula = Aula::select('id')
                                 ->where('sector','<>','HYO')
