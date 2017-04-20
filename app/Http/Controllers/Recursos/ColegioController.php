@@ -21,7 +21,7 @@ class ColegioController extends Controller
     }
     public function lista()
     {
-        $Lista = Colegio::with(['Distrito','Paises'])->orderBy('nombre')->take(1)->get();
+        $Lista = Colegio::with(['Distrito','Paises'])->orderBy('nombre')->get();
         $res['data'] = $Lista;
         return $res;
     }
