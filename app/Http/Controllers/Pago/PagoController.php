@@ -53,7 +53,7 @@ class PagoController extends Controller
         #ETIQUETA NOMBRE DEL ALUMNO
         PDF::SetXY(18,55);
         PDF::SetFont('helvetica','B',11);
-        PDF::Cell(60,5,'Nombre del alumno :',1,0,'R');
+        PDF::Cell(60,5,'Nombre del Participante :',1,0,'R');
         PDF::SetXY(78,55);
         PDF::SetFont('helvetica','',11);
         PDF::Cell(110,5,$postulante->nombre_completo,1,0,'L');
@@ -68,7 +68,7 @@ class PagoController extends Controller
         PDF::SetXY(18,65);
         PDF::SetFont('helvetica','',15);
         PDF::SetTextColor(255,0,0);
-        PDF::Cell(123,5,"Instrucciones para el postulante",0,0,'L');
+        PDF::Cell(123,5,"Instrucciones para el Participante",0,0,'L');
         #INSTRUCCIONES
         PDF::SetXY(18,73);
         PDF::SetFont('helvetica','',11);

@@ -279,12 +279,25 @@ class Postulante extends Model
     public static function AsignarAula($data)
     {
         foreach ($data as $key => $item) {
-            $aula = Aula::select('id')
-                            ->where('activo',true)
-                            ->where('habilitado',true)
-                            ->where('disponible','>',0)
-                            ->inRandomOrder()
-                            ->first();
+            $sede = Catalogo::where('id',$item['idsede'])->first();
+            if ($sede->nombre == 'Lima') {
+                $aula = Aula::select('id')
+                                ->where('sector','<>','HYO')
+                                ->where('activo',true)
+                                ->where('habilitado',true)
+                                ->where('disponible','>',0)
+                                ->inRandomOrder()
+                                ->first();
+            } else {
+                $aula = Aula::select('id')
+                                ->where('sector','HYO')
+                                ->where('activo',true)
+                                ->where('habilitado',true)
+                                ->where('disponible','>',0)
+                                ->inRandomOrder()
+                                ->first();
+            }
+
 
             if (isset($aula)) {
                 Aula::where('id',$aula->id)->increment('asignado');

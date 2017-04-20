@@ -7,17 +7,22 @@ use App\Models\Evaluacion;
 use App\Models\Postulante;
 use Illuminate\Http\Request;
 use PDF;
+use Styde\Html\Facades\Alert;
 class FichaController extends Controller
 {
     public function index()
     {
+        $postulante = Postulante::Usuario()->first();
+        if(isset($postulante) && $postulante->foto_estado!='ACEPTADO')
+            Alert::warning('Debe cargar su foto tamaño pasaporte, para que podamos verificar y mostrar su ficha');
+
     	return view('ficha.index');
     }
      public function pdf()
     {
     	$evaluacion = Evaluacion::Activo()->first();
     	$postulante = Postulante::Usuario()->first();
-        if(isset($postulante)){
+        if(isset($postulante) && $postulante->foto_estado=='ACEPTADO'){
 
         PDF::SetTitle('FICHA DE INSCRIPCION');
         PDF::AddPage('U','A4');
@@ -119,6 +124,8 @@ class FichaController extends Controller
         PDF::Image(asset('/storage/'.$postulante->foto),169,45,35);
 
         PDF::Output(public_path('storage/tmp/').'ficha.pdf','FI');
+        }else{
+            Alert::warning('Debe cargar su foto tamaño pasaporte, para que podamos verificar y mostrar su ficha');
         }//fin if
     }
 }
