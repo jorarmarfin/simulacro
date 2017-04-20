@@ -29,6 +29,7 @@
             </li>
             {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
             {!!Form::menu('Postulantes',route('admin.pos.index'),'fa fa-users')!!}
+            {!!Form::menu('Colegio',route('admin.colegios.index'),'fa fa-bank')!!}
             {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
             {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
             {!!Form::menu('Mensajes',route('admin.mensajes.index'),'fa fa-at')!!}

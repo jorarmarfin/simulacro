@@ -111,7 +111,12 @@ return [
         'idsexo'=>'Sexo',
         'idgrado'=>'Grado',
         'idsede'=>'Sede',
+        'idpais'=>'Pais',
         'idespecialidad'=>'Especialidad',
+        'idubigeo'=>'Distrito',
+        'idcolegio'=>'Colegio',
+        'direccion'=>'Direccion',
+
     ],
 
 ];

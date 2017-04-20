@@ -14,7 +14,7 @@ class PostulantesController extends Controller
     }
     public function lista()
     {
-	    $Lista = Postulante::Activos()->with('Sexo')->with('Grado')->with('Aulas')->get();
+	    $Lista = Postulante::Activos()->with(['Sexo','Sedes','Grado','Ubigeos','Especialidades','Colegios','Aulas'])->get();
 	    $res['data'] = $Lista;
 	    return $res;
     }

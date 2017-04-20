@@ -79,6 +79,19 @@ return [
             'sslmode' => 'prefer',
         ],
 
+        'recursos' => [
+            'driver' => 'pgsql',
+            'host' => '172.20.68.230',
+            'port' => env('DB_PORT', '5432'),
+            'database' => 'RECURSOS',
+            'username' => 'postgres',
+            'password' => '58a93eafc72ed1453f3f3bf823c8c698',
+            'charset' => 'utf8',
+            'prefix' => '',
+            'schema' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
     ],
 
     /*

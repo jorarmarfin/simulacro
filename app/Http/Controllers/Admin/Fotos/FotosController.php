@@ -52,22 +52,12 @@ class FotosController extends Controller
         $postulante->foto_estado = 'ACEPTADO';
         $postulante->foto_rechazo = null;
         $postulante->mensaje = null;
-        //$postulante->save();
-        //
-        /*$archivo = 'public/'.$postulante->foto;
-        $nuevo_archivo = 'public/fotosok/'.$postulante->dni.extension($archivo);
-        Storage::copy($archivo, $nuevo_archivo);*/
-
 
         $fileContents = file_get_contents($request->nueva_imagen);
         $nuevo_archivo = 'fotosok/'.$postulante->dni.extension($postulante->foto);
         Storage::disk('public')->put($nuevo_archivo,$fileContents);
         $postulante->foto = $nuevo_archivo;
         $postulante->save();
-        /*$archivo = storage_path('app/public/fotosok/').'foto.jpg';
-        $imagen = file_get_contents($request->nueva_imagen);
-        file_put_contents($archivo, $imagen);
-        */
     }
 
 }

@@ -10,7 +10,15 @@ use Illuminate\Database\Eloquent\Model;
 class Postulante extends Model
 {
     protected $table = 'postulante';
-    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_estado','fecha_foto','fecha_registro','mensaje','datos_ok','idaula','idsede','idespecialidad'];
+    protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_estado','fecha_foto','fecha_registro','mensaje','datos_ok','idaula','idsede','idespecialidad','idubigeo','direccion','idcolegio'];
+    /**
+    * Atributos Sede
+    */
+    public function getSedeAttribute()
+    {
+        $sede = Catalogo::find($this->idsede);
+        return strtoupper($sede->nombre);
+    }
     /**
     * Atributos Foto
     */
@@ -213,7 +221,14 @@ class Postulante extends Model
     {
         return $this->hasOne(Aula::class,'id','idaula');
     }
-
+    /**
+     * Establecemos el la relacion con aula
+     * @return [type] [description]
+     */
+    public function Sedes()
+    {
+        return $this->hasOne(Catalogo::class,'id','idsede');
+    }
     /**
      * Establecemos el la relacion con catalogo
      * @return [type] [description]
@@ -221,6 +236,30 @@ class Postulante extends Model
     public function Resultados()
     {
         return $this->hasOne(Resultado::class,'idpostulante','id');
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Especialidades()
+    {
+        return $this->hasOne(Especialidad::class,'id','idespecialidad');
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Ubigeos()
+    {
+        return $this->hasOne(Ubigeo::class,'id','idubigeo');
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Colegios()
+    {
+        return $this->hasOne(Colegio::class,'id','idcolegio');
     }
     /**
      * Operaciones estaticas

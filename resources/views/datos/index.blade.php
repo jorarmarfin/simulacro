@@ -8,7 +8,7 @@
     <div class="portlet light tasks-widget widget-comments">
         <div class="portlet-title margin-bottom-20">
             <div class="caption caption-md font-red-sunglo">
-                <span class="caption-subject theme-font bold uppercase">FOTOS</span>
+                <span class="caption-subject theme-font bold uppercase">FOTO DEL PARTICIPANTE TAMAÑO PASAPORTE</span>
             </div>
         </div>
         <div class="portlet-body overflow-h">
@@ -35,7 +35,7 @@
     <div class="portlet light tasks-widget widget-comments">
         <div class="portlet-title margin-bottom-20">
             <div class="caption caption-md font-red-sunglo">
-                <span class="caption-subject theme-font bold uppercase">DATOS PESONALES</span>
+                <span class="caption-subject theme-font bold uppercase">DATOS PESONALES DEL PARTICIPANTE (NO DEL APODERADO)</span>
             </div>
             <div class="actions">
                 {!!Form::back(route('home.index'))!!}
@@ -71,6 +71,30 @@
                         <div class="form-group">
                             {!!Form::label('lblNombres', 'Nombres del participante *');!!}
                             {!!Form::text('nombres', null , ['class'=>'form-control','placeholder'=>'Nombres del participante']);!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!!Form::label('lblDireccion', 'Direccion del participante *');!!}
+                            {!!Form::text('direccion', null , ['class'=>'form-control','placeholder'=>'Direccion del participante']);!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!!Form::label('lblDistrito', 'Distrito del participante *');!!}
+                            {!!Form::select('idubigeo',[] ,null , ['id'=>'Ubigeo','class'=>'form-control']);!!}
+                        </div>
+                    </div><!--span-->
+                </div><!--row-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            {!!Form::label('lblColegio', 'Colegio del participante *');!!}
+                            {!!Form::select('idcolegio',[] ,null , ['id'=>'Colegio','class'=>'form-control']);!!}
                         </div>
                     </div><!--span-->
                 </div><!--row-->
@@ -125,7 +149,7 @@
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblEspecialidad', 'Especialidad de Preferencia *');!!}
+                            {!!Form::label('lblEspecialidad', 'Especialidad de Preferencia Tentativa*');!!}
                             {!!Form::select('idespecialidad', $especialidad ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
                         </div>
                     </div><!--span-->
@@ -171,6 +195,93 @@
 
 @section('js-scripts')
 <script>
+$(document).ready(function() {
+
+    $("#Ubigeo").select2({
+        width:'auto',
+        ajax: {
+            url: '{{ url("ubigeo") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varsearch: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        placeholder : 'Seleccione el distrito del participante: ejemplo LIMA',
+        minimumInputLength: 3,
+        templateResult: format,
+        templateSelection: format,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function format(res){
+        var markup=res.text;
+        return markup;
+
+    }
+    $("#Colegio").select2({
+        width:'auto',
+        ajax: {
+            url: '{{ url("colegio") }}',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    varschool: params.term // search term
+                };
+            },
+            processResults: function(data) {
+                // parse the results into the format expected by Select2.
+                // since we are using custom formatting functions we do not need to
+                // alter the remote JSON data
+                return {
+                    results: data
+                };
+            },
+            cache: true
+        },
+        placeholder : 'Seleccione su colegio',
+        minimumInputLength: 3,
+        templateResult: formatSchool,
+        templateSelection: formatSchoolSelection,
+        escapeMarkup: function(markup) {
+            return markup;
+        } // let our custom formatter work
+    });
+    function formatSchool(school){
+        if (school.loading) return school.text; //Sin esta columna no carga los items dentro de los campo array
+
+        var markup="<div class='select2-result-repository clearfix'>" +
+        "<div class='select2-result-repository__title'>" + school.text + "</div>" +
+        "<div class='select2-result-repository__description'> Distrito : " + school.distrito.descripcion + "</div>" +
+        "<div class='select2-result-repository__description'> Gestion : " + school.gestion + "</div>" +
+        "<div class='select2-result-repository__statistics'>" +
+        "</div>"+
+        "</div>";
+        return markup;
+
+    }
+    function formatSchoolSelection(school){
+        var markup =  school.text;
+        return markup;
+    }
+    $("#idsede").select2();
+
+});
+
+
 $("#fecha").inputmask("y-m-d", {
     "placeholder": "yyyy-mm-dd"
 });

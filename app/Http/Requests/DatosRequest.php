@@ -28,6 +28,14 @@ class DatosRequest extends FormRequest
             'paterno'=>'required|alpha',
             'materno'=>'required|alpha',
             'nombres'=>'required|alpha',
+            'fecha_nacimiento'=>'required',
+            'idsexo'=>'required',
+            'idgrado'=>'required',
+            'idsede'=>'required',
+            'idespecialidad'=>'required',
+            'direccion'=>'required',
+            'idubigeo'=>'required',
+            'idcolegio'=>'required',
         ];
     }
 }

@@ -23,6 +23,9 @@ class CreatePostulantesTable extends Migration
             $table->string('materno',50)->nullable();
             $table->string('nombres',50)->nullable();
             $table->string('dni',20)->nullable();
+            $table->integer('idubigeo')->nullable();
+            $table->string('direccion')->nullable();
+            $table->integer('idcolegio')->nullable();
             $table->string('telefono',30)->nullable();
             $table->string('email',100)->nullable();
             $table->string('foto',200)->default('avatar/nofoto.jpg');
@@ -46,7 +49,6 @@ class CreatePostulantesTable extends Migration
             $table->foreign('idgrado')->references('id')->on('catalogo');
             $table->foreign('idaula')->references('id')->on('aula');
             $table->foreign('idsede')->references('id')->on('catalogo');
-            $table->foreign('idespecialidad')->references('id')->on('catalogo');
             $table->unique(['idevaluacion','codigo']);
         });
     }

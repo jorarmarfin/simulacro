@@ -6,7 +6,7 @@
     <div class="portlet light tasks-widget widget-comments">
         <div class="portlet-title margin-bottom-20">
             <div class="caption caption-md font-red-sunglo">
-                <span class="caption-subject theme-font bold uppercase">FORMATO DE PAGO</span>
+                <span class="caption-subject theme-font bold uppercase">FORMATO DE PAGO AL NOMBRE DEL PARTICIPANTE</span>
             </div>
             <div class="actions">
                 {!!Form::back(route('home.index'))!!}
@@ -14,7 +14,7 @@
         </div>
         <div class="form-body ">
             <div class="Pulsear">
-                Después de 2 horas de registrar sus datos, realizar el pago por derecho de inscripción en la cuenta ADMISION-UNI del Banco Scotiabank.
+                Después de 2 horas de pagar imprimir su ficha de inscripción como participante </br>
             </div>
             <p></p>
             <iframe src="{{route('pagos.pdf')}}" width="100%" height="600px" scrolling="auto"></iframe>

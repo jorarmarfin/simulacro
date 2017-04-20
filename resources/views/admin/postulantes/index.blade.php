@@ -18,31 +18,41 @@
         <div class="portlet-body">
 		{!!Form::boton('Sin Foto','#','green-meadow','fa fa-file-image-o')!!}
         <p></p>
-			<table class="table table-bordered Postulantes">
-			    <thead>
-			        <tr>
-			            <th> Codigo </th>
-			            <th> Paterno </th>
-			            <th> Materno </th>
-			            <th> Nombres </th>
-			            <th> DNI </th>
-			            <th> Telefono </th>
-			            <th> Email </th>
-                        <th> Foto </th>
-                        <th> Foto Rechazado </th>
-			            <th> Fecha Foto </th>
-			            <th> Fecha Registro </th>
-                        <th> Grado </th>
-			            <th> Aula </th>
-			            <th> Pago </th>
-			            <th> Anulado </th>
-			            <th width="200px"> Opciones </th>
-			        </tr>
-			    </thead>
-			    <tbody>
+            <div class="table-response">
 
-			    </tbody>
-			</table>
+                <table class="table table-striped table-bordered table-hover Postulantes">
+                    <thead>
+                        <tr>
+                            <th> Codigo </th>
+                            <th> Paterno </th>
+                            <th> Materno </th>
+                            <th> Nombres </th>
+                            <th class="none"> Sexo </th>
+                            <th class="none"> Fecha Nacimiento </th>
+                            <th class="none"> Sede </th>
+                            <th class="none"> Especialidad </th>
+                            <th class="none"> Ubigeo </th>
+                            <th class="none"> Direccion </th>
+                            <th class="none"> Colegio </th>
+                            <th> DNI </th>
+                            <th> Telefono </th>
+                            <th> Email </th>
+                            <th> Foto </th>
+                            <th> Foto Rechazado </th>
+                            <th> Fecha Foto </th>
+                            <th> Fecha Registro </th>
+                            <th> Grado </th>
+                            <th> Aula </th>
+                            <th> Pago </th>
+                            <th> Anulado </th>
+                            <th> Opciones </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <!-- END Portlet PORTLET-->
@@ -77,6 +87,12 @@ $('.Postulantes').DataTable({
         "search": "Buscar Postulante :",
         "lengthMenu": "_MENU_ registros"
     },
+    responsive: true,
+    dom: "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
+    buttons: [
+                { extend: 'excel', className: 'btn yellow btn-outline ' },
+                { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}
+            ],
     "bProcessing": true,
     "sAjaxSource": '{{ url('admin/postulantes-lista') }}',
     "pagingType": "bootstrap_full_number",
@@ -86,13 +102,13 @@ $('.Postulantes').DataTable({
                     'targets': '_all'
                 },
                 {
-                    'targets':7,
+                    'targets':14,
                     'render': function ( data ) {
                       return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
                     }
                 },
                 {
-                    'targets':8,
+                    'targets':15,
                     'render': function ( data ) {
                         if (data!=null) {
                             return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
@@ -100,7 +116,7 @@ $('.Postulantes').DataTable({
                     }
                 },
                 {
-                    'targets':13,
+                    'targets':20,
                     'render': function ( data ) {
                     	if (data) {
                     		return '<span class="label label-sm label-info"> SI </span>';
@@ -109,7 +125,7 @@ $('.Postulantes').DataTable({
                     	}
                     }
                 },{
-                    'targets':14,
+                    'targets':21,
                     'render': function ( data ) {
                     	if (data) {
                     		return '<span class="label label-sm label-info"> SI </span>';
@@ -119,8 +135,7 @@ $('.Postulantes').DataTable({
                     }
                 },
                 {
-                    "width": "400px",
-                    'targets':15,
+                    'targets':22,
                     'render': function ( data ) {
                       return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>'+
                       '<a href="postulante/'+data+'/edit" title="Ficha"class="btn btn-icon-only blue" ><i class="fa fa-file-image-o"></i></a>'+
@@ -133,6 +148,13 @@ $('.Postulantes').DataTable({
             { "data": "paterno","defaultContent": "" },
             { "data": "materno","defaultContent": "" },
             { "data": "nombres","defaultContent": "" },
+            { "data": "sexo.nombre","defaultContent": "" },
+            { "data": "fecha_nacimiento","defaultContent": "" },
+            { "data": "sedes.nombre","defaultContent": "" },
+            { "data": "especialidades.nombre","defaultContent": "" },
+            { "data": "ubigeos.descripcion","defaultContent": "" },
+            { "data": "direccion","defaultContent": "" },
+            { "data": "colegios.nombre","defaultContent": "" },
             { "data": "dni","defaultContent": "" },
             { "data": "telefono","defaultContent": "" },
             { "data": "email","defaultContent": "" },
@@ -195,6 +217,9 @@ $('#verfoto').on('show.bs.modal', function (e) {
 @stop
 
 
+@section('title')
+Postulantes
+@stop
 @section('page-title')
 
 @stop

@@ -208,7 +208,7 @@ $('#Aulas').dataTable({
 @stop
 
 @section('user-name')
-{!!Auth::user()->name!!}
+{!!Auth::user()->dni!!}
 @stop
 
 

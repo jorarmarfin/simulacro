@@ -1,8 +1,10 @@
 <?php
 
 use App\Models\Catalogo;
+use App\Models\Colegio;
 use App\Models\Evaluacion;
 use App\Models\Mensaje;
+use App\Models\Ubigeo;
 if (! function_exists('IdEvaluacion')) {
 	/**
 	 * Funcion que retorna el prefijo para nombres de archivos
@@ -231,5 +233,42 @@ if (! function_exists('PorAtender')) {
     {
         $mensajes = Mensaje::whereNull('respuesta')->orderBy('created_at')->get();
         return $mensajes;
+    }
+}
+
+/**
+ * devuelve el id estado de catalogo
+ */
+if (! function_exists('ubigeopersonal')) {
+    /**
+     * funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function ubigeopersonal($id)
+    {
+        if (isset($id)) {
+            $ubigeo = ubigeo::where('id',$id)->pluck('nombre','id')->toarray();
+        } else {
+            $ubigeo=[];
+        }
+        return $ubigeo;
+    }
+}
+/**
+ * devuelve el id estado de catalogo
+ */
+if (! function_exists('ColegioPersonal')) {
+    /**
+     * funcion que retorna el prefijo para nombres de archivos
+     * @return [type] [description]
+     */
+    function ColegioPersonal($id)
+    {
+        if (isset($id)) {
+            $colegio = Colegio::where('id',$id)->pluck('nombre','id')->toarray();
+        } else {
+            $colegio=[];
+        }
+        return $colegio;
     }
 }

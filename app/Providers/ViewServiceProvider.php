@@ -3,10 +3,11 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers\AulasActivasSelectData;
-use App\Http\ViewComposers\SedeSelectData;
-use App\Http\ViewComposers\EspecialidadSelectData;
 use App\Http\ViewComposers\ControlSelectData;
+use App\Http\ViewComposers\EspecialidadSelectData;
+use App\Http\ViewComposers\PaisSelectData;
 use App\Http\ViewComposers\RoleSelectData;
+use App\Http\ViewComposers\SedeSelectData;
 use Illuminate\Support\ServiceProvider;
 
 class ViewServiceProvider extends ServiceProvider
@@ -37,6 +38,10 @@ class ViewServiceProvider extends ServiceProvider
         $this->app->make('view')->composer(
             ['admin.aulas.activas'],
             AulasActivasSelectData::class
+            );
+        $this->app->make('view')->composer(
+            ['admin.colegio.index'],
+            PaisSelectData::class
             );
     }
 

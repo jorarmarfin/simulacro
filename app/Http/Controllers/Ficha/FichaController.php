@@ -24,13 +24,18 @@ class FichaController extends Controller
         PDF::SetAutoPageBreak(false);
         PDF::Rect(15,15, 180,170);
         #FONDO
-        PDF::Image(asset('assets/pages/img/ficha.jpg'),0,0,210,297,'', '', '', false, 300, '', false, false, 0);
+        PDF::Image(asset('assets/pages/img/ficha2.jpg'),0,0,210,297,'', '', '', false, 300, '', false, false, 0);
         #CCOLOR DEL TEXTO
         PDF::SetTextColor(0);
+        #TITULO
+        PDF::SetXY(0,99);
+        PDF::SetFont('helvetica','B',15);
+        PDF::Cell(210,5,'FICHA DE INSCRIPCION DEL PARTICIPANTE',0,0,'C');
         #NUMERO DE INSCRIPCION
         PDF::SetXY(18,110);
         PDF::SetFont('helvetica','',11);
         PDF::Cell(60,5,'Número de Inscripción :',0,0,'R');
+        #
         PDF::SetXY(78,110);
         PDF::SetFont('helvetica','B',10);
         PDF::Cell(110,5,$postulante->codigo,0,0,'L');
@@ -77,11 +82,18 @@ class FichaController extends Controller
         PDF::SetXY(78,140);
         PDF::SetFont('helvetica','B',10);
         PDF::Cell(110,5,$postulante->sexo,0,0,'L');
-        #GENERO
+        #AULA
         PDF::SetXY(18,145);
         PDF::SetFont('helvetica','',11);
-        PDF::Cell(60,5,'Aula :',0,0,'R');
+        PDF::Cell(60,5,'Sede donde rendira el examen:',0,0,'R');
         PDF::SetXY(78,145);
+        PDF::SetFont('helvetica','B',10);
+        PDF::Cell(110,5,$postulante->sede,0,0,'L');
+        #SEDE
+        PDF::SetXY(18,150);
+        PDF::SetFont('helvetica','',11);
+        PDF::Cell(60,5,'Aula :',0,0,'R');
+        PDF::SetXY(78,150);
         PDF::SetFont('helvetica','B',10);
         PDF::Cell(110,5,$postulante->aula,0,0,'L');
 
@@ -92,7 +104,8 @@ class FichaController extends Controller
         #
         PDF::SetXY(18,185);
         PDF::SetFont('helvetica','',11);
-        PDF::MultiCell(170,5,'Declaro bajo juramento que toda la información registrada es auténtica, y que la imágen subida al sistema es mi foto actual; y en caso de faltar a la verdad perderé mis derechos de postulante y me someto a las sanciones de Ley que correspondan. Asimismo, declaro no tener antecedentes policiales Autorizo a la Oficina Central de Admisión el uso de mis datos personales que libremente proporciono, para los fines que involucran las actividades propias del '.$evaluacion->nombre.', y la publicación de los resultados de la prueba rendida en todo medio de comunicación',1,'J',false);
+        $texto = "Declaro bajo juramento que toda la información registrada es auténtica, y que la imagen subida al sistema es mi foto actual. En caso de faltar a la verdad perderé mis derechos de participante sometiéndome a las sanciones reglamentarias y legales que correspondan. Asimismo, declaro no tener antecedentes policiales, autorizando a la Oficina Central de Admisión OCAD-UNI el uso de mis datos personales que libremente proporciono, para los fines que involucran las actividades propias de la OCAD-UNI, y la publicación de los resultados de la prueba rendida en todo medio de comunicación. Declaro haber leído y conocer el reglamento del $evaluacion->nombre.";
+        PDF::MultiCell(170,5,$texto,1,'J',false);
         #
         $persona = ($postulante->edad>=18) ? 'Postulante' : 'Apoderado' ;
         PDF::SetXY(18,250);

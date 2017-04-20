@@ -111,7 +111,7 @@ $('.Recaudacion').dataTable({
         "search": "Buscar Postulante :",
         "lengthMenu": "_MENU_ registros"
     },
-    dom: 'Bfrtip',
+    dom: "<'row' <'col-md-12'B>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r><'table-scrollable't><'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
     buttons: [
                 { extend: 'excel', className: 'btn yellow btn-outline ' },
                 { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}
