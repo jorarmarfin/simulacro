@@ -24,9 +24,9 @@ class UpdateDatosRequest extends FormRequest
     public function rules()
     {
         return [
-            'paterno'=>'required|alpha',
-            'materno'=>'required|alpha',
-            'nombres'=>'required|alpha',
+            'paterno'=>'required',
+            'materno'=>'required',
+            'nombres'=>'required',
             'fecha_nacimiento'=>'required',
             'idsexo'=>'required',
             'idgrado'=>'required',
