@@ -7,7 +7,7 @@
     <div class="portlet box green">
         <div class="portlet-title">
             <div class="caption">
-                <i class="fa fa-gift"></i>Postulantes </div>
+                <i class="fa fa-gift"></i>Participante </div>
             <div class="tools">
                 <a href="javascript:;" class="collapse"> </a>
                 <a class="reload actualizar"> </a>
