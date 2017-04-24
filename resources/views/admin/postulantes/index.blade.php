@@ -34,6 +34,7 @@
                             <th class="none"> Ubigeo </th>
                             <th class="none"> Direccion </th>
                             <th class="none"> Colegio </th>
+                            <th class="none"> Ubigeo Colegio </th>
                             <th> DNI </th>
                             <th> Telefono </th>
                             <th> Email </th>
@@ -102,13 +103,13 @@ $('.Postulantes').DataTable({
                     'targets': '_all'
                 },
                 {
-                    'targets':14,
+                    'targets':15,
                     'render': function ( data ) {
                       return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
                     }
                 },
                 {
-                    'targets':15,
+                    'targets':16,
                     'render': function ( data ) {
                         if (data!=null) {
                             return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
@@ -116,15 +117,6 @@ $('.Postulantes').DataTable({
                     }
                 },
                 {
-                    'targets':20,
-                    'render': function ( data ) {
-                    	if (data) {
-                    		return '<span class="label label-sm label-info"> SI </span>';
-                    	}else{
-                    		return '<span class="label label-sm label-danger"> NO </span>';
-                    	}
-                    }
-                },{
                     'targets':21,
                     'render': function ( data ) {
                     	if (data) {
@@ -133,9 +125,18 @@ $('.Postulantes').DataTable({
                     		return '<span class="label label-sm label-danger"> NO </span>';
                     	}
                     }
+                },{
+                    'targets':22,
+                    'render': function ( data ) {
+                    	if (data) {
+                    		return '<span class="label label-sm label-info"> SI </span>';
+                    	}else{
+                    		return '<span class="label label-sm label-danger"> NO </span>';
+                    	}
+                    }
                 },
                 {
-                    'targets':22,
+                    'targets':23,
                     'render': function ( data ) {
                       return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>'+
                       '<a href="postulante/'+data+'/edit" title="Ficha"class="btn btn-icon-only blue" ><i class="fa fa-file-image-o"></i></a>'+
@@ -154,6 +155,7 @@ $('.Postulantes').DataTable({
             { "data": "especialidades.nombre","defaultContent": "" },
             { "data": "ubigeos.descripcion","defaultContent": "" },
             { "data": "direccion","defaultContent": "" },
+            { "data": "colegios.nombre","defaultContent": "" },
             { "data": "colegios.nombre","defaultContent": "" },
             { "data": "dni","defaultContent": "" },
             { "data": "telefono","defaultContent": "" },
