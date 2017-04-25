@@ -40,6 +40,7 @@ class PagosController extends Controller
         $pos = Postulante::Activos()->where('dni',$request->input('codigo'))->first();
         $ser = $servicio->nombre;
         $cod = $request->input('codigo');
+        $banco = $request->input('banco');
         $des = $servicio->descripcion;
         $mon = $servicio->valor;
         $date = Carbon::now();
@@ -52,6 +53,7 @@ class PagosController extends Controller
                             'fecha'=>$date,
                             'codigo'=>$cod,
                             'nombrecliente'=>$pos->nombre_cliente,
+                            'banco'=>$banco,
                             'idpostulante'=>$pos->id
                             ]);
         if($pago){
@@ -89,7 +91,8 @@ class PagosController extends Controller
     			$data[$i]['monto'] = (float)substr($value, 77 ,2);
     			$data[$i]['fecha'] = substr($value, 134 ,4).'-'.substr($value, 138 ,2).'-'.substr($value, 140 ,2);
     			$data[$i]['codigo'] = substr($value, 40 ,8);
-    			$data[$i]['nombrecliente'] = substr($value, 48 ,20);
+                $data[$i]['nombrecliente'] = substr($value, 48 ,20);
+    			$data[$i]['banco'] = 'Scotiabank';
     			$data[$i]['created_at'] = $date;
     			$data[$i]['updated_at'] = $date;
     			$i++;

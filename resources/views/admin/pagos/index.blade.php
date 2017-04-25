@@ -90,6 +90,10 @@
                     {!!Form::label('lblDNI', 'Numero de DNI');!!}
                     {!!Form::text('codigo', null , ['class'=>'form-control','placeholder'=>'Numero de DNI','maxlength'=>'8']);!!}
                 </div>
+                <div class="form-group">
+                    {!!Form::label('lblBanco', 'Banco');!!}
+                    {!!Form::text('banco', 'Scotiabank' , ['class'=>'form-control','placeholder'=>'Numero de DNI','maxlength'=>'8']);!!}
+                </div>
             </div>
             <div class="modal-footer">
                 {!!Form::enviar('Guardar')!!}
