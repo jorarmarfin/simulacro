@@ -26,6 +26,9 @@ class Postulante extends Model
     public function getDatosAulaAttribute()
     {
         $aula = Aula::find($this->idaula);
+        if(!isset($aula)){
+            $aula = new Aula(['codigo'=>'--','sector'=>'--']);
+        }
         return $aula;
     }
     /**
