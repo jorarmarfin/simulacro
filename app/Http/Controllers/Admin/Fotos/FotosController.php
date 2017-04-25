@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Admin\Fotos;
 use App\Http\Controllers\Controller;
 use App\Models\Postulante;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Styde\Html\Facades\Alert;
-use DB;
 class FotosController extends Controller
 {
     public function index()
@@ -26,7 +26,8 @@ class FotosController extends Controller
     {
     	$postulante = Postulante::find($id);
     	$archivo = 'public/'.$postulante->foto;
-    	$nuevo_archivo = 'public/fotosok/'.$postulante->dni.extension($archivo);
+        $nuevo_archivo = 'public/fotosok/'.$postulante->dni.extension($archivo);
+    	$nuevo_archivo_tmp = 'public/fotosok/tmp/'.$postulante->dni.extension($archivo);
 
     	switch ($estado) {
     		case '1':
@@ -34,6 +35,7 @@ class FotosController extends Controller
     			$postulante->mensaje = null;
     			$postulante->save();
                 Storage::copy($archivo, $nuevo_archivo);
+                Storage::copy($archivo, $nuevo_archivo_tmp);
     			break;
 
     		case '0':
@@ -59,5 +61,6 @@ class FotosController extends Controller
         $postulante->foto = $nuevo_archivo;
         $postulante->save();
     }
+
 
 }
