@@ -33,6 +33,7 @@
             {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
             {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}
             {!!Form::menu('Mensajes',route('admin.mensajes.index'),'fa fa-at')!!}
+            {!!Form::menu('Padron',route('admin.padron.index'),'fa fa-database')!!}
         @endcan
     </ul>
     <!-- END SIDEBAR MENU -->

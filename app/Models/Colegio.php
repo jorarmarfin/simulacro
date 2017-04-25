@@ -10,6 +10,14 @@ class Colegio extends Model
     protected $fillable = ['codigo_modular', 'anexo', 'nombre','nivel','forma','area','gestion','direccion','director','email','telefonos','idubigeo','idpais','activo'];
     public $timestamps = false;
 
+    /**
+    * Atributos Descripcion Ubigeo
+    */
+    public function getDescripcionUbigeoAttribute()
+    {
+        $ubigeo = Ubigeo::find($this->idubigeo);
+        return $ubigeo->descripcion;
+    }
     public function getGestionOptions()
     {
         return ['Privada', 'Pública'];

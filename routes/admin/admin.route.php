@@ -66,3 +66,10 @@ Route::group(['namespace'=>'Mensajes'], function() {
 	Route::resource('mensajes','MensajesController',['names'=>'admin.mensajes','only'=>['index','show','update']]);
 	Route::get('mensajes-atendidos','MensajesController@atendidos')->name('admin.mensajes.atendidos');
 });
+
+/**
+ * Padron
+ */
+Route::group(['namespace'=>'Padron'], function() {
+	Route::get('padron','PadronController@index')->name('admin.padron.index');
+});

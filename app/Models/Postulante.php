@@ -11,6 +11,55 @@ class Postulante extends Model
 {
     protected $table = 'postulante';
     protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_estado','fecha_foto','fecha_registro','mensaje','datos_ok','idaula','idsede','idespecialidad','idubigeo','direccion','idcolegio'];
+
+    /**
+    * Atributos Datos Aula
+    */
+    public function getDatosAulaAttribute()
+    {
+        $aula = Aula::find($this->idaula);
+        return $aula;
+    }
+    /**
+    * Atributos Datos Colegio
+    */
+    public function getDatosColegioAttribute()
+    {
+        $colegio = Colegio::find($this->idcolegio);
+        return $colegio;
+    }
+    /**
+    * Atributos Nombre Especialidad
+    */
+    public function getNombreEspecialidadAttribute()
+    {
+        $especialidad = Especialidad::find($this->idespecialidad);
+        return $especialidad->nombre;
+    }
+    /**
+    * Atributos Codigo Especialidad
+    */
+    public function getCodigoEspecialidadAttribute()
+    {
+        $especialidad = Especialidad::find($this->idespecialidad);
+        return $especialidad->codigo;
+    }
+    /**
+    * Atributos Ubigeo
+    */
+    public function getDescripcionUbigeoAttribute()
+    {
+        $ubigeo = Ubigeo::find($this->idubigeo);
+        return $ubigeo->descripcion;
+    }
+    /**
+    * Atributos Datos Evaluacion
+    */
+    public function getDatosEvaluacionAttribute()
+    {
+        $evaluacion = Evaluacion::find($this->idevaluacion);
+        return $evaluacion;
+    }
     /**
     * Atributos Sede
     */
@@ -167,6 +216,14 @@ class Postulante extends Model
         return $cadenaSQL->where('anulado',$estado);
     }
     /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopePago($cadenaSQL,$sw = 1){
+        return $cadenaSQL->where('pago',$sw);
+    }
+    /**
     * Devuelve los postulantes Activos no anulados
     * @param  [type]  [description]
     * @return [type]            [description]
@@ -260,6 +317,14 @@ class Postulante extends Model
     public function Colegios()
     {
         return $this->hasOne(Colegio::class,'id','idcolegio');
+    }
+    /**
+     * Establecemos el la relacion con catalogo
+     * @return [type] [description]
+     */
+    public function Evaluaciones()
+    {
+        return $this->hasOne(Evaluacion::class,'id','idevaluacion');
     }
     /**
      * Operaciones estaticas
