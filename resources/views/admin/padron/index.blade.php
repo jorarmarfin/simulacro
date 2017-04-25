@@ -18,7 +18,7 @@
         <div class="portlet-body">
         <p></p>
             <div class="table-response">
-
+            </br>
                 <table class="table table-striped table-bordered table-hover Postulantes">
                     <thead>
                         <tr>
