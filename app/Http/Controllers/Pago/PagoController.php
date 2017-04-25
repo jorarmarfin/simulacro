@@ -42,7 +42,7 @@ class PagoController extends Controller
         PDF::Cell(60,5,'Concepto :',1,0,'R');
         PDF::SetXY(78,45);
         PDF::SetFont('helvetica','',11);
-        PDF::Cell(110,5,'INSCRIP. SIMULACRO',1,0,'L');
+        PDF::Cell(110,5,'620 - INSCRIPCION SIMULACRO',1,0,'L');
         #CODIGO CNE
         PDF::SetXY(18,50);
         PDF::SetFont('helvetica','B',11);
