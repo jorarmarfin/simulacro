@@ -16,7 +16,6 @@
             </div>
         </div>
         <div class="portlet-body">
-        </br>
         <p></p>
             <div class="table-response">
 
@@ -46,6 +45,7 @@
                             <th> Nombre Especialidad </th>
                             <th> Aula </th>
                             <th> Sector </th>
+                            <th> Pago </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,6 +74,7 @@
                             <td> {{ $padron->nombre_especialidad }} </td>
                             <td> {{ $padron->datos_aula->codigo }} </td>
                             <td> {{ $padron->datos_aula->sector }} </td>
+                            <td> {{ $padron->ha_pagado }} </td>
 
                         </tr>
                         @endforeach

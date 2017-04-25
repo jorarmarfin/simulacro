@@ -13,6 +13,14 @@ class Postulante extends Model
     protected $fillable = ['idevaluacion', 'codigo','paterno','materno','nombres','dni','telefono','email','foto','idsexo','fecha_nacimiento','pago','anulado','idusuario','idgrado','foto_rechazo','foto_estado','fecha_foto','fecha_registro','mensaje','datos_ok','idaula','idsede','idespecialidad','idubigeo','direccion','idcolegio'];
 
     /**
+    * Atributos Ha Pagado
+    */
+    public function getHaPagadoAttribute()
+    {
+        if($this->pago)return 'SI';
+        else return 'NO';
+    }
+    /**
     * Atributos Datos Aula
     */
     public function getDatosAulaAttribute()
