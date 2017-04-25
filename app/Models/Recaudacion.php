@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recaudacion extends Model
 {
     protected $table = 'recaudacion';
-    protected $fillable = ['recibo', 'servicio', 'descripcion','monto','fecha','codigo','nombrecliente','idpostulante'];
+    protected $fillable = ['recibo', 'servicio', 'descripcion','monto','fecha','codigo','nombrecliente','idpostulante','banco'];
     /**
      * Establecemos el la relacion con catalogo
      * @return [type] [description]
