@@ -62,7 +62,8 @@
 			            <th> Fecha </th>
 			            <th> Codigo </th>
 			            <th> Cliente </th>
-			            <th> postulante </th>
+                        <th> postulante </th>
+			            <th> Banco </th>
 			            <th> Opciones </th>
 			        </tr>
 			    </thead>
@@ -131,7 +132,7 @@ $('.Recaudacion').dataTable({
                     }
                 },
                 {
-                    'targets':8,
+                    'targets':9,
                     'render': function ( data, type, full, meta ) {
                       return '<a href="#" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
@@ -146,6 +147,7 @@ $('.Recaudacion').dataTable({
             { "data": "codigo","defaultContent": "" },
             { "data": "nombrecliente","defaultContent": "" },
             { "data": "postulantes","defaultContent": "" },
+            { "data": "banco","defaultContent": "" },
             { "data": "id","defaultContent": "" },
         ],
     "order": [1,"asc"],
