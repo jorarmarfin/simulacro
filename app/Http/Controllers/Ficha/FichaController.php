@@ -101,6 +101,11 @@ class FichaController extends Controller
         PDF::SetXY(78,150);
         PDF::SetFont('helvetica','B',10);
         PDF::Cell(110,5,$postulante->aula,0,0,'L');
+        #DIRECCION
+        PDF::SetXY(78,154);
+        PDF::SetFont('helvetica','B',10);
+        $retVal = (str_contains($postulante->aula,'HYO')) ? 'COLEGIO SALESIANO SANTA ROSA CALLE AREQUIPA 299' : 'UNIVERSIDAD NACIONAL DE INGENIERIA AV. TUPAC AMARU 210 RIMAC' ;
+        PDF::Cell(110,5,$retVal,0,0,'L');
 
         #DECLARACION JURADA
         PDF::SetXY(18,165);
