@@ -210,7 +210,7 @@ class PagosController extends Controller
 			$CodigoAgrupacion = pad('',11,' '),
 			$Situacion = '0',
 			$MonedaCobro = '0000',
-			$Cliente = pad(str_clean(substr($postulante->nombre_cliente,0,20)),20,' '),
+			$Cliente = pad(substr($postulante->nombre_cliente,0,20),20,' '),
 			$DescripcionConcepto = pad($evaluacion->nombre,30,' '),
 			$CodigoConcepto = '01',
 			$ImporteConcepto = pad(pad($servicio->valor,4,'0'),9,'0','L'),

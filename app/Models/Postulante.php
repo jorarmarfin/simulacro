@@ -126,7 +126,11 @@ class Postulante extends Model
     */
     public function getNombreClienteAttribute()
     {
-        $nombre = $this->paterno.' '.$this->materno.' '.$this->nombres;
+        $paterno = strtoupper(str_clean($this->paterno));
+        $materno = strtoupper(str_clean($this->materno));
+        $nombres = strtoupper(str_clean($this->nombres));
+
+        $nombre = $paterno.' '.$materno.' '.$nombres;
         return $nombre;
     }
     /**
