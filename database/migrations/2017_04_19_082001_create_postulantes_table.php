@@ -49,7 +49,7 @@ class CreatePostulantesTable extends Migration
             $table->foreign('idgrado')->references('id')->on('catalogo');
             $table->foreign('idaula')->references('id')->on('aula');
             $table->foreign('idsede')->references('id')->on('catalogo');
-            $table->unique(['idevaluacion','codigo']);
+            $table->unique(['idevaluacion','codigo','dni']);
         });
     }
 

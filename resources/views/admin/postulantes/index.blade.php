@@ -38,7 +38,8 @@
                             <th> DNI </th>
                             <th> Telefono </th>
                             <th> Email </th>
-                            <th> Foto </th>
+                            <th> Foto Cargada</th>
+                            <th> Foto Editada</th>
                             <th> Foto Rechazado </th>
                             <th> Fecha Foto </th>
                             <th> Fecha Registro </th>
@@ -110,6 +111,15 @@ $('.Postulantes').DataTable({
                 },
                 {
                     'targets':16,
+                    'render': function ( data, type, row ) {
+                        var ext = data.foto;
+                        var n = ext.slice((ext.lastIndexOf(".") - 1 >>> 0) + 2);
+                        var foto = data.dni+'.'+n;
+                      return '<a href="#verfoto" data-foto="{{ asset('/storage/fotosok') }}/'+foto+'" data-toggle="modal"><img src="{{ asset('/storage/fotosok') }}/'+foto+'"  width="25px" ></a>';
+                    }
+                },
+                {
+                    'targets':17,
                     'render': function ( data ) {
                         if (data!=null) {
                             return '<a href="#verfoto" data-foto="{{ asset('/storage/') }}/'+data+'" data-toggle="modal"><img src="{{ asset('/storage/') }}/'+data+'"  width="25px" ></a>';
@@ -117,15 +127,6 @@ $('.Postulantes').DataTable({
                     }
                 },
                 {
-                    'targets':21,
-                    'render': function ( data ) {
-                    	if (data) {
-                    		return '<span class="label label-sm label-info"> SI </span>';
-                    	}else{
-                    		return '<span class="label label-sm label-danger"> NO </span>';
-                    	}
-                    }
-                },{
                     'targets':22,
                     'render': function ( data ) {
                     	if (data) {
@@ -134,9 +135,18 @@ $('.Postulantes').DataTable({
                     		return '<span class="label label-sm label-danger"> NO </span>';
                     	}
                     }
+                },{
+                    'targets':23,
+                    'render': function ( data ) {
+                    	if (data) {
+                    		return '<span class="label label-sm label-info"> SI </span>';
+                    	}else{
+                    		return '<span class="label label-sm label-danger"> NO </span>';
+                    	}
+                    }
                 },
                 {
-                    'targets':23,
+                    'targets':24,
                     'render': function ( data ) {
                       return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>'+
                       '<a href="postulante/'+data+'/edit" title="Ficha"class="btn btn-icon-only blue" ><i class="fa fa-file-image-o"></i></a>'+
@@ -161,6 +171,7 @@ $('.Postulantes').DataTable({
             { "data": "telefono","defaultContent": "" },
             { "data": "email","defaultContent": "" },
             { "data": "foto","defaultContent": "" },
+            { "data":  null },
             { "data": "foto_rechazo","defaultContent": "" },
             { "data": "fecha_foto","defaultContent": "" },
             { "data": "fecha_registro","defaultContent": "" },
@@ -181,6 +192,7 @@ $('#verfoto').on('show.bs.modal', function (e) {
         var foto = $(e.relatedTarget).data('foto');
         $(e.currentTarget).find('#fotito').attr("src",foto);
     });
+
 
 </script>
 @stop

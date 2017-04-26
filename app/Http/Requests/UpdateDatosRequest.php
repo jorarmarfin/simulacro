@@ -35,6 +35,7 @@ class UpdateDatosRequest extends FormRequest
             'direccion'=>'required',
             'idubigeo'=>'required',
             'idcolegio'=>'required',
+            'email'=>'email',
         ];
     }
 
