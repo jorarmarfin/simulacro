@@ -160,7 +160,7 @@ $('.Recaudacion').dataTable({
             { "data": "referencia","defaultContent": "" },
             { "data": "id","defaultContent": "" },
         ],
-    "order": [1,"asc"],
+    "order": [4,"asc"],
 
 });
 </script>
