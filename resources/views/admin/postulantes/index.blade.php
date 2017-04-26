@@ -173,7 +173,7 @@ $('.Postulantes').DataTable({
             { "data": "telefono","defaultContent": "" },
             { "data": "email","defaultContent": "" },
             { "data": "foto","defaultContent": "" },
-            { "data":  null },
+            { "data":  null,"defaultContent": "" },
             { "data": "foto_rechazo","defaultContent": "" },
             { "data": "fecha_foto","defaultContent": "" },
             { "data": "fecha_registro","defaultContent": "" },
