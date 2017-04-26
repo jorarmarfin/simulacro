@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Postulante;
+use App\Models\Recaudacion;
 use Auth;
 use DB;
 use Illuminate\Http\Request;
@@ -26,8 +27,7 @@ class HomeController extends Controller
     public function index()
     {
         $resumen = Postulante::Resumen()->orderBy('fecha_registro')->get();
-        $pagantes = Postulante::ResumenPago(1)->orderBy('fecha_registro')->get();
-
+        $pagantes = Recaudacion::Resumen()->orderBy('fecha')->get();
 
         switch (Auth::user()->role->nombre) {
             case 'root':

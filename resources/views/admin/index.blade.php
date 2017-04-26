@@ -23,7 +23,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span data-counter="counterup" data-value="">0</span> </div>
+                    <span>{{ $pagantes->sum('cantidad') }}</span> </div>
                 <div class="desc"> Pagantes </div>
             </div>
         </a>

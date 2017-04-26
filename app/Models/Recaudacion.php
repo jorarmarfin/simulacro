@@ -3,11 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use DB;
 class Recaudacion extends Model
 {
     protected $table = 'recaudacion';
-    protected $fillable = ['recibo', 'servicio', 'descripcion','monto','fecha','codigo','nombrecliente','idpostulante','banco'];
+    protected $fillable = ['recibo', 'servicio', 'descripcion','monto','fecha','codigo','nombrecliente','idpostulante','banco','referencia'];
+
+    /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeResumen($cadenaSQL){
+        return $cadenaSQL->select('fecha',DB::raw('count(*) as cantidad'))
+                         ->groupBy('fecha');
+    }
+
+
     /**
      * Establecemos el la relacion con catalogo
      * @return [type] [description]

@@ -24,6 +24,7 @@ class CreateRecaudacionsTable extends Migration
             $table->string('nombrecliente',100)->nullable();
             $table->integer('idpostulante')->nullable();
             $table->string('banco',100)->nullable();
+            $table->string('referencia',100)->nullable();
 
             $table->timestamps();
             $table->foreign('idpostulante')->references('id')->on('postulante');

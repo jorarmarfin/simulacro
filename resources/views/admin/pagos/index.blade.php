@@ -63,7 +63,8 @@
 			            <th> Codigo </th>
 			            <th> Cliente </th>
                         <th> postulante </th>
-			            <th> Banco </th>
+                        <th> Banco </th>
+			            <th> Referencia </th>
 			            <th> Opciones </th>
 			        </tr>
 			    </thead>
@@ -92,7 +93,11 @@
                 </div>
                 <div class="form-group">
                     {!!Form::label('lblBanco', 'Banco');!!}
-                    {!!Form::text('banco', 'Scotiabank' , ['class'=>'form-control','placeholder'=>'Numero de DNI','maxlength'=>'8']);!!}
+                    {!!Form::text('banco', 'Scotiabank' , ['class'=>'form-control','placeholder'=>'Numero de DNI']);!!}
+                </div>
+                <div class="form-group">
+                    {!!Form::label('lblReferencia', 'Referencia');!!}
+                    {!!Form::text('referencia', null , ['class'=>'form-control','placeholder'=>'Referencia del pago']);!!}
                 </div>
             </div>
             <div class="modal-footer">
@@ -136,7 +141,7 @@ $('.Recaudacion').dataTable({
                     }
                 },
                 {
-                    'targets':9,
+                    'targets':10,
                     'render': function ( data, type, full, meta ) {
                       return '<a href="#" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>';
                     }
@@ -152,6 +157,7 @@ $('.Recaudacion').dataTable({
             { "data": "nombrecliente","defaultContent": "" },
             { "data": "postulantes","defaultContent": "" },
             { "data": "banco","defaultContent": "" },
+            { "data": "referencia","defaultContent": "" },
             { "data": "id","defaultContent": "" },
         ],
     "order": [1,"asc"],

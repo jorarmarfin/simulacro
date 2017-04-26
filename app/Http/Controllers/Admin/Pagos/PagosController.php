@@ -41,6 +41,7 @@ class PagosController extends Controller
         $ser = $servicio->nombre;
         $cod = $request->input('codigo');
         $banco = $request->input('banco');
+        $ref = $request->input('referencia');
         $des = $servicio->descripcion;
         $mon = $servicio->valor;
         $date = Carbon::now();
@@ -54,6 +55,7 @@ class PagosController extends Controller
                             'codigo'=>$cod,
                             'nombrecliente'=>$pos->nombre_cliente,
                             'banco'=>$banco,
+                            'referencia'=>$ref,
                             'idpostulante'=>$pos->id
                             ]);
         if($pago){
