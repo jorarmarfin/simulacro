@@ -139,7 +139,7 @@ class PagosController extends Controller
      */
     public function create()
     {
-    	$postulantes = Postulante::Pagantes()->get();
+    	$postulantes = Postulante::Pagantes()->Alfabetico()->get();
     	$param = $this->Parametros($postulantes);
 
     	$name = 'UNIADMIS.txt';

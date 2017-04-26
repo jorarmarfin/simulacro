@@ -266,6 +266,14 @@ class Postulante extends Model
                          ->groupBy('fecha_registro');
     }
     /**
+    * Devuelve los valores Activos
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeAlfabetico($cadenaSQL){
+        return $cadenaSQL->orderBy('paterno')->orderBy('materno')->orderBy('nombres');
+    }
+    /**
      * Establecemos el la relacion con catalogo
      * @return [type] [description]
      */
@@ -344,9 +352,9 @@ class Postulante extends Model
     public static function AsignarCodigo($data)
     {
         $secuencia = Secuencia::all()->first();
-        $numero = DB::select("SELECT nextval('$secuencia->nombre')");
-        $numero = $numero[0]->nextval;
         foreach ($data as $key => $item) {
+            $numero = DB::select("SELECT nextval('$secuencia->nombre')");
+            $numero = $numero[0]->nextval;
             $codigo = NumeroInscripcion(8,$numero);
             Postulante::where('id',$item['idpostulante'])->update(['codigo'=>$codigo, 'pago'=>true]);
         }
