@@ -115,7 +115,9 @@ $('.Postulantes').DataTable({
                         var ext = data.foto;
                         var n = ext.slice((ext.lastIndexOf(".") - 1 >>> 0) + 2);
                         var foto = data.dni+'.'+n;
-                      return '<a href="#verfoto" data-foto="{{ asset('/storage/fotosok') }}/'+foto+'" data-toggle="modal"><img src="{{ asset('/storage/fotosok') }}/'+foto+'"  width="25px" ></a>';
+                        if( data.foto_estado == 'ACEPTADO'){
+                            return '<a href="#verfoto" data-foto="{{ asset('/storage/fotosok') }}/'+foto+'" data-toggle="modal"><img src="{{ asset('/storage/fotosok') }}/'+foto+'"  width="25px" ></a>';
+                        }
                     }
                 },
                 {
