@@ -85,7 +85,7 @@
                             <tbody>
                                 @foreach ($pagantes as $item)
                                     <tr>
-                                        <th> {{ $item->fecha_registro }} </th>
+                                        <th> {{ $item->fecha }} </th>
                                         <td> {{ $item->cantidad }} </td>
                                     </tr>
                                 @endforeach
