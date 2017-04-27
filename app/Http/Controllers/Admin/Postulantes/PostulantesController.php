@@ -18,4 +18,8 @@ class PostulantesController extends Controller
 	    $res['data'] = $Lista;
 	    return $res;
     }
+    public function ficha($id)
+    {
+        return view('admin.postulantes.ficha',compact('id'));
+    }
 }

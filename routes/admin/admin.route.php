@@ -7,6 +7,7 @@ Route::resource('users', 'UsersController',['names'=>'admin.users']);
  */
 Route::group(['namespace'=>'Postulantes'], function() {
 	Route::get('postulantes','PostulantesController@index')->name('admin.pos.index');
+	Route::get('postulantes-ficha/{id}','PostulantesController@ficha')->name('admin.pos.ficha');
 	Route::get('postulantes-lista','PostulantesController@lista')->name('admin.pos.list');
 
 });

@@ -151,7 +151,7 @@ $('.Postulantes').DataTable({
                     'targets':24,
                     'render': function ( data ) {
                       return '<a href="postulante/'+data+'/edit" title="Editar"class="btn btn-icon-only green-haze" ><i class="fa fa-edit"></i></a>'+
-                      '<a href="postulante/'+data+'/edit" title="Ficha"class="btn btn-icon-only blue" ><i class="fa fa-file-image-o"></i></a>'+
+                      '<a href="postulantes-ficha/'+data+'" title="Ficha"class="btn btn-icon-only blue" ><i class="fa fa-file-image-o"></i></a>'+
                       '<a href="postulante/'+data+'/edit" title="Formato Pago"class="btn btn-icon-only grey-gallery" ><i class="fa fa-money"></i></a>';
                     }
                 }
