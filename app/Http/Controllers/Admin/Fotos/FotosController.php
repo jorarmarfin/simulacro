@@ -33,6 +33,7 @@ class FotosController extends Controller
     		case '1':
                 $postulante->foto_estado = 'ACEPTADO';
     			$postulante->mensaje = null;
+                $postulante->foto = $nuevo_archivo;
     			$postulante->save();
                 Storage::copy($archivo, $nuevo_archivo);
                 Storage::copy($archivo, $nuevo_archivo_tmp);
