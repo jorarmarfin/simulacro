@@ -16,6 +16,8 @@
             </div>
         </div>
         <div class="portlet-body">
+            {!!Form::back(route('admin.pos.index'))!!}
+            <p></p>
             <iframe src="{{route('ficha.pdf',$id)}}" width="100%" height="700px" scrolling="auto"></iframe>
         </div>
     </div>
