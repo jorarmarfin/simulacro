@@ -31,6 +31,10 @@ class UsersController extends Controller
                 $idrol = IdRole('alum');
                 $Lista = User::where('idrole',$idrol)->get();
                 break;
+            case 'informes':
+                $idrol = IdRole('alum');
+                $Lista = User::where('idrole',$idrol)->get();
+                break;
 
             default:
                 $Lista = [];
