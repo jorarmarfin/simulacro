@@ -27,6 +27,7 @@ class CatalogoTableSeeder extends Seeder
         Catalogo::create(['idtable' => 1,'iditem' => 4, 'codigo' => 'foto','nombre' => 'Editor Foto','descripcion'=>'Editor Foto','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 1,'iditem' => 5, 'codigo' => 'pago','nombre' => 'Carga Pago','descripcion'=>'Carga Pago','valor'=> null,'activo'=>true]);
         Catalogo::create(['idtable' => 1,'iditem' => 6, 'codigo' => 'jefe','nombre' => 'Jefatura','descripcion'=>'Jefatura','valor'=> null,'activo'=>true]);
+        Catalogo::create(['idtable' => 1,'iditem' => 7, 'codigo' => 'informes','nombre' => 'Informes','descripcion'=>'Informes','valor'=> null,'activo'=>true]);
         /**
          * Sexo
          */
