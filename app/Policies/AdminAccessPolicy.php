@@ -21,15 +21,18 @@ class AdminAccessPolicy
             return true;
         }
     }
-    public function admin(User $user)
-    {
-        if ($user->idrole == IdRole('admin') || $user->idrole == IdRole('root') || $user->idrole == IdRole('jefe')) {
-            return true;
-        }
-    }
     public function informes(User $user)
     {
         if ($user->idrole == IdRole('informes') || $user->idrole == IdRole('root') || $user->idrole == IdRole('admin')) {
+            return true;
+        }
+    }
+    public function admin(User $user)
+    {
+        if ($user->idrole == IdRole('admin') ||
+            $user->idrole == IdRole('root') ||
+            $user->idrole == IdRole('jefe') ||
+            $user->idrole == IdRole('informes')) {
             return true;
         }
     }
