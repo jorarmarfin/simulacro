@@ -29,7 +29,7 @@
             </li>
             {!!Form::menu('Usuarios',route('admin.users.index'),'icon-users')!!}
             {!!Form::menu('Participante',route('admin.pos.index'),'fa fa-users')!!}
-            @can('admin',Auth::user())
+            @can('administrador',Auth::user())
                 {!!Form::menu('Colegio',route('admin.colegios.index'),'fa fa-bank')!!}
                 {!!Form::menu('Pagos',route('admin.pagos.index'),'fa fa-money')!!}
                 {!!Form::menu('Editar Fotos',route('admin.fotos.index'),'fa fa-file-image-o')!!}

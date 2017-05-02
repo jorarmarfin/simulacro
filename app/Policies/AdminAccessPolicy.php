@@ -27,6 +27,12 @@ class AdminAccessPolicy
             return true;
         }
     }
+    public function administrador(User $user)
+    {
+        if ($user->idrole == IdRole('root') || $user->idrole == IdRole('admin')) {
+            return true;
+        }
+    }
     public function admin(User $user)
     {
         if ($user->idrole == IdRole('admin') ||
