@@ -22,4 +22,8 @@ class PostulantesController extends Controller
     {
         return view('admin.postulantes.ficha',compact('id'));
     }
+    public function pago($id)
+    {
+        return view('admin.postulantes.pago',compact('id'));
+    }
 }

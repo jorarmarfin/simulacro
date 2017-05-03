@@ -8,13 +8,18 @@ use Illuminate\Http\Request;
 use PDF;
 class PagoController extends Controller
 {
-    public function index()
+    public function index($id = null)
     {
-    	return view('pagos.index');
+    	return view('pagos.index',compact('id'));
     }
-    public function pdf()
+    public function pdf($id = null)
     {
-    	$postulante = Postulante::Usuario()->first();
+        if (isset($id)) {
+           $postulante = Postulante::find($id);
+        } else {
+           $postulante = Postulante::Usuario()->first();
+        }
+
         if(isset($postulante)){
 
         PDF::SetTitle('RECIBO DE PAGO');
