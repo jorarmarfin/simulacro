@@ -88,6 +88,14 @@ class Postulante extends Model
         return $foto;
     }
     /**
+    * Atributos Foto
+    */
+    public function getMostrarFotoEditadaAttribute()
+    {
+        $foto = asset('/storage/fotosok/'.$this->dni.extension($this->foto));
+        return $foto;
+    }
+    /**
     * Atributos Aula
     */
     public function getAulaAttribute()
