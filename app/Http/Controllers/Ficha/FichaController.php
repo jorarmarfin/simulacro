@@ -131,7 +131,7 @@ class FichaController extends Controller
             PDF::SetFont('helvetica','',11);
             PDF::Cell(70,5,'DNI del '.$persona.':','B',0,'L');
             #FOTO
-            PDF::Image($postulante->mostrar_foto_editada,169,45,35);
+            PDF::Image($postulante->mostrar_foto_editada,169,42,34);
 
             PDF::Output(public_path('storage/tmp/').'FichaPostulante'.$postulante->dni.'.pdf','FI');
         }else{
