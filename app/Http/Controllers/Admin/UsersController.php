@@ -123,6 +123,7 @@ class UsersController extends Controller
             $user->foto = $request->file('file')->store('avatar','public');
         }else{
             $user->dni = $request->input('dni');
+            $user->idrole = $request->input('idrole');
         }
         $user->save();
         Alert::success('Usuario actualizado');
