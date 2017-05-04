@@ -91,7 +91,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        {{ $resumen->links() }}
+                        {{ $pagantes->links() }}
                     </div>
                 </div>
             </div>
