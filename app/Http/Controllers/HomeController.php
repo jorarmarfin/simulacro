@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $resumen = Postulante::Resumen()->orderBy('fecha_registro')->get();
-        $pagantes = Recaudacion::Resumen()->orderBy('fecha')->get();
+        $resumen = Postulante::Resumen()->orderBy('fecha_registro')->paginate(10);
+        $pagantes = Recaudacion::Resumen()->orderBy('fecha')->paginate(10);
 
         switch (Auth::user()->role->nombre) {
             case 'root':

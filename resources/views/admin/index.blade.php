@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-md-3">
                     Cantidad de Inscritos
-                        <table class="table table-bordered table-hover" data-pagination="true">
+                        <table class="table table-bordered table-hover" >
                             <thead>
                                 <tr>
                                     <th> Fecha </th>
@@ -59,17 +59,17 @@
                             <tbody>
                                 @foreach ($resumen as $item)
                                     <tr>
-                                        <th> {{ $item->fecha_registro }} </th>
+                                        <td><strong> {{ $item->fecha_registro }} </strong></td>
                                         <td> {{ $item->cantidad }} </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        {{ $resumen->links() }}
                     </div>
                     <div class="col-md-3">
                     Cantidad de Pagantes
-                        <table class="table table-bordered table-hover" data-pagination="true">
+                        <table class="table table-bordered table-hover"  data-pagination="true" >
                             <thead>
                                 <tr>
                                     <th> Fecha </th>
@@ -85,13 +85,13 @@
                             <tbody>
                                 @foreach ($pagantes as $item)
                                     <tr>
-                                        <th> {{ $item->fecha }} </th>
+                                        <td><strong> {{ $item->fecha }} </strong></td>
                                         <td> {{ $item->cantidad }} </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
-
+                        {{ $resumen->links() }}
                     </div>
                 </div>
             </div>
