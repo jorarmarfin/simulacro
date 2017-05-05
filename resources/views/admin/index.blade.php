@@ -10,7 +10,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span >{{ $resumen->sum('cantidad') }}</span>
+                    <span >{{ $total_inscritos }}</span>
                 </div>
                 <div class="desc"> Inscritos </div>
             </div>
@@ -23,7 +23,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span>{{ $pagantes->sum('cantidad') }}</span> </div>
+                    <span>{{ $total_pagantes }}</span> </div>
                 <div class="desc"> Pagantes </div>
             </div>
         </a>
@@ -53,7 +53,7 @@
                             <tfoot>
                                 <tr>
                                     <th> Total </th>
-                                    <th> {{ $resumen->sum('cantidad') }} </th>
+                                    <th>  {{ $total_inscritos }}</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -79,7 +79,7 @@
                             <tfoot>
                                 <tr>
                                     <th> Total </th>
-                                    <th> {{ $pagantes->sum('cantidad') }} </th>
+                                    <th> {{ $total_pagantes }} </th>
                                 </tr>
                             </tfoot>
                             <tbody>
