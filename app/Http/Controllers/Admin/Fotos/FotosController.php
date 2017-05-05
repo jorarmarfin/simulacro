@@ -57,9 +57,14 @@ class FotosController extends Controller
 
         $fileContents = file_get_contents($request->nueva_imagen);
         $nuevo_archivo = 'fotosok/'.$postulante->dni.extension($postulante->foto);
+
         Storage::disk('public')->put($nuevo_archivo,$fileContents);
         $postulante->foto = $nuevo_archivo;
         $postulante->save();
+
+        $archivo = 'public/'.$postulante->foto;
+        $nuevo_archivo_tmp = 'public/fotosok/tmp/'.$postulante->dni.extension($archivo);
+        Storage::copy($archivo, $nuevo_archivo_tmp);
     }
 
 
