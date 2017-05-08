@@ -16,8 +16,8 @@
             Inicia tu Inscripción ahora:
             <ol>
                 <li>Datos: Registrar datos del participante (no del apoderado)</li>
-                <li>Pagos: imprimir tu formato de pago para realizar el pago en el banco Scotiabak</li>
-                <li>Ficha: imprimri tu ficha de inscripción despues de realizar el pago</li>
+                <li>Pagos: imprimir tu formato de pago para realizar el pago en el banco o agencias Scotiabak</li>
+                <li>Ficha: imprimir tu ficha de participante despues de realizar el pago</li>
             </ol>
              <strong> BENEFICIOS DEL SIMULACRO: </strong> </br>
              <ol>
@@ -25,7 +25,7 @@
                  <li>Los participantes que alcancen los dos primeros puestos por especialidad tentativa (1) (con nota mayor o igual a 12) quedarán exonerados del 50% del derecho de inscripción al Concurso de Admisión al que decida postular. Es acumulable hasta el 100%, si participan en otro simulacro de la misma especialidad tentativa dentro de los dos años calendario siguientes al otorgamiento de la primera exoneración. No siendo transferible ni acumulable con ningún otro beneficio que otorgue la OCAD.</li>
              </ol>
              <strong> Nota: </strong> El puntaje obtenido en el Simulacro no es válido para el Concurso de Admisión. </br>
-             <strong> Observacion :</strong> Debe asegurarse de tener una foto nitida que no sea tomada de su celular, de lo contrario demorará el proceso de isncripción</br>
+             <strong> Observacion :</strong> Debe asegurarse de tener una foto nitida que no sea tomada de su celular, de lo contrario demorará el proceso de inscripción</br>
              <strong> Especialidad tentativa:</strong> La especialidad que escoge el participante como referencia al momento de su participación en el Simulacro.
         </div>
     </div>
