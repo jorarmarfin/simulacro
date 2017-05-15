@@ -105,7 +105,7 @@ class FichaController extends Controller
             PDF::Cell(60,5,'Aula :',0,0,'R');
             PDF::SetXY(78,150);
             PDF::SetFont('helvetica','B',10);
-            PDF::Cell(110,5,$postulante->aula.' / Hora ingreso: 7:30 a.m.',0,0,'L');
+            PDF::Cell(110,5,$postulante->aula,0,0,'L');
             #DIRECCION
             PDF::SetXY(18,154);
             PDF::SetFont('helvetica','',11);

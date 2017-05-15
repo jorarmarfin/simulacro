@@ -102,7 +102,7 @@ class Postulante extends Model
     {
         if (isset($this->idaula)) {
             $aula = Aula::find($this->idaula);
-            return $aula->codigo;
+            return $aula->codigo.' / Hora ingreso: 7:30 a.m.';
         }else return ' ';
     }
     /**
