@@ -21,7 +21,7 @@ class DatosController extends Controller
     	if(is_null($postulante))return view('datos.index',compact('dni'));
     	else return view('datos.edit',compact('postulante'));
     }
-    public function store(UpdateDatosRequest $request)
+    public function store(CreateDatosRequest $request)
     {
     	$data = $request->all();
         $date = Carbon::now();

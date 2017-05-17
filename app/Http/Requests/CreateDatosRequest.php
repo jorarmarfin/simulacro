@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateDatosRequest extends FormRequest
+class CreateDatosRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,6 +30,7 @@ class UpdateDatosRequest extends FormRequest
             'fecha_nacimiento'=>'required',
             'idsexo'=>'required',
             'idgrado'=>'required',
+            'idsede'=>'required',
             'idespecialidad'=>'required',
             'direccion'=>'required',
             'idubigeo'=>'required',
@@ -37,5 +38,4 @@ class UpdateDatosRequest extends FormRequest
             'email'=>'email',
         ];
     }
-
 }
