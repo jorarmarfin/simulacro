@@ -404,22 +404,33 @@ class Postulante extends Model
             }else{
                 $aula = Aula::select('id')
                             ->where('activo',true)
+                            ->where('sector','<>','HYO')
                             ->where('disponible','>',0)
                             ->orderBy('orden')
                             ->take(3)
                             ->get();
                 Aula::whereIn('id',$aula->toArray())->update(['habilitado'=>true]);
 
-                $aula = Aula::select('id')
-                            ->where('activo',true)
-                            ->where('habilitado',true)
-                            ->where('disponible','>',0)
-                            ->inRandomOrder()
-                            ->first();
+                if ($sede->nombre == 'Lima') {
+                    $aula = Aula::select('id')
+                                    ->where('sector','<>','HYO')
+                                    ->where('activo',true)
+                                    ->where('habilitado',true)
+                                    ->where('disponible','>',0)
+                                    ->inRandomOrder()
+                                    ->first();
+                } else {
+                    $aula = Aula::select('id')
+                                    ->where('sector','HYO')
+                                    ->where('activo',true)
+                                    ->where('habilitado',true)
+                                    ->where('disponible','>',0)
+                                    ->inRandomOrder()
+                                    ->first();
+                }
                 Aula::where('id',$aula->id)->increment('asignado');
                 Aula::where('id',$aula->id)->decrement('disponible');
                 Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id]);
-
             }
         }
     }
