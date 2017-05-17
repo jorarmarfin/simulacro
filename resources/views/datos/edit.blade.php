@@ -135,12 +135,6 @@
                     </div><!--span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            {!!Form::label('lblSede', 'Sede');!!}
-                            {!!Form::select('idsede', $sedes ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
-                        </div>
-                    </div><!--span-->
-                    <div class="col-md-6">
-                        <div class="form-group">
                             {!!Form::label('lblEspecialidad', 'Especialidad de preferencia');!!}
                             {!!Form::select('idespecialidad', $especialidad ,null , ['class'=>'form-control','placeholder'=>'Seleccionar']);!!}
                         </div>
