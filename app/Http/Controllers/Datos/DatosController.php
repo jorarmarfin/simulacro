@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Datos;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateDatosRequest;
 use App\Http\Requests\UpdateDatosRequest;
 use App\Models\Postulante;
 use Auth;
