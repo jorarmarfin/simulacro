@@ -71,7 +71,7 @@
             </div>
             <div class="details">
                 <div class="number">
-                    <span>{{ $total_pagantes_l }}</span> </div>
+                    <span>{{ $total_pagantes_h }}</span> </div>
                 <div class="desc"> Pagantes Hyo </div>
             </div>
         </a>
