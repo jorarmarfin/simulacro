@@ -54,7 +54,10 @@ class HomeController extends Controller
                 break;
 
             default:
-                return view('admin.index',compact('resumen','pagantes','total_inscritos','total_pagantes'));
+                return view('admin.index',compact(
+                    'resumen','pagantes','total_inscritos','total_pagantes','resumenSede','resumenSedeH','total_inscritos_lima'
+                    ,'total_inscritos_hyo','pagantes_sl','pagantes_sh','total_pagantes_l','total_pagantes_h'
+                    ));
                 break;
         }
     }
