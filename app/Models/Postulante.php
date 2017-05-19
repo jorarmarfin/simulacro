@@ -264,6 +264,22 @@ class Postulante extends Model
         return $cadenaSQL->select('fecha_registro',DB::raw('count(*) as cantidad'))
                          ->Activos()
                          ->isNull(0)
+                         ->orderBy('fecha_registro','desc')
+                         ->groupBy('fecha_registro');
+    }
+    /**
+    * Es llamado por el controlador HomeController
+    *
+    * @param  [type]  [description]
+    * @return [type]            [description]
+    */
+    public function scopeResumenSede($cadenaSQL,$sede){
+        $sede = Catalogo::select('id')->where('codigo',$sede)->first();
+        return $cadenaSQL->select('fecha_registro',DB::raw('count(*) as cantidad'))
+                         ->Activos()
+                         ->isNull(0)
+                         ->where('idsede',$sede->id)
+                         ->orderBy('fecha_registro','desc')
                          ->groupBy('fecha_registro');
     }
     /**

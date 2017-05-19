@@ -28,6 +28,54 @@
             </div>
         </a>
     </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 green" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span>{{ $total_inscritos_lima }}</span> </div>
+                <div class="desc"> Inscritos Lima </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span>{{ $total_inscritos_hyo }}</span> </div>
+                <div class="desc"> Inscritos Hyo </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span>{{ $total_pagantes_l }}</span> </div>
+                <div class="desc"> Pagantes Lima </div>
+            </div>
+        </a>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <a class="dashboard-stat dashboard-stat-v2 green-meadow" href="#">
+            <div class="visual">
+                <i class="fa fa-bar-chart-o"></i>
+            </div>
+            <div class="details">
+                <div class="number">
+                    <span>{{ $total_pagantes_l }}</span> </div>
+                <div class="desc"> Pagantes Hyo </div>
+            </div>
+        </a>
+    </div>
 </div>
 <div class="row">
     <div class="col-lg-12 ">
@@ -93,6 +141,111 @@
                         </table>
                         {{ $pagantes->links() }}
                     </div>
+                    <div class="col-md-3">
+                    Inscritos de Lima
+                        <table class="table table-bordered table-hover"  data-pagination="true" >
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> cantidad </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Total </th>
+                                    <th> {{ $total_inscritos_lima }} </th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($resumenSede as $item)
+                                    <tr>
+                                        <td><strong> {{ $item->fecha_registro }} </strong></td>
+                                        <td> {{ $item->cantidad }} </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $pagantes->links() }}
+                    </div>
+                    <div class="col-md-3">
+                    Inscritos de Huancayo
+                        <table class="table table-bordered table-hover"  data-pagination="true" >
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> cantidad </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Total </th>
+                                    <th> {{ $total_inscritos_hyo }} </th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($resumenSedeH as $item)
+                                    <tr>
+                                        <td><strong> {{ $item->fecha_registro }} </strong></td>
+                                        <td> {{ $item->cantidad }} </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $pagantes->links() }}
+                    </div>
+                    <div class="col-md-3">
+                    Cantidad de Pagantes Sede Lima
+                        <table class="table table-bordered table-hover"  data-pagination="true" >
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> cantidad </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Total </th>
+                                    <th> {{ $total_pagantes_l }} </th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($pagantes_sl as $item)
+                                    <tr>
+                                        <td><strong> {{ $item->fecha }} </strong></td>
+                                        <td> {{ $item->cantidad }} </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $pagantes->links() }}
+                    </div>
+                    <div class="col-md-3">
+                    Cantidad de Pagantes Sede Huancayo
+                        <table class="table table-bordered table-hover"  data-pagination="true" >
+                            <thead>
+                                <tr>
+                                    <th> Fecha </th>
+                                    <th> cantidad </th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th> Total </th>
+                                    <th> {{ $total_pagantes_h }} </th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                @foreach ($pagantes_sh as $item)
+                                    <tr>
+                                        <td><strong> {{ $item->fecha }} </strong></td>
+                                        <td> {{ $item->cantidad }} </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        {{ $pagantes->links() }}
+                    </div>
+
                 </div>
             </div>
         </div>
