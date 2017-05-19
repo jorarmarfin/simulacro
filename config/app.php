@@ -192,6 +192,10 @@ return [
          * Macros para formularios
          */
         App\Providers\MacroServiceProvider::class,
+        /**
+         * Manejador de logs
+         */
+        'Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider',
     ],
 
     /*
