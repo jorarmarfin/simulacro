@@ -106,7 +106,7 @@ $(function(){
                     { extend: 'colvis', className: 'btn dark btn-outline', text: 'Columns'}
                 ],
         "bProcessing": true,
-               "pagingType": "bootstrap_full_number",
+        "pagingType": "bootstrap_full_number",
 
     });
 

@@ -414,9 +414,11 @@ class Postulante extends Model
 
 
             if (isset($aula)) {
-                Aula::where('id',$aula->id)->increment('asignado');
-                Aula::where('id',$aula->id)->decrement('disponible');
-                Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id]);
+
+                if (Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id])) {
+                    Aula::where('id',$aula->id)->increment('asignado');
+                    Aula::where('id',$aula->id)->decrement('disponible');
+                }
             }else{
                 $aula = Aula::select('id')
                             ->where('activo',true)
@@ -444,9 +446,10 @@ class Postulante extends Model
                                     ->inRandomOrder()
                                     ->first();
                 }
-                Aula::where('id',$aula->id)->increment('asignado');
-                Aula::where('id',$aula->id)->decrement('disponible');
-                Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id]);
+                if (Postulante::where('id',$item['idpostulante'])->update(['idaula'=>$aula->id])) {
+                    Aula::where('id',$aula->id)->increment('asignado');
+                    Aula::where('id',$aula->id)->decrement('disponible');
+                }
             }
         }
     }
