@@ -232,7 +232,8 @@ if (! function_exists('PorAtender')) {
     function PorAtender()
     {
         $mensajes = Mensaje::whereNull('respuesta')->orderBy('created_at')->get();
-        return $mensajes;
+        #return $mensajes;
+        return '';
     }
 }
 

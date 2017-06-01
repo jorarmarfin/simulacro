@@ -68,7 +68,8 @@ $(function(){
     function Recarga(){
         $('.tab-content').load('listar');
     }
-    setInterval(Recarga, 1000);
+        $('.tab-content').load('listar');
+    //setInterval(Recarga, 1000);
 })
 </script>
 @stop
