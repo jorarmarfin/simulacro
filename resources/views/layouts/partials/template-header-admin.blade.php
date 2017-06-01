@@ -23,32 +23,18 @@
                 <li class="dropdown dropdown-extended dropdown-inbox" id="header_inbox_bar">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="icon-envelope-open"></i>
-                        <span class="badge badge-default"> {{ PorAtender()->count() }} </span>
+                        <span class="badge badge-default">  </span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="external">
                             <h3>Tiene
-                                <span class="bold">{{ PorAtender()->count() }} Nuevos</span> Mensajes</h3>
+                                <span class="bold"> Nuevos</span> Mensajes</h3>
                             <a href="{{ route('admin.mensajes.index') }}">Ver Todos</a>
                         </li>
                         <li>
-                            <ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-                                @foreach (PorAtender() as $mensaje)
-                                    @if(isset($mensaje))
-                                    <li>
-                                        <a href="{{ route('admin.mensajes.show',$mensaje->id) }}">
-                                            <span class="photo">
-                                                <img src="{{ $mensaje->postulante_foto }}" class="img-circle" alt=""> </span>
-                                            <span class="subject">
-                                                <span class="from"> {{ $mensaje->postulante }} </span>
-                                            </span>
-                                            <span class="message"> {{ $mensaje->asunto }} </span>
-                                        </a>
-                                    </li>
-                                    @endif
-                                @endforeach
 
-                            </ul>
+
+
                         </li>
                     </ul>
                 </li>
