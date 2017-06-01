@@ -24,6 +24,7 @@ class CreateDatosRequest extends FormRequest
     public function rules()
     {
         return [
+            'dni'=>'required|unique:postulante,dni',
             'paterno'=>'required',
             'materno'=>'required',
             'nombres'=>'required',
