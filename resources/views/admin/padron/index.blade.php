@@ -76,7 +76,7 @@
                             <td> {{ $padron->datos_aula->codigo }} </td>
                             <td> {{ $padron->datos_aula->sector }} </td>
                             <td> {{ $padron->ha_pagado }} </td>
-                            <td> {{ $padron->estado_anulado }} </td>
+                            <td> {!! $padron->estado_anulado !!} </td>
 
                         </tr>
                         @endforeach
