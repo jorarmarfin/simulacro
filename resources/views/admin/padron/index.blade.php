@@ -46,6 +46,7 @@
                             <th> Aula </th>
                             <th> Sector </th>
                             <th> Pago </th>
+                            <th> Anulado </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,6 +76,7 @@
                             <td> {{ $padron->datos_aula->codigo }} </td>
                             <td> {{ $padron->datos_aula->sector }} </td>
                             <td> {{ $padron->ha_pagado }} </td>
+                            <td> {{ $padron->estado_anulado }} </td>
 
                         </tr>
                         @endforeach
