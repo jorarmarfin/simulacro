@@ -24,7 +24,7 @@
                         <tr>
                             <th> Periodo </th>
                             <th> Proceso </th>
-                            <th> Concurso </th>
+                            <th> Codigo </th>
                             <th> Paterno </th>
                             <th> Materno </th>
                             <th> Nombres </th>
